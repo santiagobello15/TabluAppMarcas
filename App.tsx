@@ -13,7 +13,7 @@ import {
 } from "@expo-google-fonts/luckiest-guy";
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
+  const [fontsLoaded] = useFonts({
     LuckiestGuy_400Regular,
   });
 
