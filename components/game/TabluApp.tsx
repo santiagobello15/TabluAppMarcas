@@ -6,14 +6,14 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { styles } from "./styles/game";
+import { styles } from "./game";
 import {
   useFonts,
   LuckiestGuy_400Regular,
 } from "@expo-google-fonts/luckiest-guy";
 import { useContext, useState } from "react";
-import ConfigModal from "./components/config";
-import { Context } from "./context/AppContext";
+import ConfigModal from "../config/config";
+import { Context } from "../../context/AppContext";
 
 export default function TabluApp() {
   const [fontsLoaded] = useFonts({
@@ -51,7 +51,7 @@ export default function TabluApp() {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            alert(configModalActive);
+            setConfigModalActive(true);
           }}
           style={styles.btnRules}
         >
@@ -70,7 +70,7 @@ export default function TabluApp() {
           </View>
         </TouchableOpacity>
       </ImageBackground>
-      {/* {configModalActive && <ConfigModal />} */}
+      {configModalActive && <ConfigModal />}
     </View>
   );
 }

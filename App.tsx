@@ -1,5 +1,5 @@
 import GameContext from "./context/AppContext";
-import TabluApp from "./TabluApp";
+import TabluApp from "./components/game/TabluApp";
 export default function App() {
   return (
     <GameContext>
