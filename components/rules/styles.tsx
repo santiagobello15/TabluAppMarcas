@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
     position: "absolute",
     alignItems: "center",
     justifyContent: "center",
+    zIndex: 999999,
   },
   mainModal: {
     backgroundColor: "yellow",
