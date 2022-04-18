@@ -1,17 +1,24 @@
+import { StatusBar } from "expo-status-bar";
 import { styles } from "./styles";
-import { Text, View, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  ImageBackground,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import { Context } from "../../context/AppContext";
 import { useContext } from "react";
 
-function ConfigModal() {
-  const { configModalActive, setConfigModalActive } = useContext<any>(Context);
+function RulesModal() {
+  const { rulesModalActive, setRulesModalActive } = useContext<any>(Context);
   return (
     <View style={styles.overlayModal}>
       <View style={styles.mainModal}>
-        <Text>CONFIG</Text>
+        <Text>RULES</Text>
         <TouchableOpacity
           onPress={() => {
-            setConfigModalActive(false);
+            setRulesModalActive(false);
           }}
           style={styles.closeBtn}
         >
@@ -22,4 +29,4 @@ function ConfigModal() {
   );
 }
 
-export default ConfigModal;
+export default RulesModal;
