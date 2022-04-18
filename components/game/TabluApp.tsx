@@ -1,30 +1,27 @@
 import { StatusBar } from "expo-status-bar";
 import { Text, View, Image, TouchableOpacity } from "react-native";
 import { styles } from "./game";
-/* import {
-  useFonts,
-  LuckiestGuy_400Regular,
-} from "@expo-google-fonts/luckiest-guy"; */
 import { useContext, useState } from "react";
 import ConfigModal from "../config/config";
 import RulesModal from "../rules/rules";
 import { Context } from "../../context/AppContext";
 import { ImageBackground } from "react-native";
-import * as Font from "expo-font";
-import AppLoading from "expo-app-loading";
+
 import { useFonts } from "expo-font";
 
 export default function TabluApp() {
   let [fontsLoaded] = useFonts({
     LuckiestGuy: require("../../assets/fonts/LuckiestGuyRegular.ttf"),
+    MuktaMalar: require("../../assets/fonts/MuktaMalar-Medium.ttf"),
   });
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
   }
 
-  /*  const [fontsLoaded] = useFonts({
-    LuckiestGuy_400Regular,
-  }); */
   const {
     configModalActive,
     setConfigModalActive,
@@ -58,7 +55,15 @@ export default function TabluApp() {
         style={styles.btnConfig}
       >
         <View style={styles.insideBtnTextView}>
-          <Text style={styles.insideBtnText}>Configuración</Text>
+          <Text
+            style={{
+              fontFamily: "MuktaMalar",
+              fontSize: 18,
+              color: "white",
+            }}
+          >
+            Configuración
+          </Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity
@@ -68,7 +73,15 @@ export default function TabluApp() {
         style={styles.btnRules}
       >
         <View style={styles.insideBtnTextView}>
-          <Text style={styles.insideBtnText}>Reglas</Text>
+          <Text
+            style={{
+              fontFamily: "MuktaMalar",
+              fontSize: 18,
+              color: "white",
+            }}
+          >
+            Reglas
+          </Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity
@@ -78,7 +91,15 @@ export default function TabluApp() {
         style={styles.btnStart}
       >
         <View style={styles.insideBtnTextView}>
-          <Text style={styles.insideBtnText}>Comenzar</Text>
+          <Text
+            style={{
+              fontFamily: "MuktaMalar",
+              fontSize: 18,
+              color: "white",
+            }}
+          >
+            Comenzar
+          </Text>
         </View>
       </TouchableOpacity>
       {configModalActive && <ConfigModal />}

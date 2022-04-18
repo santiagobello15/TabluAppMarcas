@@ -42,11 +42,6 @@ export const styles = StyleSheet.create({
     position: "absolute",
     top: 500,
   },
-  insideBtnText: {
-    color: "white",
-
-    fontSize: 15,
-  },
   insideBtnTextView: {
     justifyContent: "center",
     alignItems: "center",
