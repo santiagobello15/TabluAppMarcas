@@ -6,6 +6,8 @@ interface ContextState {
   configModalActive: boolean | null;
   rulesModalActive: boolean | null;
   startModalActive: boolean | null;
+  isChecked: boolean | null;
+  setChecked: any | null;
   setConfigModalActive: any | null;
   setRulesModalActive: any | null;
   setStartModalActive: any | null;
@@ -20,6 +22,7 @@ const GameContext = ({ children }: any) => {
   const [startModalActive, setStartModalActive] = useState(false);
   const [roundsGame, setRoundsGame] = useState(15);
   const [timeGame, setTimeGame] = useState(60);
+  const [isChecked, setChecked] = useState(false);
 
   return (
     <Context.Provider
@@ -34,6 +37,8 @@ const GameContext = ({ children }: any) => {
         setRoundsGame,
         timeGame,
         setTimeGame,
+        isChecked,
+        setChecked,
       }}
     >
       {children}

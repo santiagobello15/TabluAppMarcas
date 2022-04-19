@@ -1359,6 +1359,11 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
+"@react-native-community/checkbox@^0.5.12":
+  version "0.5.12"
+  resolved "https://registry.yarnpkg.com/@react-native-community/checkbox/-/checkbox-0.5.12.tgz#1f55a38bbcd5f10ca853db0c6a9f1c4beccc37af"
+  integrity sha512-Dd3eiAW7AkpRgndwKGdgQ6nNgEmZlVD8+KAOBqwjuZQ/M67BThXJ9Ni+ydpPjNm4e28KXmIILfkvhcDt0ZoFTQ==
+
 "@react-native-community/cli-debugger-ui@^5.0.1":
   version "5.0.1"
   resolved "https://registry.npmjs.org/@react-native-community/cli-debugger-ui/-/cli-debugger-ui-5.0.1.tgz"
@@ -1483,10 +1488,10 @@
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
 
-"@react-native-community/slider@^4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-4.2.1.tgz#8f1c8cf62de1bd91ce1e32585f7eb666f21e5025"
-  integrity sha512-6HUS5HbB9bvEN4GiwBlxECgPWQIugHE+kfnxqX2jHUl1SE57MRpw00m1qVs4hXtEPQndBl6mAQiGbKCOtLPVbg==
+"@react-native-community/slider@4.1.12":
+  version "4.1.12"
+  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-4.1.12.tgz#279ff7bbe487af92ad95ec758a029a54569e2a62"
+  integrity sha512-CiuLZ2orueBiWHYxfaJF57jQY6HY2Q3z5pdAE4MKH8EqIImr/jgDJrJ/UxOVZHK1Ng9P+XlGIKfVIcuWZ6guuA==
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
@@ -2856,6 +2861,11 @@ expo-asset@~8.4.6:
     md5-file "^3.2.3"
     path-browserify "^1.0.0"
     url-parse "^1.4.4"
+
+expo-checkbox@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/expo-checkbox/-/expo-checkbox-2.0.0.tgz#417f5e6c4e3b4404e479064adab841bb2bef4d74"
+  integrity sha512-ZvDdpHRyyTd6P4JnqqJKyLzg8iKrvhHSXOKBK2uc/Xq5MWBj1JNtn2FCGs0oNpG9H1rt8/gV86Wzy96onxE7bw==
 
 expo-constants@~13.0.2:
   version "13.0.2"

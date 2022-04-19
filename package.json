@@ -12,9 +12,11 @@
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.2",
     "@expo-google-fonts/luckiest-guy": "^0.2.2",
-    "@react-native-community/slider": "^4.2.1",
+    "@react-native-community/checkbox": "^0.5.12",
+    "@react-native-community/slider": "4.1.12",
     "expo": "^44.0.6",
     "expo-app-loading": "~1.3.0",
+    "expo-checkbox": "^2.0.0",
     "expo-font": "^10.0.5",
     "expo-status-bar": "~1.2.0",
     "node-sass": "^7.0.1",

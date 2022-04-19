@@ -1,5 +1,6 @@
 import { styles } from "./styles";
 import { Text, View, TouchableOpacity, ImageBackground } from "react-native";
+import CheckBox from "expo-checkbox";
 import { Context } from "../../context/AppContext";
 import { useContext } from "react";
 import Slider from "@react-native-community/slider";
@@ -12,6 +13,8 @@ function ConfigModal() {
     setRoundsGame,
     timeGame,
     setTimeGame,
+    isChecked,
+    setChecked,
   } = useContext<any>(Context);
 
   return (
@@ -61,7 +64,7 @@ function ConfigModal() {
             <Text
               style={{
                 fontFamily: "MuktaMalar",
-                fontSize: 22,
+                fontSize: 20,
                 color: "black",
               }}
             >
@@ -94,12 +97,19 @@ function ConfigModal() {
             <Text
               style={{
                 fontFamily: "MuktaMalar",
-                fontSize: 22,
+                fontSize: 20,
                 color: "black",
               }}
             >
               {timeGame}
             </Text>
+          </View>
+          <View style={styles.checkboxContainerMuletillas}>
+            <CheckBox
+              value={isChecked}
+              onValueChange={setChecked}
+              color={isChecked ? "#8b6ad8" : undefined}
+            />
           </View>
         </View>
         <TouchableOpacity

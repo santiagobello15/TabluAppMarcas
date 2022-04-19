@@ -42,6 +42,7 @@ export const styles = StyleSheet.create({
   timeTitle: { top: 110, position: "absolute" },
   sliderViewTime: { top: 125, position: "absolute" },
   timeCounter: { top: 155, position: "absolute" },
+  checkboxContainerMuletillas: { top: 200, position: "absolute" },
   closeBtn: {
     backgroundColor: "red",
     alignItems: "center",

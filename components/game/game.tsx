@@ -32,6 +32,8 @@ export default function TabluApp() {
     setStartModalActive,
     roundsGame,
     setRoundsGame,
+    timeGame,
+    setTimeGame,
   } = useContext<any>(Context);
 
   return (
@@ -131,7 +133,7 @@ export default function TabluApp() {
               top: -10,
             }}
           >
-            60''
+            {timeGame}''
           </Text>
         </View>
         <View style={styles.view3}>
