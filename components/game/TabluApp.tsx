@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { Text, View, Image, TouchableOpacity } from "react-native";
-import { styles } from "./game";
+import { styles } from "./styles";
 import { useContext, useState } from "react";
 import ConfigModal from "../config/config";
 import RulesModal from "../rules/rules";
@@ -30,6 +30,8 @@ export default function TabluApp() {
     setRulesModalActive,
     startModalActive,
     setStartModalActive,
+    roundsGame,
+    setRoundsGame,
   } = useContext<any>(Context);
 
   return (
@@ -116,7 +118,7 @@ export default function TabluApp() {
               top: -10,
             }}
           >
-            15
+            {roundsGame}
           </Text>
         </View>
         <View style={styles.view2}>

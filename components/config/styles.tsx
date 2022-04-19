@@ -4,7 +4,6 @@ const mainColor = "#7b2cbf";
 
 export const styles = StyleSheet.create({
   mainModal: {
-    backgroundColor: "yellow",
     alignItems: "center",
     justifyContent: "center",
     position: "absolute",
@@ -12,6 +11,37 @@ export const styles = StyleSheet.create({
     width: "80%",
     height: "50%",
   },
+  image: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    position: "absolute",
+    height: "100%",
+  },
+  titleContainer: {
+    alignItems: "center",
+    position: "absolute",
+    top: 35,
+  },
+  subContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: "70%",
+    position: "absolute",
+    height: "60%",
+    backgroundColor: "#fafafa",
+    top: "30%",
+    borderRadius: 10,
+    borderColor: mainColor,
+    borderWidth: 1,
+  },
+  roundsTitle: { top: 25, position: "absolute" },
+  sliderViewRound: { top: 40, position: "absolute" },
+  roundsCounter: { top: 70, position: "absolute" },
+  timeTitle: { top: 110, position: "absolute" },
+  sliderViewTime: { top: 125, position: "absolute" },
+  timeCounter: { top: 155, position: "absolute" },
   closeBtn: {
     backgroundColor: "red",
     alignItems: "center",
