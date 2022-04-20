@@ -13,8 +13,10 @@ function ConfigModal() {
     setRoundsGame,
     timeGame,
     setTimeGame,
-    isChecked,
-    setChecked,
+    isCheckedMuletillas,
+    setCheckedMuletillas,
+    isCheckedInsultos,
+    setCheckedInsultos,
   } = useContext<any>(Context);
 
   return (
@@ -106,10 +108,25 @@ function ConfigModal() {
           </View>
           <View style={styles.checkboxContainerMuletillas}>
             <CheckBox
-              value={isChecked}
-              onValueChange={setChecked}
-              color={isChecked ? "#8b6ad8" : undefined}
+              style={styles.checkboxitself}
+              value={isCheckedMuletillas}
+              onValueChange={setCheckedMuletillas}
+              color={isCheckedMuletillas ? "#8b6ad8" : undefined}
             />
+            <Text style={styles.checkboxContainerMuletillasTxt}>
+              Sin Muletillas
+            </Text>
+          </View>
+          <View style={styles.checkboxContainerInsultos}>
+            <CheckBox
+              style={styles.checkboxitself}
+              value={isCheckedInsultos}
+              onValueChange={setCheckedInsultos}
+              color={isCheckedInsultos ? "#8b6ad8" : undefined}
+            />
+            <Text style={styles.checkboxContainerInsultosTxt}>
+              Sin Insultos
+            </Text>
           </View>
         </View>
         <TouchableOpacity

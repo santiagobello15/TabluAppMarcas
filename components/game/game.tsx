@@ -34,7 +34,26 @@ export default function TabluApp() {
     setRoundsGame,
     timeGame,
     setTimeGame,
+    isCheckedMuletillas,
+    setCheckedMuletillas,
+    isCheckedInsultos,
+    setCheckedInsultos,
   } = useContext<any>(Context);
+
+  const muletillaFunction = () => {
+    if (isCheckedMuletillas == false) {
+      return "Sin penalización por muletillas";
+    } else {
+      return "Penalización por muletillas";
+    }
+  };
+  const insultosFunction = () => {
+    if (isCheckedInsultos == false) {
+      return "Sin penalización por insultos";
+    } else {
+      return "Penalización por insultos";
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -45,6 +64,7 @@ export default function TabluApp() {
       <View style={styles.mainContainer}>
         <View style={styles.titleContainer}>
           <Text
+            adjustsFontSizeToFit
             style={{
               fontFamily: "LuckiestGuy",
               fontSize: 42,
@@ -110,34 +130,42 @@ export default function TabluApp() {
             </Text>
           </View>
         </TouchableOpacity>
-        <View style={styles.view1}>
-          <Text style={styles.view1txt}>Rondas</Text>
-          <Text
-            style={{
-              fontFamily: "MuktaMalarLight",
-              color: "#fafafa",
-              fontSize: 40,
-              top: -10,
-            }}
-          >
-            {roundsGame}
+        <View style={styles.view1holder}>
+          <View style={styles.view1up}>
+            <Text style={styles.view1txt}>Rondas</Text>
+          </View>
+          <View style={styles.view1}>
+            <Text
+              style={{
+                fontFamily: "MuktaMalarLight",
+                color: "#fafafa",
+                fontSize: 40,
+              }}
+            >
+              {roundsGame}
+            </Text>
+          </View>
+        </View>
+        <View style={styles.view2up}>
+          <Text adjustsFontSizeToFit style={styles.view2txt}>
+            Tiempo
           </Text>
         </View>
         <View style={styles.view2}>
-          <Text style={styles.view2txt}>Tiempo</Text>
           <Text
             style={{
               fontFamily: "MuktaMalarLight",
               color: "#fafafa",
               fontSize: 40,
-              top: -10,
             }}
           >
             {timeGame}''
           </Text>
         </View>
-        <View style={styles.view3}>
+        <View style={styles.view3up}>
           <Text style={styles.view3txt}>Extra #1</Text>
+        </View>
+        <View style={styles.view3}>
           <Text
             style={{
               fontFamily: "MuktaMalar",
@@ -145,25 +173,25 @@ export default function TabluApp() {
               fontSize: 10,
               paddingLeft: 2,
               paddingRight: 2,
-              top: -7,
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            Sin penalización por muletilla
+            {muletillaFunction()}
           </Text>
         </View>
-        <View style={styles.view4}>
+        <View style={styles.view4up}>
           <Text style={styles.view4txt}>Extra #2</Text>
+        </View>
+        <View style={styles.view4}>
           <Text
             style={{
               fontFamily: "MuktaMalar",
               color: "#fafafa",
               fontSize: 10,
-              paddingLeft: 2,
-              paddingRight: 2,
-              top: -7,
             }}
           >
-            Sin penalización por insultos
+            {insultosFunction()}
           </Text>
         </View>
       </View>
