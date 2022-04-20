@@ -3,6 +3,15 @@ import { StyleSheet } from "react-native";
 const mainColor = "#7b2cbf";
 
 export const styles = StyleSheet.create({
+  overlayModal: {
+    backgroundColor: "rgba(49, 49, 49, 0.945)",
+    height: "100%",
+    width: "100%",
+    position: "absolute",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 999999,
+  },
   mainModal: {
     alignItems: "center",
     justifyContent: "center",
@@ -83,14 +92,5 @@ export const styles = StyleSheet.create({
   },
   closeBtnTxt: {
     color: "white",
-  },
-  overlayModal: {
-    backgroundColor: "rgba(49, 49, 49, 0.945)",
-    height: "100%",
-    width: "100%",
-    position: "absolute",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 999999,
   },
 });
