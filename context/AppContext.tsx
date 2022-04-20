@@ -17,6 +17,14 @@ interface ContextState {
   timeGame: number | null;
   setTimeGame: any | null;
   setRoundsGame: any | null;
+  teamOneName: string | null;
+  setTeamOneName: any | null;
+  teamTwoName: string | null;
+  setTeamTwoName: any | null;
+  teamOneColor: string | null;
+  setTeamOneColor: any | null;
+  teamTwoColor: string | null;
+  setTeamTwoColor: any | null;
 }
 const GameContext = ({ children }: any) => {
   const [configModalActive, setConfigModalActive] = useState(false);
@@ -26,6 +34,10 @@ const GameContext = ({ children }: any) => {
   const [timeGame, setTimeGame] = useState(60);
   const [isCheckedMuletillas, setCheckedMuletillas] = useState(false);
   const [isCheckedInsultos, setCheckedInsultos] = useState(false);
+  const [teamOneName, setTeamOneName] = useState("Team 1...");
+  const [teamTwoName, setTeamTwoName] = useState("Team 2...");
+  const [teamOneColor, setTeamOneColor] = useState("rgb(249, 200, 203)");
+  const [teamTwoColor, setTeamTwoColor] = useState("rgb(198, 221, 241)");
 
   return (
     <Context.Provider
@@ -44,6 +56,14 @@ const GameContext = ({ children }: any) => {
         setCheckedMuletillas,
         isCheckedInsultos,
         setCheckedInsultos,
+        teamOneName,
+        setTeamOneName,
+        teamTwoName,
+        setTeamTwoName,
+        teamOneColor,
+        setTeamOneColor,
+        teamTwoColor,
+        setTeamTwoColor,
       }}
     >
       {children}

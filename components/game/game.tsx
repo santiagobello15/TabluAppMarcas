@@ -14,6 +14,7 @@ export default function TabluApp() {
     LuckiestGuy: require("../../assets/fonts/LuckiestGuyRegular.ttf"),
     MuktaMalar: require("../../assets/fonts/MuktaMalar-Medium.ttf"),
     MuktaMalarLight: require("../../assets/fonts/MuktaMalar-Light.ttf"),
+    MuktaMalarBold: require("../../assets/fonts/MuktaMalar-Bold.ttf"),
   });
   if (!fontsLoaded) {
     return (
