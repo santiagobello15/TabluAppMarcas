@@ -56,8 +56,116 @@ export default function TabluApp() {
 
   const inGameView = () => {
     return (
-      <View>
-        <Text>Hello</Text>
+      <View style={styles.container}>
+        <ImageBackground
+          source={require("./media/patternpad.png")}
+          style={styles.image}
+        />
+        <View style={styles.mainContainer}>
+          <View style={[styles.titleContainer, { top: "8%" }]}>
+            <Text
+              adjustsFontSizeToFit
+              style={{
+                fontFamily: "LuckiestGuy",
+                fontSize: 30,
+                color: "white",
+                backgroundColor: "#7b2cbf",
+              }}
+            >
+              TABLU FAMOSOS
+            </Text>
+          </View>
+          <View style={styles.gamingPad}>
+            <View style={styles.gamingPadLeft}>
+              <Text
+                adjustsFontSizeToFit
+                style={{
+                  fontFamily: "MuktaMalar",
+                  fontSize: 18,
+                  color: "white",
+                  position: "absolute",
+                  top: "10%",
+                }}
+              >
+                Ronda: 1/15{" "}
+              </Text>
+              <View style={styles.gamingCounter}>
+                <Text
+                  adjustsFontSizeToFit
+                  style={{
+                    fontFamily: "MuktaMalarBold",
+                    fontSize: 44,
+                    color: "white",
+                  }}
+                >
+                  60
+                </Text>
+              </View>
+            </View>
+            <View style={styles.gamingPadCenter}></View>
+            <View style={styles.gamingPadRight}>
+              <TouchableOpacity
+                onPress={() => {
+                  alert("je");
+                }}
+                style={[styles.pointBtn, { top: "10%" }]}
+              >
+                <Text
+                  adjustsFontSizeToFit
+                  style={{
+                    fontFamily: "LuckiestGuy",
+                    fontSize: 20,
+                    color: "white",
+                  }}
+                >
+                  +1 Punto
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  alert("je");
+                }}
+                style={[styles.pointBtn, { top: "40%" }]}
+              >
+                <Text
+                  adjustsFontSizeToFit
+                  style={{
+                    fontFamily: "LuckiestGuy",
+                    fontSize: 20,
+                    color: "white",
+                  }}
+                >
+                  -1 Punto
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  alert("je");
+                }}
+                style={[styles.pointBtn, { top: "70%" }]}
+              >
+                <Text
+                  adjustsFontSizeToFit
+                  style={{
+                    fontFamily: "LuckiestGuy",
+                    fontSize: 20,
+                    color: "white",
+                  }}
+                >
+                  Pasar
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <TouchableOpacity
+            onPress={() => {
+              alert("je");
+            }}
+            style={styles.closeBtn}
+          >
+            <Text style={styles.closeBtnTxt}>X</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   };
