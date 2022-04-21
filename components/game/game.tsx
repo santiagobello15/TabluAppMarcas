@@ -277,6 +277,40 @@ export default function TabluApp() {
               Turno del equipo: variable
             </Text>
           </View>
+          <TouchableOpacity
+            onPress={() => {
+              alert("je");
+            }}
+            style={styles.startBtn}
+          >
+            <Text
+              adjustsFontSizeToFit
+              style={{
+                fontFamily: "MuktaMalarBold",
+                fontSize: 18,
+                color: "white",
+              }}
+            >
+              Iniciar
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              alert("je");
+            }}
+            style={styles.restartBtn}
+          >
+            <Text
+              adjustsFontSizeToFit
+              style={{
+                fontFamily: "MuktaMalarBold",
+                fontSize: 18,
+                color: "white",
+              }}
+            >
+              Reiniciar
+            </Text>
+          </TouchableOpacity>
           <View style={styles.gamingPadFooter}>
             <View
               style={[
