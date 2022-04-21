@@ -78,9 +78,9 @@ export const styles = StyleSheet.create({
   },
   colorBoxes: {
     position: "absolute",
+    height: "70%",
     width: "20%",
     borderRadius: 4,
-    aspectRatio: 1.45,
   },
   pickedRed: { backgroundColor: CardColorRedTransp, left: "4%" },
   pickedBlue: { backgroundColor: CardColorBlueTransp, left: "28%" },
@@ -106,8 +106,8 @@ export const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     right: 0,
-    width: 30,
-    height: 30,
+    width: "10%",
+    aspectRatio: 1,
   },
   closeBtnTxt: {
     color: "white",

@@ -21,19 +21,14 @@ function StartModal() {
     setTeamOneColor,
     teamTwoColor,
     setTeamTwoColor,
+    gameState,
+    setGameState,
   } = useContext<any>(Context);
 
   const CardColorRed = "rgb(249, 200, 203)";
   const CardColorGreen = "rgb(201, 228, 222)";
   const CardColorBlue = "rgb(198, 221, 241)";
   const CardColorYellow = "rgb(250, 237, 204)";
-
-  function placeHolderColorT1() {
-    if (teamOneName == "Team 1...") return { color: "#a5afc0" };
-  }
-  function placeHolderColorT2() {
-    if (teamTwoName == "Team 2...") return { color: "#a5afc0" };
-  }
 
   return (
     <View style={styles.overlayModal}>
@@ -58,9 +53,9 @@ function StartModal() {
           <View style={[styles.teamOneView, { backgroundColor: teamOneColor }]}>
             <TextInput
               textAlign={"center"}
-              style={[styles.input, placeHolderColorT1()]}
+              style={styles.input}
               onChangeText={setTeamOneName}
-              value={teamOneName}
+              placeholder="Team 1..."
             />
             <View style={styles.colorsContainer}>
               <TouchableOpacity
@@ -92,9 +87,9 @@ function StartModal() {
           <View style={[styles.teamTwoView, { backgroundColor: teamTwoColor }]}>
             <TextInput
               textAlign={"center"}
-              style={[styles.input, placeHolderColorT2()]}
+              style={styles.input}
               onChangeText={setTeamTwoName}
-              value={teamTwoName}
+              placeholder="Team 2..."
             />
             <View style={styles.colorsContainer}>
               <TouchableOpacity
@@ -127,7 +122,7 @@ function StartModal() {
           <TouchableOpacity
             style={styles.startGame}
             onPress={() => {
-              alert("holis");
+              setGameState("inGame");
             }}
           >
             <Text

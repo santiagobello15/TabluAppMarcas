@@ -75,8 +75,8 @@ export const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     right: 0,
-    width: 30,
-    height: 30,
+    width: "10%",
+    aspectRatio: 1,
   },
   closeBtnTxt: {
     color: "white",
