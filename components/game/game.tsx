@@ -37,6 +37,10 @@ export default function TabluApp() {
     isCheckedInsultos,
     gameState,
     setGameState,
+    teamOneColor,
+    teamTwoColor,
+    teamOneName,
+    teamTwoName,
   } = useContext<any>(Context);
 
   const muletillaFunction = () => {
@@ -80,14 +84,26 @@ export default function TabluApp() {
               <Text
                 adjustsFontSizeToFit
                 style={{
-                  fontFamily: "MuktaMalar",
-                  fontSize: 18,
-                  color: "white",
+                  fontFamily: "LuckiestGuy",
+                  fontSize: 17,
+                  color: "black",
                   position: "absolute",
-                  top: "10%",
+                  top: "22%",
                 }}
               >
-                Ronda: 1/15{" "}
+                Ronda:
+              </Text>
+              <Text
+                adjustsFontSizeToFit
+                style={{
+                  fontFamily: "LuckiestGuy",
+                  fontSize: 18,
+                  color: "black",
+                  position: "absolute",
+                  top: "30%",
+                }}
+              >
+                1/15
               </Text>
               <View style={styles.gamingCounter}>
                 <Text
@@ -102,53 +118,137 @@ export default function TabluApp() {
                 </Text>
               </View>
             </View>
-            <View style={styles.gamingPadCenter}></View>
+            <View style={styles.gamingPadCenter}>
+              <View style={styles.cardView}>
+                <Text
+                  adjustsFontSizeToFit
+                  style={[styles.cardName, { top: "5%", position: "absolute" }]}
+                >
+                  Susana
+                </Text>
+                <Text
+                  adjustsFontSizeToFit
+                  style={[
+                    styles.cardName,
+                    { top: "17%", position: "absolute" },
+                  ]}
+                >
+                  Gimenez
+                </Text>
+                <Text
+                  adjustsFontSizeToFit
+                  style={[
+                    styles.cardWord,
+                    { top: "33%", position: "absolute" },
+                  ]}
+                >
+                  Word1
+                </Text>
+                <Text
+                  adjustsFontSizeToFit
+                  style={[
+                    styles.cardWord,
+                    { top: "43%", position: "absolute" },
+                  ]}
+                >
+                  Word1
+                </Text>
+                <Text
+                  adjustsFontSizeToFit
+                  style={[
+                    styles.cardWord,
+                    { top: "53%", position: "absolute" },
+                  ]}
+                >
+                  Word1
+                </Text>
+                <Text
+                  adjustsFontSizeToFit
+                  style={[
+                    styles.cardWord,
+                    { top: "63%", position: "absolute" },
+                  ]}
+                >
+                  Word1
+                </Text>
+                <Text
+                  adjustsFontSizeToFit
+                  style={[
+                    styles.cardWord,
+                    { top: "73%", position: "absolute" },
+                  ]}
+                >
+                  Word1
+                </Text>
+                <Text
+                  adjustsFontSizeToFit
+                  style={[
+                    styles.cardWord,
+                    { top: "83%", position: "absolute" },
+                  ]}
+                >
+                  Word1
+                </Text>
+              </View>
+            </View>
             <View style={styles.gamingPadRight}>
               <TouchableOpacity
                 onPress={() => {
                   alert("je");
                 }}
-                style={[styles.pointBtn, { top: "10%" }]}
+                style={[
+                  styles.pointBtn,
+                  { top: "10%", backgroundColor: "#295b16" },
+                ]}
               >
                 <Text
                   adjustsFontSizeToFit
                   style={{
                     fontFamily: "LuckiestGuy",
-                    fontSize: 20,
+                    fontSize: 25,
                     color: "white",
                   }}
                 >
-                  +1 Punto
+                  +1
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
                   alert("je");
                 }}
-                style={[styles.pointBtn, { top: "40%" }]}
+                style={[
+                  styles.pointBtn,
+                  { top: "42.5%", backgroundColor: "#ba0000" },
+                ]}
               >
                 <Text
                   adjustsFontSizeToFit
                   style={{
                     fontFamily: "LuckiestGuy",
-                    fontSize: 20,
+                    fontSize: 25,
                     color: "white",
                   }}
                 >
-                  -1 Punto
+                  -1
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
                   alert("je");
                 }}
-                style={[styles.pointBtn, { top: "70%" }]}
+                style={[
+                  styles.pointBtn,
+                  {
+                    bottom: "5%",
+                    backgroundColor: "#30392d",
+                  },
+                ]}
               >
                 <Text
                   adjustsFontSizeToFit
                   style={{
                     fontFamily: "LuckiestGuy",
-                    fontSize: 20,
+                    fontSize: 18,
                     color: "white",
                   }}
                 >
@@ -165,6 +265,83 @@ export default function TabluApp() {
           >
             <Text style={styles.closeBtnTxt}>X</Text>
           </TouchableOpacity>
+          <View style={styles.turnToTeam}>
+            <Text
+              adjustsFontSizeToFit
+              style={{
+                fontFamily: "LuckiestGuy",
+                fontSize: 18,
+                color: "white",
+              }}
+            >
+              Turno del equipo: variable
+            </Text>
+          </View>
+          <View style={styles.gamingPadFooter}>
+            <View
+              style={[
+                styles.teamsBadges,
+                { left: "4%", backgroundColor: teamOneColor },
+              ]}
+            >
+              <Text
+                adjustsFontSizeToFit
+                style={{
+                  fontFamily: "MuktaMalarBold",
+                  fontSize: 18,
+                  color: "black",
+                  position: "absolute",
+                  top: "17%",
+                }}
+              >
+                {teamOneName}
+              </Text>
+              <Text
+                adjustsFontSizeToFit
+                style={{
+                  fontFamily: "MuktaMalarBold",
+                  fontSize: 25,
+                  color: "black",
+                  position: "absolute",
+                  top: "50%",
+                }}
+              >
+                0
+              </Text>
+            </View>
+
+            <View
+              style={[
+                styles.teamsBadges,
+                { right: "5%", backgroundColor: teamTwoColor },
+              ]}
+            >
+              <Text
+                adjustsFontSizeToFit
+                style={{
+                  fontFamily: "MuktaMalarBold",
+                  fontSize: 18,
+                  color: "black",
+                  position: "absolute",
+                  top: "17%",
+                }}
+              >
+                {teamTwoName}
+              </Text>
+              <Text
+                adjustsFontSizeToFit
+                style={{
+                  fontFamily: "MuktaMalarBold",
+                  fontSize: 25,
+                  color: "black",
+                  position: "absolute",
+                  top: "50%",
+                }}
+              >
+                0
+              </Text>
+            </View>
+          </View>
         </View>
       </View>
     );
