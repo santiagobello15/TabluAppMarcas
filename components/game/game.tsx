@@ -4,6 +4,7 @@ import { styles } from "./styles";
 import { useContext, useEffect } from "react";
 import ConfigModal from "../config/config";
 import RulesModal from "../rules/rules";
+import QuitInGame from "../quitInGame/quitInGame";
 import StartModal from "../start/start";
 import { Context } from "../../context/AppContext";
 import { ImageBackground } from "react-native";
@@ -38,6 +39,8 @@ export default function TabluApp() {
     setCountDownGame,
     startCounter,
     setStartCounter,
+    quitInGameModalActive,
+    setQuitInGameModalActive,
   } = useContext(Context);
 
   const muletillaFunction = () => {
@@ -234,6 +237,7 @@ export default function TabluApp() {
               setCurrentRound(1);
               setPointsTeamOne(0);
               setPointsTeamTwo(0);
+              setAssignedTeamOne(true);
             }}
             style={styles.closeBtn}
           >
@@ -455,12 +459,14 @@ export default function TabluApp() {
           </View>
           <TouchableOpacity
             onPress={() => {
-              setGameState("preGame");
-              setCountDownGame(timeGame);
+              setQuitInGameModalActive(true);
+              /*  setGameState("preGame"); */
               setStartCounter(false);
+              setCountDownGame(timeGame);
               setCurrentRound(1);
               setPointsTeamOne(0);
               setPointsTeamTwo(0);
+              setAssignedTeamOne(true);
             }}
             style={styles.closeBtn}
           >
@@ -549,6 +555,7 @@ export default function TabluApp() {
         </View>
 
         <StatusBar style="auto" />
+        {quitInGameModalActive && <QuitInGame />}
       </View>
     );
   };
@@ -705,6 +712,7 @@ export default function TabluApp() {
         {configModalActive && <ConfigModal />}
         {rulesModalActive && <RulesModal />}
         {startModalActive && <StartModal />}
+        {quitInGameModalActive && <QuitInGame />}
       </View>
     );
   };
