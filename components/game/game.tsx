@@ -1,29 +1,14 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 import ConfigModal from "../config/config";
 import RulesModal from "../rules/rules";
 import StartModal from "../start/start";
 import { Context } from "../../context/AppContext";
 import { ImageBackground } from "react-native";
-import { useFonts } from "expo-font";
 
 export default function TabluApp() {
-  let [fontsLoaded] = useFonts({
-    LuckiestGuy: require("../../assets/fonts/LuckiestGuyRegular.ttf"),
-    MuktaMalar: require("../../assets/fonts/MuktaMalar-Medium.ttf"),
-    MuktaMalarLight: require("../../assets/fonts/MuktaMalar-Light.ttf"),
-    MuktaMalarBold: require("../../assets/fonts/MuktaMalar-Bold.ttf"),
-  });
-  if (!fontsLoaded) {
-    return (
-      <View>
-        <Text>Loading...</Text>
-      </View>
-    );
-  }
-
   const {
     configModalActive,
     setConfigModalActive,
@@ -41,7 +26,19 @@ export default function TabluApp() {
     teamTwoColor,
     teamOneName,
     teamTwoName,
-  } = useContext<any>(Context);
+    pointsTeamOne,
+    setPointsTeamOne,
+    pointsTeamTwo,
+    setPointsTeamTwo,
+    assignedTeamOne,
+    setAssignedTeamOne,
+    currentRound,
+    setCurrentRound,
+    countDownGame,
+    setCountDownGame,
+    startCounter,
+    setStartCounter,
+  } = useContext(Context);
 
   const muletillaFunction = () => {
     if (isCheckedMuletillas == false) {
@@ -56,6 +53,172 @@ export default function TabluApp() {
     } else {
       return "Penalización por insultos";
     }
+  };
+
+  const teamTurn = () => {
+    if (assignedTeamOne == true) {
+      return " " + teamOneName;
+    } else {
+      return " " + teamTwoName;
+    }
+  };
+
+  const FinishedAlert = () => {
+    if (countDownGame == 0.0) {
+      setCountDownGame(timeGame);
+      setStartCounter(false);
+      setCurrentRound(currentRound + 1);
+      if (assignedTeamOne == true) {
+        setAssignedTeamOne(false);
+      } else {
+        setAssignedTeamOne(true);
+      }
+    }
+  };
+
+  const renderGameResult = () => {
+    if (pointsTeamOne == pointsTeamTwo) {
+      return "Ninguno! Empate";
+    }
+    if (pointsTeamOne > pointsTeamTwo) {
+      return teamOneName;
+    } else {
+      return teamTwoName;
+    }
+  };
+
+  const GameOver = () => {
+    if (countDownGame == 0.0 && currentRound == roundsGame) {
+      setGameState("afterGame");
+    }
+  };
+
+  useEffect(() => {
+    if (startCounter == true) {
+      countDownGame > 0 &&
+        setTimeout(() => setCountDownGame((countDownGame - 0.1).toFixed(1)), 1);
+    }
+  });
+
+  const StopOrCount = () => {
+    if (startCounter == false) {
+      return [
+        <TouchableOpacity
+          onPress={() => {
+            setStartCounter(true);
+          }}
+          style={styles.startBtn}
+        >
+          <Text
+            adjustsFontSizeToFit
+            style={{
+              fontFamily: "MuktaMalarBold",
+              fontSize: 18,
+              color: "white",
+            }}
+          >
+            Iniciar
+          </Text>
+        </TouchableOpacity>,
+        <TouchableOpacity
+          onPress={() => {
+            {
+              setCountDownGame(timeGame);
+            }
+          }}
+          style={styles.restartBtn}
+        >
+          <Text
+            adjustsFontSizeToFit
+            style={{
+              fontFamily: "MuktaMalarBold",
+              fontSize: 18,
+              color: "white",
+            }}
+          >
+            Reiniciar
+          </Text>
+        </TouchableOpacity>,
+      ];
+    } else {
+      return (
+        <TouchableOpacity
+          onPress={() => {
+            {
+              setStartCounter(false);
+            }
+          }}
+          style={[styles.startBtn, { backgroundColor: "red" }]}
+        >
+          <Text
+            adjustsFontSizeToFit
+            style={{
+              fontFamily: "MuktaMalarBold",
+              fontSize: 18,
+              color: "white",
+            }}
+          >
+            Pausar
+          </Text>
+        </TouchableOpacity>
+      );
+    }
+  };
+
+  const AddPoints = () => {
+    if (assignedTeamOne == true) {
+      setPointsTeamOne(pointsTeamOne + 1);
+    } else {
+      setPointsTeamTwo(pointsTeamTwo + 1);
+    }
+  };
+
+  const DeductPoints = () => {
+    if (assignedTeamOne == true) {
+      setPointsTeamOne(pointsTeamOne - 1);
+    } else {
+      setPointsTeamTwo(pointsTeamTwo - 1);
+    }
+  };
+
+  const afterGameView = () => {
+    return (
+      <View style={styles.container}>
+        <ImageBackground
+          source={require("./media/patternpad.png")}
+          style={styles.image}
+        />
+        <View style={styles.mainContainer}>
+          <View style={[styles.titleContainer, { top: "8%" }]}>
+            <Text
+              adjustsFontSizeToFit
+              style={{
+                fontFamily: "LuckiestGuy",
+                fontSize: 30,
+                color: "white",
+                backgroundColor: "#7b2cbf",
+              }}
+            >
+              TABLU FAMOSOS
+            </Text>
+          </View>
+          <View style={styles.turnToTeam}>
+            <Text
+              adjustsFontSizeToFit
+              style={{
+                fontFamily: "LuckiestGuy",
+                fontSize: 18,
+                color: "white",
+              }}
+            >
+              Ganador de la partida:
+              {renderGameResult()}
+            </Text>
+          </View>
+        </View>
+        <StatusBar style="auto" />
+      </View>
+    );
   };
 
   const inGameView = () => {
@@ -103,18 +266,18 @@ export default function TabluApp() {
                   top: "30%",
                 }}
               >
-                1/15
+                {currentRound}/{roundsGame}
               </Text>
               <View style={styles.gamingCounter}>
                 <Text
                   adjustsFontSizeToFit
                   style={{
                     fontFamily: "MuktaMalarBold",
-                    fontSize: 44,
+                    fontSize: 35,
                     color: "white",
                   }}
                 >
-                  60
+                  {countDownGame}
                 </Text>
               </View>
             </View>
@@ -194,7 +357,9 @@ export default function TabluApp() {
             <View style={styles.gamingPadRight}>
               <TouchableOpacity
                 onPress={() => {
-                  alert("je");
+                  {
+                    AddPoints();
+                  }
                 }}
                 style={[
                   styles.pointBtn,
@@ -214,7 +379,9 @@ export default function TabluApp() {
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
-                  alert("je");
+                  {
+                    DeductPoints();
+                  }
                 }}
                 style={[
                   styles.pointBtn,
@@ -259,7 +426,12 @@ export default function TabluApp() {
           </View>
           <TouchableOpacity
             onPress={() => {
-              alert("je");
+              setGameState("preGame");
+              setCountDownGame(timeGame);
+              setStartCounter(false);
+              setCurrentRound(1);
+              setPointsTeamOne(0);
+              setPointsTeamTwo(0);
             }}
             style={styles.closeBtn}
           >
@@ -274,43 +446,11 @@ export default function TabluApp() {
                 color: "white",
               }}
             >
-              Turno del equipo: variable
+              Turno del equipo:
+              {teamTurn()}
             </Text>
           </View>
-          <TouchableOpacity
-            onPress={() => {
-              alert("je");
-            }}
-            style={styles.startBtn}
-          >
-            <Text
-              adjustsFontSizeToFit
-              style={{
-                fontFamily: "MuktaMalarBold",
-                fontSize: 18,
-                color: "white",
-              }}
-            >
-              Iniciar
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              alert("je");
-            }}
-            style={styles.restartBtn}
-          >
-            <Text
-              adjustsFontSizeToFit
-              style={{
-                fontFamily: "MuktaMalarBold",
-                fontSize: 18,
-                color: "white",
-              }}
-            >
-              Reiniciar
-            </Text>
-          </TouchableOpacity>
+
           <View style={styles.gamingPadFooter}>
             <View
               style={[
@@ -340,7 +480,7 @@ export default function TabluApp() {
                   top: "50%",
                 }}
               >
-                0
+                {pointsTeamOne}
               </Text>
             </View>
 
@@ -372,11 +512,15 @@ export default function TabluApp() {
                   top: "50%",
                 }}
               >
-                0
+                {pointsTeamTwo}
               </Text>
             </View>
           </View>
+          {StopOrCount()}
+          {FinishedAlert()}
+          {GameOver()}
         </View>
+        <StatusBar style="auto" />
       </View>
     );
   };
@@ -544,5 +688,6 @@ export default function TabluApp() {
     if (gameState == "inGame") {
       return inGameView();
     }
+    if (gameState == "afterGame") return afterGameView();
   }
 }

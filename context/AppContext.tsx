@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import { useFonts } from "expo-font";
 export const Context = createContext({} as ContextState);
 
 interface ContextState {
@@ -27,6 +26,18 @@ interface ContextState {
   setTeamTwoColor: any | null;
   gameState: string | null;
   setGameState: any | null;
+  pointsTeamOne: number | null;
+  setPointsTeamOne: any | null;
+  pointsTeamTwo: number | null;
+  setPointsTeamTwo: any | null;
+  assignedTeamOne: boolean | null;
+  setAssignedTeamOne: any | null;
+  currentRound: number | null;
+  setCurrentRound: any | null;
+  countDownGame: number | null;
+  setCountDownGame: any | null;
+  startCounter: boolean | null;
+  setStartCounter: any | null;
 }
 const GameContext = ({ children }: any) => {
   const [configModalActive, setConfigModalActive] = useState(false);
@@ -41,6 +52,12 @@ const GameContext = ({ children }: any) => {
   const [teamOneColor, setTeamOneColor] = useState("rgb(249, 200, 203)");
   const [teamTwoColor, setTeamTwoColor] = useState("rgb(198, 221, 241)");
   const [gameState, setGameState] = useState("preGame");
+  const [pointsTeamOne, setPointsTeamOne] = useState(0);
+  const [pointsTeamTwo, setPointsTeamTwo] = useState(0);
+  const [assignedTeamOne, setAssignedTeamOne] = useState(true);
+  const [currentRound, setCurrentRound] = useState(1);
+  const [startCounter, setStartCounter] = useState(false);
+  const [countDownGame, setCountDownGame] = useState(60);
 
   return (
     <Context.Provider
@@ -69,6 +86,18 @@ const GameContext = ({ children }: any) => {
         setTeamTwoColor,
         gameState,
         setGameState,
+        pointsTeamOne,
+        setPointsTeamOne,
+        pointsTeamTwo,
+        setPointsTeamTwo,
+        assignedTeamOne,
+        setAssignedTeamOne,
+        currentRound,
+        setCurrentRound,
+        countDownGame,
+        setCountDownGame,
+        startCounter,
+        setStartCounter,
       }}
     >
       {children}

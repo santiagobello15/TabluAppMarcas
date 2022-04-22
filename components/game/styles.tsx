@@ -39,6 +39,7 @@ export const styles = StyleSheet.create({
     aspectRatio: 2.5,
     position: "absolute",
     top: "35%",
+    elevation: 10,
   },
   btnRules: {
     backgroundColor: mainColor,
@@ -47,6 +48,7 @@ export const styles = StyleSheet.create({
     aspectRatio: 2.5,
     position: "absolute",
     top: "50%",
+    elevation: 10,
   },
   btnStart: {
     backgroundColor: mainColor,
@@ -55,6 +57,7 @@ export const styles = StyleSheet.create({
     aspectRatio: 2.5,
     position: "absolute",
     top: "65%",
+    elevation: 10,
   },
   insideBtnTextView: {
     justifyContent: "center",
@@ -261,6 +264,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 3,
     alignItems: "center",
+    zIndex: 99999,
     justifyContent: "center",
     backgroundColor: "#9e51dd",
   },
@@ -270,6 +274,7 @@ export const styles = StyleSheet.create({
     bottom: "19%",
     position: "absolute",
     borderRadius: 10,
+    zIndex: 99999,
     elevation: 3,
     alignItems: "center",
     justifyContent: "center",

@@ -123,6 +123,7 @@ function StartModal() {
             style={styles.startGame}
             onPress={() => {
               setGameState("inGame");
+              setStartModalActive(false);
             }}
           >
             <Text

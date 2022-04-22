@@ -53,7 +53,7 @@ function ConfigModal() {
           </View>
           <Slider
             style={[{ width: 200, height: 40 }, styles.sliderViewRound]}
-            minimumValue={5}
+            minimumValue={4}
             maximumValue={25}
             minimumTrackTintColor="#8b6ad8"
             maximumTrackTintColor="#000000"
@@ -81,12 +81,12 @@ function ConfigModal() {
                 color: "black",
               }}
             >
-              Cantidad de rondas
+              Tiempo por ronda
             </Text>
           </View>
           <Slider
             style={[{ width: 200, height: 40 }, styles.sliderViewTime]}
-            minimumValue={30}
+            minimumValue={5}
             maximumValue={90}
             minimumTrackTintColor="#8b6ad8"
             maximumTrackTintColor="#000000"
