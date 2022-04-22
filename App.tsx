@@ -2,6 +2,7 @@ import GameContext from "./context/AppContext";
 import TabluApp from "./components/game/game";
 import { useFonts } from "expo-font";
 import { Text, View } from "react-native";
+
 export default function App() {
   let [fontsLoaded] = useFonts({
     LuckiestGuy: require("./assets/fonts/LuckiestGuyRegular.ttf"),
@@ -17,13 +18,14 @@ export default function App() {
           <Text>Loading...</Text>
         </View>
       );
+    } else {
+      return (
+        <GameContext>
+          <TabluApp />
+        </GameContext>
+      );
     }
   };
 
-  return (
-    <GameContext>
-      {loadingFonts()}
-      <TabluApp />
-    </GameContext>
-  );
+  return <>{loadingFonts()}</>;
 }

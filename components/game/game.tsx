@@ -202,23 +202,52 @@ export default function TabluApp() {
               TABLU FAMOSOS
             </Text>
           </View>
-          <View style={styles.turnToTeam}>
+          <View style={[styles.turnToTeam, { top: "40%", width: "90%" }]}>
             <Text
               adjustsFontSizeToFit
               style={{
                 fontFamily: "LuckiestGuy",
-                fontSize: 18,
+                fontSize: 20,
                 color: "white",
               }}
             >
               Ganador de la partida:
+            </Text>
+          </View>
+          <View style={[styles.turnToTeam, { top: "50%", width: "90%" }]}>
+            <Text
+              adjustsFontSizeToFit
+              style={{
+                fontFamily: "LuckiestGuy",
+                fontSize: 20,
+                color: "white",
+              }}
+            >
               {renderGameResult()}
             </Text>
           </View>
+          <TouchableOpacity
+            onPress={() => {
+              setGameState("preGame");
+              setCountDownGame(timeGame);
+              setStartCounter(false);
+              setCurrentRound(1);
+              setPointsTeamOne(0);
+              setPointsTeamTwo(0);
+            }}
+            style={styles.closeBtn}
+          >
+            <Text style={styles.closeBtnTxt}>X</Text>
+          </TouchableOpacity>
         </View>
+
         <StatusBar style="auto" />
       </View>
     );
+  };
+
+  const inGameViewFunctions: any = () => {
+    return [StopOrCount(), FinishedAlert(), GameOver()];
   };
 
   const inGameView = () => {
@@ -516,10 +545,9 @@ export default function TabluApp() {
               </Text>
             </View>
           </View>
-          {StopOrCount()}
-          {FinishedAlert()}
-          {GameOver()}
+          {inGameViewFunctions()}
         </View>
+
         <StatusBar style="auto" />
       </View>
     );
