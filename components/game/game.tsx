@@ -1,7 +1,13 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View, TouchableOpacity, ImageBackground } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  ImageBackground,
+  Animated,
+} from "react-native";
 import { styles } from "./styles";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 import ConfigModal from "../config/config";
 import RulesModal from "../rules/rules";
 import QuitInGame from "../quitInGame/quitInGame";

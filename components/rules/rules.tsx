@@ -1,20 +1,29 @@
-import { StatusBar } from "expo-status-bar";
 import { styles } from "./styles";
 import {
   Text,
   View,
   ImageBackground,
-  Image,
   TouchableOpacity,
+  Animated,
 } from "react-native";
 import { Context } from "../../context/AppContext";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 
 function RulesModal() {
   const { rulesModalActive, setRulesModalActive } = useContext<any>(Context);
+
+  useEffect(() => {
+    for (let i = 0; i < 150; i++) {
+      setTimeout(() => translation.setValue(i), 25 * i);
+    }
+  }, []);
+  const translation = useRef(new Animated.Value(0)).current;
+
   return (
     <View style={styles.overlayModal}>
-      <View style={styles.mainModal}>
+      <Animated.View
+        style={[styles.mainModal, { transform: [{ translateY: translation }] }]}
+      >
         <ImageBackground
           source={require("./media/patternpad.png")}
           style={styles.image}
@@ -93,7 +102,7 @@ function RulesModal() {
         >
           <Text style={styles.closeBtnTxt}>X</Text>
         </TouchableOpacity>
-      </View>
+      </Animated.View>
     </View>
   );
 }
