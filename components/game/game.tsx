@@ -44,20 +44,34 @@ export default function TabluApp() {
     setcardsDB,
     currentCard,
     setCurrentCard,
+    cardsOrder,
+    setCardsOrder,
+    indexOnShuffled,
+    setIndexOnShuffled,
   } = useContext(Context);
 
   const FetchDatafromDB = async () => {
-    await fetch("https://tablu.vercel.app/api/cards")
-      .then((response) => response.json())
-      .then((data) => {
-        setcardsDB(data.CardsArray);
-      });
+    if (cardsDB == undefined) {
+      await fetch("https://tablu.vercel.app/api/cards")
+        .then((response) => response.json())
+        .then((data) => {
+          setcardsDB(data.CardsArray);
+        });
+    }
   };
+
+  FetchDatafromDB();
 
   const pivot4dev = () => {
     if (cardsDB !== undefined) {
-      if (currentCard == Object.keys(cardsDB).length - 1) {
-        setCurrentCard(0);
+      if (
+        indexOnShuffled ==
+        Object.keys(
+          Array.from({ length: Object.keys(cardsDB).length }, (v, k) => k + 1)
+        ).length -
+          2
+      ) {
+        setIndexOnShuffled(0);
       }
     }
   };
@@ -116,12 +130,12 @@ export default function TabluApp() {
     }
   };
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (startCounter == true) {
       countDownGame > 0 &&
         setTimeout(() => setCountDownGame((countDownGame - 0.1).toFixed(1)), 1);
     }
-  });
+  }); */
 
   const StopOrCount = () => {
     if (startCounter == false) {
@@ -167,7 +181,6 @@ export default function TabluApp() {
       return (
         <TouchableOpacity
           onPress={() => {
-            Pasar();
             setStartCounter(false);
           }}
           style={[styles.startBtn, { backgroundColor: "red" }]}
@@ -188,7 +201,8 @@ export default function TabluApp() {
   };
 
   const AddPoints = () => {
-    setCurrentCard(currentCard + 1);
+    setIndexOnShuffled(indexOnShuffled + 1);
+    setCurrentCard(cardsOrder[indexOnShuffled]);
     if (assignedTeamOne == true) {
       setPointsTeamOne(pointsTeamOne + 1);
     } else {
@@ -197,7 +211,8 @@ export default function TabluApp() {
   };
 
   const DeductPoints = () => {
-    setCurrentCard(currentCard + 1);
+    setIndexOnShuffled(indexOnShuffled + 1);
+    setCurrentCard(cardsOrder[indexOnShuffled]);
     if (assignedTeamOne == true) {
       setPointsTeamOne(pointsTeamOne - 1);
     } else {
@@ -206,7 +221,8 @@ export default function TabluApp() {
   };
 
   const Pasar = () => {
-    setCurrentCard(currentCard + 1);
+    setIndexOnShuffled(indexOnShuffled + 1);
+    setCurrentCard(cardsOrder[indexOnShuffled]);
   };
 
   const afterGameView = () => {
@@ -345,7 +361,7 @@ export default function TabluApp() {
                   adjustsFontSizeToFit
                   style={[styles.cardName, { top: "5%", position: "absolute" }]}
                 >
-                  {JSON.stringify(cardsDB[currentCard].firstname)}
+                  {JSON.stringify(cardsDB[indexOnShuffled].firstname)}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -354,7 +370,7 @@ export default function TabluApp() {
                     { top: "17%", position: "absolute" },
                   ]}
                 >
-                  {JSON.stringify(cardsDB[currentCard].lastname)}
+                  {JSON.stringify(cardsDB[indexOnShuffled].lastname)}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -363,7 +379,7 @@ export default function TabluApp() {
                     { top: "33%", position: "absolute" },
                   ]}
                 >
-                  {JSON.stringify(cardsDB[currentCard].word1)}
+                  {JSON.stringify(cardsDB[indexOnShuffled].word1)}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -372,7 +388,7 @@ export default function TabluApp() {
                     { top: "43%", position: "absolute" },
                   ]}
                 >
-                  {JSON.stringify(cardsDB[currentCard].word2)}
+                  {JSON.stringify(cardsDB[indexOnShuffled].word2)}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -381,7 +397,7 @@ export default function TabluApp() {
                     { top: "53%", position: "absolute" },
                   ]}
                 >
-                  {JSON.stringify(cardsDB[currentCard].word3)}
+                  {JSON.stringify(cardsDB[indexOnShuffled].word3)}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -390,7 +406,7 @@ export default function TabluApp() {
                     { top: "63%", position: "absolute" },
                   ]}
                 >
-                  {JSON.stringify(cardsDB[currentCard].word4)}
+                  {JSON.stringify(cardsDB[indexOnShuffled].word4)}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -399,7 +415,7 @@ export default function TabluApp() {
                     { top: "73%", position: "absolute" },
                   ]}
                 >
-                  {JSON.stringify(cardsDB[currentCard].word5)}
+                  {JSON.stringify(cardsDB[indexOnShuffled].word5)}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -408,7 +424,7 @@ export default function TabluApp() {
                     { top: "83%", position: "absolute" },
                   ]}
                 >
-                  {JSON.stringify(cardsDB[currentCard].word6)}
+                  {JSON.stringify(cardsDB[indexOnShuffled].word6)}
                 </Text>
               </View>
             </View>
@@ -586,161 +602,184 @@ export default function TabluApp() {
   };
 
   const preGameView = () => {
-    return (
-      <View style={styles.container}>
-        <ImageBackground
-          source={require("./media/patternpad.png")}
-          style={styles.image}
-        />
-        <View style={styles.mainContainer}>
-          <View style={styles.titleContainer}>
-            <Text
-              adjustsFontSizeToFit
-              style={{
-                fontFamily: "LuckiestGuy",
-                fontSize: 42,
-                color: "white",
-                backgroundColor: "#7b2cbf",
-              }}
-            >
-              TABLU FAMOSOS
-            </Text>
-          </View>
-          <StatusBar style="auto" />
-          <TouchableOpacity
-            onPress={() => {
-              setConfigModalActive(true);
+    if (cardsDB == undefined) {
+      return (
+        <View
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 40,
+              fontFamily: "LuckiestGuy",
+
+              color: "black",
             }}
-            style={styles.btnConfig}
           >
-            <View style={styles.insideBtnTextView}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalar",
-                  fontSize: 18,
-                  color: "white",
-                }}
-              >
-                Configuración
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              setRulesModalActive(true);
-            }}
-            style={styles.btnRules}
-          >
-            <View style={styles.insideBtnTextView}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalar",
-                  fontSize: 18,
-                  color: "white",
-                }}
-              >
-                Reglas
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              setStartModalActive(true);
-              FetchDatafromDB();
-            }}
-            style={styles.btnStart}
-          >
-            <View style={styles.insideBtnTextView}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalar",
-                  fontSize: 18,
-                  color: "white",
-                }}
-              >
-                Comenzar
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <View style={styles.view1holder}>
-            <View style={styles.view1up}>
-              <Text adjustsFontSizeToFit style={styles.view1txt}>
-                Rondas
-              </Text>
-            </View>
-            <View style={styles.view1}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalarLight",
-                  color: "#fafafa",
-                  fontSize: 40,
-                }}
-              >
-                {roundsGame}
-              </Text>
-            </View>
-          </View>
-          <View style={styles.view2holder}>
-            <View style={styles.view2up}>
-              <Text adjustsFontSizeToFit style={styles.view2txt}>
-                Tiempo
-              </Text>
-            </View>
-            <View style={styles.view2}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalarLight",
-                  color: "#fafafa",
-                  fontSize: 40,
-                }}
-              >
-                {timeGame}''
-              </Text>
-            </View>
-          </View>
-          <View style={styles.view3holder}>
-            <View style={styles.view3up}>
-              <Text style={styles.view3txt}>Extra #1</Text>
-            </View>
-            <View style={styles.view3}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalar",
-                  color: "#fafafa",
-                  fontSize: 10,
-                  paddingLeft: 2,
-                  paddingRight: 2,
-                }}
-              >
-                {muletillaFunction()}
-              </Text>
-            </View>
-          </View>
-          <View style={styles.view4holder}>
-            <View style={styles.view4up}>
-              <Text style={styles.view4txt}>Extra #2</Text>
-            </View>
-            <View style={styles.view4}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalar",
-                  color: "#fafafa",
-                  fontSize: 10,
-                  paddingLeft: 2,
-                  paddingRight: 2,
-                }}
-              >
-                {insultosFunction()}
-              </Text>
-            </View>
-          </View>
+            Cargando
+          </Text>
         </View>
-        {configModalActive && <ConfigModal />}
-        {rulesModalActive && <RulesModal />}
-        {startModalActive && <StartModal />}
-        {quitInGameModalActive && <QuitInGame />}
-      </View>
-    );
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          <ImageBackground
+            source={require("./media/patternpad.png")}
+            style={styles.image}
+          />
+          <View style={styles.mainContainer}>
+            <View style={styles.titleContainer}>
+              <Text
+                adjustsFontSizeToFit
+                style={{
+                  fontFamily: "LuckiestGuy",
+                  fontSize: 42,
+                  color: "white",
+                  backgroundColor: "#7b2cbf",
+                }}
+              >
+                TABLU FAMOSOS
+              </Text>
+            </View>
+            <StatusBar style="auto" />
+            <TouchableOpacity
+              onPress={() => {
+                setConfigModalActive(true);
+              }}
+              style={styles.btnConfig}
+            >
+              <View style={styles.insideBtnTextView}>
+                <Text
+                  style={{
+                    fontFamily: "MuktaMalar",
+                    fontSize: 18,
+                    color: "white",
+                  }}
+                >
+                  Configuración
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setRulesModalActive(true);
+              }}
+              style={styles.btnRules}
+            >
+              <View style={styles.insideBtnTextView}>
+                <Text
+                  style={{
+                    fontFamily: "MuktaMalar",
+                    fontSize: 18,
+                    color: "white",
+                  }}
+                >
+                  Reglas
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setStartModalActive(true);
+                cardsDB.sort(() => 0.5 - Math.random());
+              }}
+              style={styles.btnStart}
+            >
+              <View style={styles.insideBtnTextView}>
+                <Text
+                  style={{
+                    fontFamily: "MuktaMalar",
+                    fontSize: 18,
+                    color: "white",
+                  }}
+                >
+                  Comenzar
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <View style={styles.view1holder}>
+              <View style={styles.view1up}>
+                <Text adjustsFontSizeToFit style={styles.view1txt}>
+                  Rondas
+                </Text>
+              </View>
+              <View style={styles.view1}>
+                <Text
+                  style={{
+                    fontFamily: "MuktaMalarLight",
+                    color: "#fafafa",
+                    fontSize: 40,
+                  }}
+                >
+                  {roundsGame}
+                </Text>
+              </View>
+            </View>
+            <View style={styles.view2holder}>
+              <View style={styles.view2up}>
+                <Text adjustsFontSizeToFit style={styles.view2txt}>
+                  Tiempo
+                </Text>
+              </View>
+              <View style={styles.view2}>
+                <Text
+                  style={{
+                    fontFamily: "MuktaMalarLight",
+                    color: "#fafafa",
+                    fontSize: 40,
+                  }}
+                >
+                  {timeGame}''
+                </Text>
+              </View>
+            </View>
+            <View style={styles.view3holder}>
+              <View style={styles.view3up}>
+                <Text style={styles.view3txt}>Extra #1</Text>
+              </View>
+              <View style={styles.view3}>
+                <Text
+                  style={{
+                    fontFamily: "MuktaMalar",
+                    color: "#fafafa",
+                    fontSize: 10,
+                    paddingLeft: 2,
+                    paddingRight: 2,
+                  }}
+                >
+                  {muletillaFunction()}
+                </Text>
+              </View>
+            </View>
+            <View style={styles.view4holder}>
+              <View style={styles.view4up}>
+                <Text style={styles.view4txt}>Extra #2</Text>
+              </View>
+              <View style={styles.view4}>
+                <Text
+                  style={{
+                    fontFamily: "MuktaMalar",
+                    color: "#fafafa",
+                    fontSize: 10,
+                    paddingLeft: 2,
+                    paddingRight: 2,
+                  }}
+                >
+                  {insultosFunction()}
+                </Text>
+              </View>
+            </View>
+          </View>
+          {configModalActive && <ConfigModal />}
+          {rulesModalActive && <RulesModal />}
+          {startModalActive && <StartModal />}
+          {quitInGameModalActive && <QuitInGame />}
+        </View>
+      );
+    }
   };
 
   {
