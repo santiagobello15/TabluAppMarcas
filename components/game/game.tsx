@@ -1,13 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import { Text, View, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import ConfigModal from "../config/config";
 import RulesModal from "../rules/rules";
 import QuitInGame from "../quitInGame/quitInGame";
 import StartModal from "../start/start";
 import { Context } from "../../context/AppContext";
 import { ImageBackground } from "react-native";
+import axios from "axios";
 
 export default function TabluApp() {
   const {
@@ -43,6 +44,15 @@ export default function TabluApp() {
     setQuitInGameModalActive,
   } = useContext(Context);
 
+  const [prueba, setPrueba] = useState([]);
+
+  const test = async () => {
+    await axios.get("https://tablu.vercel.app/api/cards").then((response) => {
+      const hola = JSON.stringify(response);
+      setPrueba(hola);
+    });
+  };
+  test();
   const muletillaFunction = () => {
     if (isCheckedMuletillas == false) {
       return "Sin penalización por muletillas";
@@ -563,6 +573,12 @@ export default function TabluApp() {
   const preGameView = () => {
     return (
       <View style={styles.container}>
+        <TouchableOpacity
+          style={{ width: 100, height: 100, backgroundColor: "red" }}
+          onPress={() => {
+            alert(prueba);
+          }}
+        ></TouchableOpacity>
         <ImageBackground
           source={require("./media/patternpad.png")}
           style={styles.image}
