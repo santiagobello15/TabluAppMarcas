@@ -249,7 +249,6 @@ export const styles = StyleSheet.create({
   turnToTeam: {
     width: "80%",
     height: "5%",
-    backgroundColor: "red",
     bottom: "33.33%",
     position: "absolute",
     alignSelf: "center",

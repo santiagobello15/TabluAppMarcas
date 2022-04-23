@@ -73,6 +73,7 @@ const GameContext = ({ children }: any) => {
   const [currentCard, setCurrentCard] = useState(0);
   const [cardsOrder, setCardsOrder] = useState([]);
   const [indexOnShuffled, setIndexOnShuffled] = useState(0);
+
   return (
     <Context.Provider
       value={{

@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
   titleContainer: {
     alignItems: "center",
     position: "absolute",
-    top: "7%",
+    top: "14%",
   },
   subContainer: {
     justifyContent: "center",
@@ -87,7 +87,7 @@ export const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     right: 0,
-    width: "10%",
+    width: "12%",
     aspectRatio: 1,
   },
   closeBtnTxt: {

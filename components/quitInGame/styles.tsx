@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     right: 0,
-    width: "10%",
+    width: "12%",
     aspectRatio: 1,
   },
   closeBtnTxt: {

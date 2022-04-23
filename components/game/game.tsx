@@ -130,12 +130,12 @@ export default function TabluApp() {
     }
   };
 
-  /*   useEffect(() => {
+  useEffect(() => {
     if (startCounter == true) {
       countDownGame > 0 &&
         setTimeout(() => setCountDownGame((countDownGame - 0.1).toFixed(1)), 1);
     }
-  }); */
+  });
 
   const StopOrCount = () => {
     if (startCounter == false) {
@@ -273,12 +273,12 @@ export default function TabluApp() {
           <TouchableOpacity
             onPress={() => {
               setGameState("preGame");
-              setCountDownGame(timeGame);
               setStartCounter(false);
               setCurrentRound(1);
               setPointsTeamOne(0);
               setPointsTeamTwo(0);
               setAssignedTeamOne(true);
+              setCountDownGame(timeGame);
             }}
             style={styles.closeBtn}
           >
@@ -361,7 +361,7 @@ export default function TabluApp() {
                   adjustsFontSizeToFit
                   style={[styles.cardName, { top: "5%", position: "absolute" }]}
                 >
-                  {JSON.stringify(cardsDB[indexOnShuffled].firstname)}
+                  {cardsDB[indexOnShuffled].firstname}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -370,7 +370,7 @@ export default function TabluApp() {
                     { top: "17%", position: "absolute" },
                   ]}
                 >
-                  {JSON.stringify(cardsDB[indexOnShuffled].lastname)}
+                  {cardsDB[indexOnShuffled].lastname}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -379,7 +379,7 @@ export default function TabluApp() {
                     { top: "33%", position: "absolute" },
                   ]}
                 >
-                  {JSON.stringify(cardsDB[indexOnShuffled].word1)}
+                  {cardsDB[indexOnShuffled].word1}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -388,7 +388,7 @@ export default function TabluApp() {
                     { top: "43%", position: "absolute" },
                   ]}
                 >
-                  {JSON.stringify(cardsDB[indexOnShuffled].word2)}
+                  {cardsDB[indexOnShuffled].word2}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -397,7 +397,7 @@ export default function TabluApp() {
                     { top: "53%", position: "absolute" },
                   ]}
                 >
-                  {JSON.stringify(cardsDB[indexOnShuffled].word3)}
+                  {cardsDB[indexOnShuffled].word3}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -406,7 +406,7 @@ export default function TabluApp() {
                     { top: "63%", position: "absolute" },
                   ]}
                 >
-                  {JSON.stringify(cardsDB[indexOnShuffled].word4)}
+                  {cardsDB[indexOnShuffled].word4}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -415,7 +415,7 @@ export default function TabluApp() {
                     { top: "73%", position: "absolute" },
                   ]}
                 >
-                  {JSON.stringify(cardsDB[indexOnShuffled].word5)}
+                  {cardsDB[indexOnShuffled].word5}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -424,7 +424,7 @@ export default function TabluApp() {
                     { top: "83%", position: "absolute" },
                   ]}
                 >
-                  {JSON.stringify(cardsDB[indexOnShuffled].word6)}
+                  {cardsDB[indexOnShuffled].word6}
                 </Text>
               </View>
             </View>
@@ -501,7 +501,7 @@ export default function TabluApp() {
           <TouchableOpacity
             onPress={() => {
               setQuitInGameModalActive(true);
-              /*  setGameState("preGame"); */
+              setGameState("preGame");
               setStartCounter(false);
               setCountDownGame(timeGame);
               setCurrentRound(1);
@@ -519,7 +519,10 @@ export default function TabluApp() {
               style={{
                 fontFamily: "LuckiestGuy",
                 fontSize: 18,
-                color: "white",
+                color: "#7b2cbf",
+                textShadowColor: "black",
+                textShadowOffset: { width: 1, height: 1 },
+                textShadowRadius: 1,
               }}
             >
               Turno del equipo:
@@ -685,6 +688,7 @@ export default function TabluApp() {
               onPress={() => {
                 setStartModalActive(true);
                 cardsDB.sort(() => 0.5 - Math.random());
+                setCountDownGame(timeGame);
               }}
               style={styles.btnStart}
             >
