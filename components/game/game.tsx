@@ -459,7 +459,7 @@ export default function TabluApp() {
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
-                  alert("je");
+                  Pasar();
                 }}
                 style={[
                   styles.pointBtn,

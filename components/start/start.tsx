@@ -31,10 +31,15 @@ function StartModal() {
   const CardColorBlue = "rgb(198, 221, 241)";
   const CardColorYellow = "rgb(250, 237, 204)";
 
+  const NewArrayLength = () => {
+    return Array.from({ length: Object.keys(cardsDB).length }, (v, k) => k + 1);
+  };
+
   const checkGameReady = () => {
     if (cardsDB !== undefined) {
       setGameState("inGame");
       setStartModalActive(false);
+      alert(NewArrayLength());
     }
   };
 
