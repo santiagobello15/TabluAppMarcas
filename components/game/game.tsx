@@ -42,17 +42,23 @@ export default function TabluApp() {
     setStartCounter,
     quitInGameModalActive,
     setQuitInGameModalActive,
+    cardsDB,
+    setcardsDB,
   } = useContext(Context);
 
-  const [prueba, setPrueba] = useState([]);
-
-  const test = async () => {
-    await axios.get("https://tablu.vercel.app/api/cards").then((response) => {
-      const hola = JSON.stringify(response);
-      setPrueba(hola);
-    });
+  const FetchDatafromDB = async () => {
+    fetch("https://tablu.vercel.app/api/cards")
+      .then((response) => response.json())
+      .then((data) => {
+        setcardsDB(data.CardsArray);
+      });
   };
-  test();
+  FetchDatafromDB();
+
+  useEffect(() => {
+    FetchDatafromDB();
+  });
+
   const muletillaFunction = () => {
     if (isCheckedMuletillas == false) {
       return "Sin penalización por muletillas";
@@ -573,12 +579,16 @@ export default function TabluApp() {
   const preGameView = () => {
     return (
       <View style={styles.container}>
-        <TouchableOpacity
-          style={{ width: 100, height: 100, backgroundColor: "red" }}
-          onPress={() => {
-            alert(prueba);
+        <Text
+          style={{
+            position: "absolute",
+            top: 100,
+            zIndex: 9999999999999,
+            fontSize: 40,
           }}
-        ></TouchableOpacity>
+        >
+          {JSON.stringify(cardsDB[1].firstname)}
+        </Text>
         <ImageBackground
           source={require("./media/patternpad.png")}
           style={styles.image}
