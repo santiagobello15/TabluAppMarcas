@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, ImageBackground } from "react-native";
 import { styles } from "./styles";
 import { useContext, useEffect, useState } from "react";
 import ConfigModal from "../config/config";
@@ -7,8 +7,6 @@ import RulesModal from "../rules/rules";
 import QuitInGame from "../quitInGame/quitInGame";
 import StartModal from "../start/start";
 import { Context } from "../../context/AppContext";
-import { ImageBackground } from "react-native";
-import axios from "axios";
 
 export default function TabluApp() {
   const {
@@ -44,20 +42,26 @@ export default function TabluApp() {
     setQuitInGameModalActive,
     cardsDB,
     setcardsDB,
+    currentCard,
+    setCurrentCard,
   } = useContext(Context);
 
   const FetchDatafromDB = async () => {
-    fetch("https://tablu.vercel.app/api/cards")
+    await fetch("https://tablu.vercel.app/api/cards")
       .then((response) => response.json())
       .then((data) => {
         setcardsDB(data.CardsArray);
       });
   };
-  FetchDatafromDB();
 
-  useEffect(() => {
-    FetchDatafromDB();
-  });
+  const pivot4dev = () => {
+    if (cardsDB !== undefined) {
+      if (currentCard == Object.keys(cardsDB).length - 1) {
+        setCurrentCard(0);
+      }
+    }
+  };
+  pivot4dev();
 
   const muletillaFunction = () => {
     if (isCheckedMuletillas == false) {
@@ -163,9 +167,8 @@ export default function TabluApp() {
       return (
         <TouchableOpacity
           onPress={() => {
-            {
-              setStartCounter(false);
-            }
+            Pasar();
+            setStartCounter(false);
           }}
           style={[styles.startBtn, { backgroundColor: "red" }]}
         >
@@ -185,6 +188,7 @@ export default function TabluApp() {
   };
 
   const AddPoints = () => {
+    setCurrentCard(currentCard + 1);
     if (assignedTeamOne == true) {
       setPointsTeamOne(pointsTeamOne + 1);
     } else {
@@ -193,11 +197,16 @@ export default function TabluApp() {
   };
 
   const DeductPoints = () => {
+    setCurrentCard(currentCard + 1);
     if (assignedTeamOne == true) {
       setPointsTeamOne(pointsTeamOne - 1);
     } else {
       setPointsTeamTwo(pointsTeamTwo - 1);
     }
+  };
+
+  const Pasar = () => {
+    setCurrentCard(currentCard + 1);
   };
 
   const afterGameView = () => {
@@ -336,7 +345,7 @@ export default function TabluApp() {
                   adjustsFontSizeToFit
                   style={[styles.cardName, { top: "5%", position: "absolute" }]}
                 >
-                  Susana
+                  {JSON.stringify(cardsDB[currentCard].firstname)}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -345,7 +354,7 @@ export default function TabluApp() {
                     { top: "17%", position: "absolute" },
                   ]}
                 >
-                  Gimenez
+                  {JSON.stringify(cardsDB[currentCard].lastname)}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -354,7 +363,7 @@ export default function TabluApp() {
                     { top: "33%", position: "absolute" },
                   ]}
                 >
-                  Word1
+                  {JSON.stringify(cardsDB[currentCard].word1)}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -363,7 +372,7 @@ export default function TabluApp() {
                     { top: "43%", position: "absolute" },
                   ]}
                 >
-                  Word1
+                  {JSON.stringify(cardsDB[currentCard].word2)}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -372,7 +381,7 @@ export default function TabluApp() {
                     { top: "53%", position: "absolute" },
                   ]}
                 >
-                  Word1
+                  {JSON.stringify(cardsDB[currentCard].word3)}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -381,7 +390,7 @@ export default function TabluApp() {
                     { top: "63%", position: "absolute" },
                   ]}
                 >
-                  Word1
+                  {JSON.stringify(cardsDB[currentCard].word4)}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -390,7 +399,7 @@ export default function TabluApp() {
                     { top: "73%", position: "absolute" },
                   ]}
                 >
-                  Word1
+                  {JSON.stringify(cardsDB[currentCard].word5)}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -399,7 +408,7 @@ export default function TabluApp() {
                     { top: "83%", position: "absolute" },
                   ]}
                 >
-                  Word1
+                  {JSON.stringify(cardsDB[currentCard].word6)}
                 </Text>
               </View>
             </View>
@@ -579,16 +588,6 @@ export default function TabluApp() {
   const preGameView = () => {
     return (
       <View style={styles.container}>
-        <Text
-          style={{
-            position: "absolute",
-            top: 100,
-            zIndex: 9999999999999,
-            fontSize: 40,
-          }}
-        >
-          {JSON.stringify(cardsDB[1].firstname)}
-        </Text>
         <ImageBackground
           source={require("./media/patternpad.png")}
           style={styles.image}
@@ -647,6 +646,7 @@ export default function TabluApp() {
           <TouchableOpacity
             onPress={() => {
               setStartModalActive(true);
+              FetchDatafromDB();
             }}
             style={styles.btnStart}
           >

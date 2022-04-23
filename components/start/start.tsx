@@ -23,12 +23,20 @@ function StartModal() {
     setTeamTwoColor,
     gameState,
     setGameState,
+    cardsDB,
   } = useContext<any>(Context);
 
   const CardColorRed = "rgb(249, 200, 203)";
   const CardColorGreen = "rgb(201, 228, 222)";
   const CardColorBlue = "rgb(198, 221, 241)";
   const CardColorYellow = "rgb(250, 237, 204)";
+
+  const checkGameReady = () => {
+    if (cardsDB !== undefined) {
+      setGameState("inGame");
+      setStartModalActive(false);
+    }
+  };
 
   return (
     <View style={styles.overlayModal}>
@@ -122,8 +130,7 @@ function StartModal() {
           <TouchableOpacity
             style={styles.startGame}
             onPress={() => {
-              setGameState("inGame");
-              setStartModalActive(false);
+              checkGameReady();
             }}
           >
             <Text

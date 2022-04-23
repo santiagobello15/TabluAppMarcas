@@ -42,6 +42,8 @@ interface ContextState {
   setQuitInGameModalActive: any | null;
   cardsDB: any | null;
   setcardsDB: any | null;
+  currentCard: number | null;
+  setCurrentCard: any | null;
 }
 const GameContext = ({ children }: any) => {
   const [configModalActive, setConfigModalActive] = useState(false);
@@ -64,6 +66,7 @@ const GameContext = ({ children }: any) => {
   const [countDownGame, setCountDownGame] = useState(60);
   const [quitInGameModalActive, setQuitInGameModalActive] = useState(false);
   const [cardsDB, setcardsDB] = useState();
+  const [currentCard, setCurrentCard] = useState(0);
 
   return (
     <Context.Provider
@@ -108,6 +111,8 @@ const GameContext = ({ children }: any) => {
         setStartCounter,
         cardsDB,
         setcardsDB,
+        currentCard,
+        setCurrentCard,
       }}
     >
       {children}
