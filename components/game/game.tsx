@@ -40,8 +40,7 @@ export default function TabluApp() {
     setAssignedTeamOne,
     currentRound,
     setCurrentRound,
-    countDownGame,
-    setCountDownGame,
+    setTime,
     startCounter,
     setStartCounter,
     quitInGameModalActive,
@@ -54,6 +53,7 @@ export default function TabluApp() {
     setCardsOrder,
     indexOnShuffled,
     setIndexOnShuffled,
+    time,
   } = useContext(Context);
 
   const FetchDatafromDB = async () => {
@@ -108,7 +108,6 @@ export default function TabluApp() {
 
   const FinishedAlert = () => {
     if (time == 0.0) {
-      stopTimer();
       setStartCounter(false);
       setTime(timeGame);
       setCurrentRound(currentRound + 1);
@@ -137,7 +136,6 @@ export default function TabluApp() {
     }
   };
 
-  const [time, setTime] = useState(timeGame);
   const [intervalID, setIntervalID] = useState(null);
   const hasTimerEnded = time <= 0;
   const isTimerRunning = intervalID != null;
@@ -146,13 +144,16 @@ export default function TabluApp() {
     setTime((time) => time - 1);
   };
   const startTimer = () => {
-    if (!hasTimerEnded && !isTimerRunning) {
-      setIntervalID(setInterval(update, 1000));
+    if (startCounter == true) {
+      if (!hasTimerEnded && !isTimerRunning) {
+        setIntervalID(setInterval(update, 1000));
+      }
     }
   };
   const stopTimer = () => {
     clearInterval(intervalID);
     setIntervalID(null);
+    setStartCounter(false);
   };
 
   const resetTimer = () => {
@@ -179,8 +180,11 @@ export default function TabluApp() {
         <TouchableOpacity
           onPress={() => {
             setStartCounter(true);
-            /*        const { time, startTimer, stopTimer } = useTimer(timeGame); */
-            startTimer();
+
+            alert(startCounter);
+
+            /* startTimer();
+            setStartCounter(true); */
           }}
           style={styles.startBtn}
         >
@@ -334,12 +338,13 @@ export default function TabluApp() {
           <TouchableOpacity
             onPress={() => {
               setGameState("preGame");
+              stopTimer();
               setStartCounter(false);
               setCurrentRound(1);
               setPointsTeamOne(0);
               setPointsTeamTwo(0);
               setAssignedTeamOne(true);
-              setCountDownGame(timeGame);
+              setTime(timeGame);
             }}
             style={styles.closeBtn}
           >
@@ -562,13 +567,7 @@ export default function TabluApp() {
           <TouchableOpacity
             onPress={() => {
               setQuitInGameModalActive(true);
-              setGameState("preGame");
-              setStartCounter(false);
-              setCountDownGame(timeGame);
-              setCurrentRound(1);
-              setPointsTeamOne(0);
-              setPointsTeamTwo(0);
-              setAssignedTeamOne(true);
+              stopTimer();
             }}
             style={styles.closeBtn}
           >
@@ -749,7 +748,7 @@ export default function TabluApp() {
               onPress={() => {
                 setStartModalActive(true);
                 cardsDB.sort(() => 0.5 - Math.random());
-                setCountDownGame(timeGame);
+                setTime(timeGame);
               }}
               style={styles.btnStart}
             >

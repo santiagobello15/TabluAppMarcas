@@ -102,6 +102,7 @@ function QuitInGame() {
         <TouchableOpacity
           onPress={() => {
             setQuitInGameModalActive(false);
+            setStartCounter(true);
           }}
           style={styles.closeBtn}
         >
