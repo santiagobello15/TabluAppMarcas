@@ -7,6 +7,8 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
+    width: "100%",
+    height: "100%",
     justifyContent: "center",
   },
   image: {
@@ -26,6 +28,7 @@ export const styles = StyleSheet.create({
     width: "90%",
     height: "77%",
     left: "5%",
+    maxWidth: 500,
   },
   titleContainer: {
     alignItems: "center",

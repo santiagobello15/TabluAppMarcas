@@ -48,6 +48,10 @@ interface ContextState {
   setCardsOrder: any | null;
   indexOnShuffled: number | null;
   setIndexOnShuffled: any | null;
+  time: number | null;
+  setTime: any | null;
+  intervalID: any | null;
+  setIntervalID: any | null;
 }
 const GameContext = ({ children }: any) => {
   const [configModalActive, setConfigModalActive] = useState(false);
@@ -73,6 +77,8 @@ const GameContext = ({ children }: any) => {
   const [currentCard, setCurrentCard] = useState(0);
   const [cardsOrder, setCardsOrder] = useState([]);
   const [indexOnShuffled, setIndexOnShuffled] = useState(0);
+  const [time, setTime] = useState();
+  const [intervalID, setIntervalID] = useState();
 
   return (
     <Context.Provider
@@ -123,6 +129,10 @@ const GameContext = ({ children }: any) => {
         setCardsOrder,
         indexOnShuffled,
         setIndexOnShuffled,
+        time,
+        setTime,
+        intervalID,
+        setIntervalID,
       }}
     >
       {children}

@@ -7,7 +7,7 @@ import {
   Animated,
 } from "react-native";
 import { styles } from "./styles";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import ConfigModal from "../config/config";
 import RulesModal from "../rules/rules";
 import QuitInGame from "../quitInGame/quitInGame";
@@ -107,9 +107,9 @@ export default function TabluApp() {
   };
 
   const FinishedAlert = () => {
-    if (countDownGame == 0.0) {
-      setCountDownGame(timeGame);
+    if (time == 0.0) {
       setStartCounter(false);
+      setTime(timeGame);
       setCurrentRound(currentRound + 1);
       if (assignedTeamOne == true) {
         setAssignedTeamOne(false);
@@ -136,12 +136,41 @@ export default function TabluApp() {
     }
   };
 
-  useEffect(() => {
-    if (startCounter == true) {
-      countDownGame > 0 &&
-        setTimeout(() => setCountDownGame((countDownGame - 0.1).toFixed(1)), 1);
+  const [time, setTime] = useState(timeGame);
+  const [intervalID, setIntervalID] = useState(null);
+  const hasTimerEnded = time <= 0;
+  const isTimerRunning = intervalID != null;
+
+  const update = () => {
+    setTime((time) => time - 1);
+  };
+  const startTimer = () => {
+    if (!hasTimerEnded && !isTimerRunning) {
+      setIntervalID(setInterval(update, 1000));
     }
-  });
+  };
+  const stopTimer = () => {
+    clearInterval(intervalID);
+    setIntervalID(null);
+  };
+
+  const resetTimer = () => {
+    setTime(timeGame);
+  };
+  // clear interval when the timer ends
+  useEffect(() => {
+    if (hasTimerEnded) {
+      clearInterval(intervalID);
+      setIntervalID(null);
+    }
+  }, [hasTimerEnded]);
+  // clear interval when component unmounts
+  useEffect(
+    () => () => {
+      clearInterval(intervalID);
+    },
+    []
+  );
 
   const StopOrCount = () => {
     if (startCounter == false) {
@@ -149,6 +178,8 @@ export default function TabluApp() {
         <TouchableOpacity
           onPress={() => {
             setStartCounter(true);
+            /*        const { time, startTimer, stopTimer } = useTimer(timeGame); */
+            startTimer();
           }}
           style={styles.startBtn}
         >
@@ -166,7 +197,7 @@ export default function TabluApp() {
         <TouchableOpacity
           onPress={() => {
             {
-              setCountDownGame(timeGame);
+              resetTimer();
             }
           }}
           style={styles.restartBtn}
@@ -188,6 +219,9 @@ export default function TabluApp() {
         <TouchableOpacity
           onPress={() => {
             setStartCounter(false);
+            {
+              stopTimer();
+            }
           }}
           style={[styles.startBtn, { backgroundColor: "red" }]}
         >
@@ -357,7 +391,7 @@ export default function TabluApp() {
                     color: "white",
                   }}
                 >
-                  {countDownGame}
+                  {time}
                 </Text>
               </View>
             </View>
