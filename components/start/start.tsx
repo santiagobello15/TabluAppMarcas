@@ -19,7 +19,6 @@ function StartModal() {
     teamTwoColor,
     setTeamTwoColor,
     setGameState,
-    cardsOrder,
   } = useContext<any>(Context);
 
   const CardColorRed = "rgb(249, 200, 203)";

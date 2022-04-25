@@ -49,8 +49,6 @@ export default function TabluApp() {
     setcardsDB,
     currentCard,
     setCurrentCard,
-    cardsOrder,
-    setCardsOrder,
     indexOnShuffled,
     setIndexOnShuffled,
     time,
@@ -238,7 +236,7 @@ export default function TabluApp() {
 
   const AddPoints = () => {
     setIndexOnShuffled(indexOnShuffled + 1);
-    setCurrentCard(cardsOrder[indexOnShuffled]);
+    setCurrentCard(indexOnShuffled);
     if (assignedTeamOne == true) {
       setPointsTeamOne(pointsTeamOne + 1);
     } else {
@@ -248,7 +246,7 @@ export default function TabluApp() {
 
   const DeductPoints = () => {
     setIndexOnShuffled(indexOnShuffled + 1);
-    setCurrentCard(cardsOrder[indexOnShuffled]);
+    setCurrentCard(indexOnShuffled);
     if (assignedTeamOne == true) {
       setPointsTeamOne(pointsTeamOne - 1);
     } else {
@@ -258,7 +256,7 @@ export default function TabluApp() {
 
   const Pasar = () => {
     setIndexOnShuffled(indexOnShuffled + 1);
-    setCurrentCard(cardsOrder[indexOnShuffled]);
+    setCurrentCard(indexOnShuffled);
   };
 
   const afterGameView = () => {
