@@ -144,11 +144,10 @@ export default function TabluApp() {
     setTime((time) => time - 1);
   };
   const startTimer = () => {
-    if (startCounter == true) {
-      if (!hasTimerEnded && !isTimerRunning) {
-        setIntervalID(setInterval(update, 1000));
-      }
+    if (!hasTimerEnded && !isTimerRunning) {
+      setIntervalID(setInterval(update, 1000));
     }
+    setStartCounter(true);
   };
   const stopTimer = () => {
     clearInterval(intervalID);
@@ -179,12 +178,7 @@ export default function TabluApp() {
       return [
         <TouchableOpacity
           onPress={() => {
-            setStartCounter(true);
-
-            alert(startCounter);
-
-            /* startTimer();
-            setStartCounter(true); */
+            startTimer();
           }}
           style={styles.startBtn}
         >
@@ -223,10 +217,7 @@ export default function TabluApp() {
       return (
         <TouchableOpacity
           onPress={() => {
-            setStartCounter(false);
-            {
-              stopTimer();
-            }
+            stopTimer();
           }}
           style={[styles.startBtn, { backgroundColor: "red" }]}
         >
