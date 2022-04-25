@@ -108,6 +108,7 @@ export default function TabluApp() {
 
   const FinishedAlert = () => {
     if (time == 0.0) {
+      stopTimer();
       setStartCounter(false);
       setTime(timeGame);
       setCurrentRound(currentRound + 1);
