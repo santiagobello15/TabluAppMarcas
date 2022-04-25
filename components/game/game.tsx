@@ -132,7 +132,7 @@ export default function TabluApp() {
   };
 
   const GameOver = () => {
-    if (countDownGame == 0.0 && currentRound == roundsGame) {
+    if (time == 0.0 && currentRound == roundsGame) {
       setGameState("afterGame");
     }
   };
@@ -292,11 +292,21 @@ export default function TabluApp() {
               adjustsFontSizeToFit
               style={{
                 fontFamily: "LuckiestGuy",
-                fontSize: 20,
+                fontSize: 22,
                 color: "white",
+                backgroundColor: "#7b2cbf",
+                textShadowColor: "black",
+                textShadowOffset: { width: 1, height: 1 },
+                textShadowRadius: 1,
               }}
             >
+              <View>
+                <Text>{"  "}</Text>
+              </View>
               Ganador de la partida:
+              <View>
+                <Text>{"  "}</Text>
+              </View>
             </Text>
           </View>
           <View style={[styles.turnToTeam, { top: "50%", width: "90%" }]}>
@@ -305,10 +315,20 @@ export default function TabluApp() {
               style={{
                 fontFamily: "LuckiestGuy",
                 fontSize: 20,
+                backgroundColor: "#7b2cbf",
                 color: "white",
+                textShadowColor: "black",
+                textShadowOffset: { width: 1, height: 1 },
+                textShadowRadius: 1,
               }}
             >
+              <View>
+                <Text>{"  "}</Text>
+              </View>
               {renderGameResult()}
+              <View>
+                <Text>{"  "}</Text>
+              </View>
             </Text>
           </View>
           <TouchableOpacity
