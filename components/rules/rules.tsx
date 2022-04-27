@@ -7,23 +7,37 @@ import {
   Animated,
 } from "react-native";
 import { Context } from "../../context/AppContext";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useRef } from "react";
 
 function RulesModal() {
-  const { rulesModalActive, setRulesModalActive } = useContext<any>(Context);
+  const { rulesModalActive, setRulesModalActive, rulesActive, setRulesActive } =
+    useContext<any>(Context);
 
-  useEffect(() => {
-    for (let i = 0; i < 150; i++) {
-      setTimeout(() => translation.setValue(i), 25 * i);
+  const modalValue = useRef(new Animated.Value(0)).current;
+
+  const modalAnimation = () => {
+    // Will change fadeAnim value to 1 in 5 seconds
+    if (rulesActive == true) {
+      Animated.timing(modalValue, {
+        toValue: 1,
+        useNativeDriver: true,
+        duration: 200,
+      }).start();
     }
-  }, []);
-  const translation = useRef(new Animated.Value(0)).current;
+    if (rulesActive == false) {
+      Animated.timing(modalValue, {
+        toValue: 0,
+        useNativeDriver: true,
+        duration: 200,
+      }).start();
+    }
+  };
+
+  modalAnimation();
 
   return (
     <View style={styles.overlayModal}>
-      <Animated.View
-        style={[styles.mainModal, { transform: [{ translateY: translation }] }]}
-      >
+      <Animated.View style={[styles.mainModal, { opacity: modalValue }]}>
         <ImageBackground
           source={require("./media/patternpad.png")}
           style={styles.image}
@@ -96,7 +110,8 @@ function RulesModal() {
         </View>
         <TouchableOpacity
           onPress={() => {
-            setRulesModalActive(false);
+            setTimeout(() => setRulesModalActive(false), 300);
+            setRulesActive(false);
           }}
           style={styles.closeBtn}
         >

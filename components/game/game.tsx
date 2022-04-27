@@ -52,6 +52,8 @@ export default function TabluApp() {
     indexOnShuffled,
     setIndexOnShuffled,
     time,
+    rulesActive,
+    setRulesActive,
   } = useContext(Context);
 
   const FetchDatafromDB = async () => {
@@ -718,6 +720,7 @@ export default function TabluApp() {
             <TouchableOpacity
               onPress={() => {
                 setRulesModalActive(true);
+                setRulesActive(true);
               }}
               style={styles.btnRules}
             >
