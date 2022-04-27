@@ -291,4 +291,15 @@ export const styles = StyleSheet.create({
     elevation: 3,
     alignItems: "center",
   },
+  clapBtn: {
+    width: "40%",
+    height: "10%",
+    bottom: "12%",
+    position: "absolute",
+    borderRadius: 15,
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    backgroundColor: "#a9a9ac",
+  },
 });

@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   Animated,
+  Image,
 } from "react-native";
 import { styles } from "./styles";
 import { useContext, useEffect, useRef, useState } from "react";
@@ -58,7 +59,12 @@ export default function TabluApp() {
     setConfigActive,
     startActive,
     setStartActive,
+    setQuitInGameActive,
+    showCelebClaps,
+    setShowCelebClaps,
   } = useContext(Context);
+
+  const [disableBtn, setDisableBtn] = useState(false);
 
   const FetchDatafromDB = async () => {
     if (cardsDB == undefined) {
@@ -265,6 +271,15 @@ export default function TabluApp() {
     setCurrentCard(indexOnShuffled);
   };
 
+  const pivotDisable = () => {
+    if (disableBtn == true) {
+      return true;
+    }
+    if (disableBtn == false) {
+      return false;
+    }
+  };
+
   const afterGameView = () => {
     return (
       <View style={styles.container}>
@@ -330,6 +345,32 @@ export default function TabluApp() {
               </View>
             </Text>
           </View>
+          <TouchableOpacity
+            onPress={() => {
+              setShowCelebClaps(true);
+              setTimeout(() => setDisableBtn(true), 1);
+              setTimeout(() => setDisableBtn(false), 1500);
+              setTimeout(() => setShowCelebClaps(false), 500);
+              setDisableBtn(false);
+            }}
+            style={styles.clapBtn}
+            disabled={pivotDisable()}
+          >
+            <Text
+              adjustsFontSizeToFit
+              style={{
+                fontFamily: "LuckiestGuy",
+                fontSize: 25,
+                color: "black",
+                textShadowColor: "#fafafa",
+                textShadowOffset: { width: 1, height: 1 },
+                textShadowRadius: 1,
+              }}
+            >
+              Aplaudir
+            </Text>
+          </TouchableOpacity>
+          {clapsCelebration()}
           <TouchableOpacity
             onPress={() => {
               setGameState("preGame");
@@ -561,6 +602,7 @@ export default function TabluApp() {
           </View>
           <TouchableOpacity
             onPress={() => {
+              setQuitInGameActive(true);
               setQuitInGameModalActive(true);
               stopTimer();
             }}
@@ -843,6 +885,68 @@ export default function TabluApp() {
       );
     }
   };
+
+  const clapMove = useRef(new Animated.Value(0)).current;
+  const clapOpac = useRef(new Animated.Value(0)).current;
+
+  const clapsAnimation = () => {
+    // Will change fadeAnim value to 1 in 5 seconds
+    if (showCelebClaps == true) {
+      Animated.timing(clapMove, {
+        toValue: -311,
+        useNativeDriver: true,
+        duration: 1000,
+      }).start();
+      Animated.timing(clapOpac, {
+        toValue: 0,
+        useNativeDriver: true,
+        duration: 1000,
+      }).start();
+    }
+
+    setTimeout(
+      () =>
+        Animated.timing(clapMove, {
+          toValue: 311,
+          useNativeDriver: true,
+          duration: 500,
+        }).start(),
+      1000
+    );
+    setTimeout(
+      () =>
+        Animated.timing(clapOpac, {
+          toValue: 1,
+          useNativeDriver: true,
+          duration: 5,
+        }).start(),
+      1000
+    );
+  };
+
+  clapsAnimation();
+
+  const clapsCelebration = () => {
+    if (showCelebClaps == true) {
+      return (
+        <Animated.Image
+          style={[
+            {
+              width: 20,
+              height: 20,
+              bottom: "60%",
+              zIndex: 999999999,
+              position: "absolute",
+            },
+            { translateY: clapMove, opacity: clapOpac },
+          ]}
+          source={require("./media/clapsImg.png")}
+        ></Animated.Image>
+      );
+    }
+  };
+
+  clapsCelebration();
 
   {
     if (gameState == "preGame") {

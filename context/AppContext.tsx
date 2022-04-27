@@ -56,6 +56,10 @@ interface ContextState {
   setConfigActive: any | null;
   startActive: boolean | null;
   setStartActive: any | null;
+  quitInGameActive: boolean | null;
+  setQuitInGameActive: any | null;
+  showCelebClaps: boolean | null;
+  setShowCelebClaps: any | null;
 }
 const GameContext = ({ children }: any) => {
   const [configModalActive, setConfigModalActive] = useState(false);
@@ -85,6 +89,8 @@ const GameContext = ({ children }: any) => {
   const [rulesActive, setRulesActive] = useState(false);
   const [configActive, setConfigActive] = useState(false);
   const [startActive, setStartActive] = useState(false);
+  const [quitInGameActive, setQuitInGameActive] = useState(false);
+  const [showCelebClaps, setShowCelebClaps] = useState(false);
 
   return (
     <Context.Provider
@@ -143,6 +149,10 @@ const GameContext = ({ children }: any) => {
         setConfigActive,
         startActive,
         setStartActive,
+        quitInGameActive,
+        setQuitInGameActive,
+        showCelebClaps,
+        setShowCelebClaps,
       }}
     >
       {children}

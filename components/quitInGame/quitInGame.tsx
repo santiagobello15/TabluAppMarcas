@@ -1,7 +1,13 @@
 import { styles } from "./styles";
-import { Text, View, TouchableOpacity, ImageBackground } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  ImageBackground,
+  Animated,
+} from "react-native";
 import { Context } from "../../context/AppContext";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 
 function QuitInGame() {
   const {
@@ -18,11 +24,35 @@ function QuitInGame() {
     timeGame,
     setTeamTwoColor,
     setTeamOneColor,
+    quitInGameActive,
+    setQuitInGameActive,
   } = useContext<any>(Context);
+
+  const modalValue = useRef(new Animated.Value(0)).current;
+
+  const modalAnimation = () => {
+    // Will change fadeAnim value to 1 in 5 seconds
+    if (quitInGameActive == true) {
+      Animated.timing(modalValue, {
+        toValue: 1,
+        useNativeDriver: true,
+        duration: 200,
+      }).start();
+    }
+    if (quitInGameActive == false) {
+      Animated.timing(modalValue, {
+        toValue: 0,
+        useNativeDriver: true,
+        duration: 200,
+      }).start();
+    }
+  };
+
+  modalAnimation();
 
   return (
     <View style={styles.overlayModal}>
-      <View style={styles.mainModal}>
+      <Animated.View style={[styles.mainModal, { opacity: modalValue }]}>
         <ImageBackground
           source={require("./media/patternpad.png")}
           style={styles.image}
@@ -101,14 +131,15 @@ function QuitInGame() {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            setQuitInGameModalActive(false);
+            setTimeout(() => setQuitInGameModalActive(false), 300);
+            setQuitInGameActive(false);
             setStartCounter(true);
           }}
           style={styles.closeBtn}
         >
           <Text style={styles.closeBtnTxt}>X</Text>
         </TouchableOpacity>
-      </View>
+      </Animated.View>
     </View>
   );
 }
