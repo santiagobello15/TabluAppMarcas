@@ -52,6 +52,10 @@ interface ContextState {
   setIntervalID: any | null;
   rulesActive: boolean | null;
   setRulesActive: any | null;
+  configActive: boolean | null;
+  setConfigActive: any | null;
+  startActive: boolean | null;
+  setStartActive: any | null;
 }
 const GameContext = ({ children }: any) => {
   const [configModalActive, setConfigModalActive] = useState(false);
@@ -79,6 +83,8 @@ const GameContext = ({ children }: any) => {
   const [time, setTime] = useState();
   const [intervalID, setIntervalID] = useState();
   const [rulesActive, setRulesActive] = useState(false);
+  const [configActive, setConfigActive] = useState(false);
+  const [startActive, setStartActive] = useState(false);
 
   return (
     <Context.Provider
@@ -133,6 +139,10 @@ const GameContext = ({ children }: any) => {
         setIntervalID,
         rulesActive,
         setRulesActive,
+        configActive,
+        setConfigActive,
+        startActive,
+        setStartActive,
       }}
     >
       {children}

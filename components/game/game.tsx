@@ -54,6 +54,10 @@ export default function TabluApp() {
     time,
     rulesActive,
     setRulesActive,
+    configActive,
+    setConfigActive,
+    startActive,
+    setStartActive,
   } = useContext(Context);
 
   const FetchDatafromDB = async () => {
@@ -702,6 +706,7 @@ export default function TabluApp() {
             <TouchableOpacity
               onPress={() => {
                 setConfigModalActive(true);
+                setConfigActive(true);
               }}
               style={styles.btnConfig}
             >
@@ -739,6 +744,7 @@ export default function TabluApp() {
             <TouchableOpacity
               onPress={() => {
                 setStartModalActive(true);
+                setStartActive(true);
                 cardsDB.sort(() => 0.5 - Math.random());
                 setTime(timeGame);
               }}

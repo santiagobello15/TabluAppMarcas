@@ -1,8 +1,14 @@
 import { styles } from "./styles";
-import { Text, View, TouchableOpacity, ImageBackground } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  ImageBackground,
+  Animated,
+} from "react-native";
 import CheckBox from "expo-checkbox";
 import { Context } from "../../context/AppContext";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import Slider from "@react-native-community/slider";
 
 function ConfigModal() {
@@ -17,11 +23,35 @@ function ConfigModal() {
     setCheckedMuletillas,
     isCheckedInsultos,
     setCheckedInsultos,
+    configActive,
+    setConfigActive,
   } = useContext<any>(Context);
+
+  const modalValue = useRef(new Animated.Value(0)).current;
+
+  const modalAnimation = () => {
+    // Will change fadeAnim value to 1 in 5 seconds
+    if (configActive == true) {
+      Animated.timing(modalValue, {
+        toValue: 1,
+        useNativeDriver: true,
+        duration: 200,
+      }).start();
+    }
+    if (configActive == false) {
+      Animated.timing(modalValue, {
+        toValue: 0,
+        useNativeDriver: true,
+        duration: 200,
+      }).start();
+    }
+  };
+
+  modalAnimation();
 
   return (
     <View style={styles.overlayModal}>
-      <View style={styles.mainModal}>
+      <Animated.View style={[styles.mainModal, { opacity: modalValue }]}>
         <ImageBackground
           source={require("./media/patternpad.png")}
           style={styles.image}
@@ -131,13 +161,14 @@ function ConfigModal() {
         </View>
         <TouchableOpacity
           onPress={() => {
-            setConfigModalActive(false);
+            setTimeout(() => setConfigModalActive(false), 300);
+            setConfigActive(false);
           }}
           style={styles.closeBtn}
         >
           <Text style={styles.closeBtnTxt}>X</Text>
         </TouchableOpacity>
-      </View>
+      </Animated.View>
     </View>
   );
 }

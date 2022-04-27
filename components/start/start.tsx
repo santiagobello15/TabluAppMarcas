@@ -5,9 +5,10 @@ import {
   TouchableOpacity,
   ImageBackground,
   TextInput,
+  Animated,
 } from "react-native";
 import { Context } from "../../context/AppContext";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 
 function StartModal() {
   const {
@@ -19,6 +20,8 @@ function StartModal() {
     teamTwoColor,
     setTeamTwoColor,
     setGameState,
+    startActive,
+    setStartActive,
   } = useContext<any>(Context);
 
   const CardColorRed = "rgb(249, 200, 203)";
@@ -26,9 +29,31 @@ function StartModal() {
   const CardColorBlue = "rgb(198, 221, 241)";
   const CardColorYellow = "rgb(250, 237, 204)";
 
+  const modalValue = useRef(new Animated.Value(0)).current;
+
+  const modalAnimation = () => {
+    // Will change fadeAnim value to 1 in 5 seconds
+    if (startActive == true) {
+      Animated.timing(modalValue, {
+        toValue: 1,
+        useNativeDriver: true,
+        duration: 200,
+      }).start();
+    }
+    if (startActive == false) {
+      Animated.timing(modalValue, {
+        toValue: 0,
+        useNativeDriver: true,
+        duration: 200,
+      }).start();
+    }
+  };
+
+  modalAnimation();
+
   return (
     <View style={styles.overlayModal}>
-      <View style={styles.mainModal}>
+      <Animated.View style={[styles.mainModal, { opacity: modalValue }]}>
         <ImageBackground
           source={require("./media/patternpad.png")}
           style={styles.image}
@@ -138,13 +163,14 @@ function StartModal() {
         </View>
         <TouchableOpacity
           onPress={() => {
-            setStartModalActive(false);
+            setTimeout(() => setStartModalActive(false), 300);
+            setStartActive(false);
           }}
           style={styles.closeBtn}
         >
           <Text style={styles.closeBtnTxt}>X</Text>
         </TouchableOpacity>
-      </View>
+      </Animated.View>
     </View>
   );
 }
