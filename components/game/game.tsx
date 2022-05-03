@@ -129,6 +129,13 @@ export default function TabluApp() {
     }
   }, [time]);
 
+  useEffect(() => {
+    // changed from function to useeffect. is not possible to setstate insite setstate function ?
+    if (time == 0.0 && currentRound == roundsGame) {
+      setGameState("afterGame");
+    }
+  }, [time, currentRound, roundsGame]);
+
   const renderGameResult = () => {
     if (pointsTeamOne == pointsTeamTwo) {
       return "Ninguno! Empate";
@@ -140,11 +147,11 @@ export default function TabluApp() {
     }
   };
 
-  const GameOver = () => {
+  /*   const GameOver = () => {
     if (time == 0.0 && currentRound == roundsGame) {
       setGameState("afterGame");
     }
-  };
+  }; */
 
   const [intervalID, setIntervalID] = useState(null);
   const hasTimerEnded = time <= 0;
@@ -404,7 +411,7 @@ export default function TabluApp() {
   };
 
   const inGameViewFunctions: any = () => {
-    return [StopOrCount(), GameOver()];
+    return [StopOrCount()];
   };
 
   const inGameView = () => {
