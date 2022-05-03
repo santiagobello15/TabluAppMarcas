@@ -115,7 +115,8 @@ export default function TabluApp() {
     }
   };
 
-  const FinishedAlert = () => {
+  useEffect(() => {
+    // changed from function to useeffect. is not possible to setstate insite setstate function ?
     if (time == 0.0) {
       setStartCounter(false);
       setTime(timeGame);
@@ -126,7 +127,7 @@ export default function TabluApp() {
         setAssignedTeamOne(true);
       }
     }
-  };
+  }, [time]);
 
   const renderGameResult = () => {
     if (pointsTeamOne == pointsTeamTwo) {
@@ -185,7 +186,10 @@ export default function TabluApp() {
   const StopOrCount = () => {
     if (startCounter == false) {
       return (
-        <>
+        <View
+          style={{ width: "100%", height: "100%", alignItems: "center" }}
+          key={time}
+        >
           <TouchableOpacity
             onPress={() => {
               startTimer();
@@ -222,27 +226,32 @@ export default function TabluApp() {
               Reiniciar
             </Text>
           </TouchableOpacity>
-        </>
+        </View>
       );
     } else {
       return (
-        <TouchableOpacity
-          onPress={() => {
-            stopTimer();
-          }}
-          style={[styles.startBtn, { backgroundColor: "red" }]}
+        <View
+          style={{ width: "100%", height: "100%", alignItems: "center" }}
+          key={time}
         >
-          <Text
-            adjustsFontSizeToFit
-            style={{
-              fontFamily: "MuktaMalarBold",
-              fontSize: 18,
-              color: "white",
+          <TouchableOpacity
+            onPress={() => {
+              stopTimer();
             }}
+            style={[styles.startBtn, { backgroundColor: "red" }]}
           >
-            Pausar
-          </Text>
-        </TouchableOpacity>
+            <Text
+              adjustsFontSizeToFit
+              style={{
+                fontFamily: "MuktaMalarBold",
+                fontSize: 18,
+                color: "white",
+              }}
+            >
+              Pausar
+            </Text>
+          </TouchableOpacity>
+        </View>
       );
     }
   };
@@ -395,7 +404,7 @@ export default function TabluApp() {
   };
 
   const inGameViewFunctions: any = () => {
-    return [StopOrCount(), FinishedAlert(), GameOver()];
+    return [StopOrCount(), GameOver()];
   };
 
   const inGameView = () => {
