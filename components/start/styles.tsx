@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
 const mainColor = "#7b2cbf";
 
-const CardColorRedTransp = "rgba(250, 199, 202, 0.7);";
-const CardColorGreenTransp = "rgba(201, 228, 222, 0.702);";
-const CardColorBlueTransp = "rgba(198, 221, 241, 0.7);";
-const CardColorYellowTransp = "rgba(250, 237, 204, 0.7);";
+const CardColorRedTransp = "rgba(191, 39, 211, 0.5)";
+const CardColorGreenTransp = "rgba(33, 196, 93, 0.5)";
+const CardColorBlueTransp = "rgba(36, 99, 235, 0.5)";
+const CardColorYellowTransp = "rgba(252, 212, 79, 0.5)";
 
 export const styles = StyleSheet.create({
   overlayModal: {
@@ -90,13 +90,15 @@ export const styles = StyleSheet.create({
     width: "90%",
     top: "5%",
     fontFamily: "MuktaMalarBold",
-    color: "black",
+    color: "white",
   },
   startGame: {
-    backgroundColor: "#ffd100",
+    backgroundColor: mainColor,
     position: "absolute",
     bottom: "7%",
     alignItems: "center",
+    borderRadius: 5,
+    elevation: 3,
   },
 
   closeBtn: {

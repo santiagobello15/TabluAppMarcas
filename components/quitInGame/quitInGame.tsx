@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { Context } from "../../context/AppContext";
 import { useContext, useRef } from "react";
+import { Inter_500Medium } from "@expo-google-fonts/inter";
 
 function QuitInGame() {
   const {
@@ -109,13 +110,18 @@ function QuitInGame() {
             setPointsTeamTwo(0);
             setTeamOneName("Team 1");
             setTeamTwoName("Team 2");
-            setTeamOneColor("rgb(249, 200, 203)");
-            setTeamTwoColor("rgb(198, 221, 241)");
+            setTeamOneColor("rgb(191, 39, 211)");
+            setTeamTwoColor("rgb(36, 99, 235)");
             setAssignedTeamOne(true);
             setCurrentRound(1);
             setGameState("preGame");
           }}
-          style={{ alignSelf: "center", top: "50%", position: "absolute" }}
+          style={{
+            alignSelf: "center",
+            top: "50%",
+            position: "absolute",
+            justifyContent: "center",
+          }}
         >
           <Text
             adjustsFontSizeToFit
@@ -124,6 +130,9 @@ function QuitInGame() {
               fontSize: 40,
               color: "white",
               backgroundColor: "#bf2c2c",
+              paddingLeft: 5,
+              paddingRight: 5,
+              borderRadius: 5,
             }}
           >
             SÍ, SALIR

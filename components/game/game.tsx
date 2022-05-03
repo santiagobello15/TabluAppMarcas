@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   ImageBackground,
   Animated,
-  Image,
 } from "react-native";
 import { styles } from "./styles";
 import { useContext, useEffect, useRef, useState } from "react";
@@ -68,7 +67,7 @@ export default function TabluApp() {
 
   const FetchDatafromDB = async () => {
     if (cardsDB == undefined) {
-      await fetch("https://tablu.vercel.app/api/cards")
+      await fetch("https://tablugames.com/api/cardsFamosos")
         .then((response) => response.json())
         .then((data) => {
           setcardsDB(data.CardsArray);
@@ -448,8 +447,8 @@ export default function TabluApp() {
                 <Text
                   adjustsFontSizeToFit
                   style={{
-                    fontFamily: "MuktaMalarBold",
-                    fontSize: 35,
+                    fontFamily: "LuckiestGuy",
+                    fontSize: 32,
                     color: "white",
                   }}
                 >
@@ -539,7 +538,7 @@ export default function TabluApp() {
                 }}
                 style={[
                   styles.pointBtn,
-                  { top: "10%", backgroundColor: "#295b16" },
+                  { top: "10%", backgroundColor: "#13e013" },
                 ]}
               >
                 <Text
@@ -561,7 +560,7 @@ export default function TabluApp() {
                 }}
                 style={[
                   styles.pointBtn,
-                  { top: "42.5%", backgroundColor: "#ba0000" },
+                  { top: "42.5%", backgroundColor: "#ff0000" },
                 ]}
               >
                 <Text
@@ -639,9 +638,12 @@ export default function TabluApp() {
                 style={{
                   fontFamily: "MuktaMalarBold",
                   fontSize: 18,
-                  color: "black",
+                  color: "white",
                   position: "absolute",
                   top: "17%",
+                  textShadowColor: "black",
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 1,
                 }}
               >
                 {teamOneName}
@@ -651,9 +653,12 @@ export default function TabluApp() {
                 style={{
                   fontFamily: "MuktaMalarBold",
                   fontSize: 25,
-                  color: "black",
+                  color: "white",
                   position: "absolute",
                   top: "50%",
+                  textShadowColor: "black",
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 1,
                 }}
               >
                 {pointsTeamOne}
@@ -671,9 +676,12 @@ export default function TabluApp() {
                 style={{
                   fontFamily: "MuktaMalarBold",
                   fontSize: 18,
-                  color: "black",
+                  color: "white",
                   position: "absolute",
                   top: "17%",
+                  textShadowColor: "black",
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 1,
                 }}
               >
                 {teamTwoName}
@@ -683,9 +691,12 @@ export default function TabluApp() {
                 style={{
                   fontFamily: "MuktaMalarBold",
                   fontSize: 25,
-                  color: "black",
+                  color: "white",
                   position: "absolute",
                   top: "50%",
+                  textShadowColor: "black",
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 1,
                 }}
               >
                 {pointsTeamTwo}

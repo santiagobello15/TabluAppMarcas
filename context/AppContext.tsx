@@ -71,8 +71,8 @@ const GameContext = ({ children }: any) => {
   const [isCheckedInsultos, setCheckedInsultos] = useState(false);
   const [teamOneName, setTeamOneName] = useState("Team 1");
   const [teamTwoName, setTeamTwoName] = useState("Team 2");
-  const [teamOneColor, setTeamOneColor] = useState("rgb(249, 200, 203)");
-  const [teamTwoColor, setTeamTwoColor] = useState("rgb(198, 221, 241)");
+  const [teamOneColor, setTeamOneColor] = useState("rgb(191, 39, 211)");
+  const [teamTwoColor, setTeamTwoColor] = useState("rgb(36, 99, 235)");
   const [gameState, setGameState] = useState("preGame");
   const [pointsTeamOne, setPointsTeamOne] = useState(0);
   const [pointsTeamTwo, setPointsTeamTwo] = useState(0);

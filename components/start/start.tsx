@@ -6,6 +6,7 @@ import {
   ImageBackground,
   TextInput,
   Animated,
+  useWindowDimensions,
 } from "react-native";
 import { Context } from "../../context/AppContext";
 import { useContext, useRef } from "react";
@@ -24,10 +25,10 @@ function StartModal() {
     setStartActive,
   } = useContext<any>(Context);
 
-  const CardColorRed = "rgb(249, 200, 203)";
-  const CardColorGreen = "rgb(201, 228, 222)";
-  const CardColorBlue = "rgb(198, 221, 241)";
-  const CardColorYellow = "rgb(250, 237, 204)";
+  const CardColorRed = "rgb(191, 39, 211)";
+  const CardColorGreen = "rgb(33, 196, 93)";
+  const CardColorBlue = "rgb(36, 99, 235)";
+  const CardColorYellow = "rgb(252, 212, 79)";
 
   const modalValue = useRef(new Animated.Value(0)).current;
 
@@ -50,9 +51,11 @@ function StartModal() {
   };
 
   modalAnimation();
-
+  const windowHeight = useWindowDimensions().height;
   return (
-    <View style={styles.overlayModal}>
+    <View
+      style={[styles.overlayModal, { minHeight: Math.round(windowHeight) }]}
+    >
       <Animated.View style={[styles.mainModal, { opacity: modalValue }]}>
         <ImageBackground
           source={require("./media/patternpad.png")}
@@ -74,6 +77,7 @@ function StartModal() {
           <View style={[styles.teamOneView, { backgroundColor: teamOneColor }]}>
             <TextInput
               textAlign={"center"}
+              maxLength={15}
               style={styles.input}
               onChangeText={setTeamOneName}
               placeholder="Team 1..."
@@ -107,6 +111,7 @@ function StartModal() {
           </View>
           <View style={[styles.teamTwoView, { backgroundColor: teamTwoColor }]}>
             <TextInput
+              maxLength={15}
               textAlign={"center"}
               style={styles.input}
               onChangeText={setTeamTwoName}
@@ -155,6 +160,8 @@ function StartModal() {
                 textShadowColor: "black",
                 textShadowRadius: 1,
                 textShadowOffset: { width: 1.2, height: 1 },
+                paddingLeft: 5,
+                paddingRight: 5,
               }}
             >
               JUGAR
