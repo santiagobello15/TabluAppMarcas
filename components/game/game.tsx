@@ -184,44 +184,46 @@ export default function TabluApp() {
 
   const StopOrCount = () => {
     if (startCounter == false) {
-      return [
-        <TouchableOpacity
-          onPress={() => {
-            startTimer();
-          }}
-          style={styles.startBtn}
-        >
-          <Text
-            adjustsFontSizeToFit
-            style={{
-              fontFamily: "MuktaMalarBold",
-              fontSize: 18,
-              color: "white",
+      return (
+        <>
+          <TouchableOpacity
+            onPress={() => {
+              startTimer();
             }}
+            style={styles.startBtn}
           >
-            Iniciar
-          </Text>
-        </TouchableOpacity>,
-        <TouchableOpacity
-          onPress={() => {
-            {
-              resetTimer();
-            }
-          }}
-          style={styles.restartBtn}
-        >
-          <Text
-            adjustsFontSizeToFit
-            style={{
-              fontFamily: "MuktaMalarBold",
-              fontSize: 18,
-              color: "white",
+            <Text
+              adjustsFontSizeToFit
+              style={{
+                fontFamily: "MuktaMalarBold",
+                fontSize: 18,
+                color: "white",
+              }}
+            >
+              Iniciar
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              {
+                resetTimer();
+              }
             }}
+            style={styles.restartBtn}
           >
-            Reiniciar
-          </Text>
-        </TouchableOpacity>,
-      ];
+            <Text
+              adjustsFontSizeToFit
+              style={{
+                fontFamily: "MuktaMalarBold",
+                fontSize: 18,
+                color: "white",
+              }}
+            >
+              Reiniciar
+            </Text>
+          </TouchableOpacity>
+        </>
+      );
     } else {
       return (
         <TouchableOpacity

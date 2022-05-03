@@ -78,6 +78,7 @@ function StartModal() {
             <TextInput
               textAlign={"center"}
               maxLength={15}
+              placeholderTextColor="#eeeeeede"
               style={styles.input}
               onChangeText={setTeamOneName}
               placeholder="Team 1..."
@@ -113,6 +114,7 @@ function StartModal() {
             <TextInput
               maxLength={15}
               textAlign={"center"}
+              placeholderTextColor="#eeeeeede"
               style={styles.input}
               onChangeText={setTeamTwoName}
               placeholder="Team 2..."
