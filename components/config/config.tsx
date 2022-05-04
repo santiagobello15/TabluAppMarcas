@@ -83,7 +83,7 @@ function ConfigModal() {
           </View>
           <Slider
             style={[{ width: 200, height: 40 }, styles.sliderViewRound]}
-            minimumValue={4}
+            minimumValue={1}
             maximumValue={25}
             minimumTrackTintColor="#8b6ad8"
             maximumTrackTintColor="#000000"

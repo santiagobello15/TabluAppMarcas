@@ -407,6 +407,83 @@ export default function TabluApp() {
           >
             <Text style={styles.closeBtnTxt}>X</Text>
           </TouchableOpacity>
+          <View style={[styles.gamingPadFooter, { bottom: "18%" }]}>
+            <View
+              style={[
+                styles.teamsBadges,
+                { left: "4%", backgroundColor: teamOneColor },
+              ]}
+            >
+              <Text
+                adjustsFontSizeToFit
+                style={{
+                  fontFamily: "MuktaMalarBold",
+                  fontSize: 18,
+                  color: "white",
+                  position: "absolute",
+                  top: "17%",
+                  textShadowColor: "black",
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 1,
+                }}
+              >
+                {teamOneName}
+              </Text>
+              <Text
+                adjustsFontSizeToFit
+                style={{
+                  fontFamily: "MuktaMalarBold",
+                  fontSize: 25,
+                  color: "white",
+                  position: "absolute",
+                  bottom: "2%",
+                  textShadowColor: "black",
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 1,
+                }}
+              >
+                {pointsTeamOne}
+              </Text>
+            </View>
+
+            <View
+              style={[
+                styles.teamsBadges,
+                { right: "5%", backgroundColor: teamTwoColor },
+              ]}
+            >
+              <Text
+                adjustsFontSizeToFit
+                style={{
+                  fontFamily: "MuktaMalarBold",
+                  fontSize: 18,
+                  color: "white",
+                  position: "absolute",
+                  top: "17%",
+                  textShadowColor: "black",
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 1,
+                }}
+              >
+                {teamTwoName}
+              </Text>
+              <Text
+                adjustsFontSizeToFit
+                style={{
+                  fontFamily: "MuktaMalarBold",
+                  fontSize: 25,
+                  color: "white",
+                  position: "absolute",
+                  bottom: "2%",
+                  textShadowColor: "black",
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 1,
+                }}
+              >
+                {pointsTeamTwo}
+              </Text>
+            </View>
+          </View>
         </View>
 
         <StatusBar style="auto" />
@@ -732,7 +809,7 @@ export default function TabluApp() {
   };
 
   const preGameView = () => {
-    if (cardsDB == undefined) {
+    /*  if (cardsDB == undefined) {
       return (
         <View
           style={{
@@ -753,169 +830,169 @@ export default function TabluApp() {
           </Text>
         </View>
       );
-    } else {
-      return (
-        <View style={styles.container}>
-          <ImageBackground
-            source={require("./media/patternpad.png")}
-            style={styles.image}
-          />
-          <View style={styles.mainContainer}>
-            <View style={styles.titleContainer}>
+    } else { */
+    return (
+      <View style={styles.container}>
+        <ImageBackground
+          source={require("./media/patternpad.png")}
+          style={styles.image}
+        />
+        <View style={styles.mainContainer}>
+          <View style={styles.titleContainer}>
+            <Text
+              adjustsFontSizeToFit
+              style={{
+                fontFamily: "LuckiestGuy",
+                fontSize: 42,
+                color: "white",
+                backgroundColor: "#7b2cbf",
+              }}
+            >
+              TABLU FAMOSOS
+            </Text>
+          </View>
+          <StatusBar style="auto" />
+          <TouchableOpacity
+            onPress={() => {
+              setConfigModalActive(true);
+              setConfigActive(true);
+            }}
+            style={styles.btnConfig}
+          >
+            <View style={styles.insideBtnTextView}>
               <Text
-                adjustsFontSizeToFit
                 style={{
-                  fontFamily: "LuckiestGuy",
-                  fontSize: 42,
+                  fontFamily: "MuktaMalar",
+                  fontSize: 18,
                   color: "white",
-                  backgroundColor: "#7b2cbf",
                 }}
               >
-                TABLU FAMOSOS
+                Configuración
               </Text>
             </View>
-            <StatusBar style="auto" />
-            <TouchableOpacity
-              onPress={() => {
-                setConfigModalActive(true);
-                setConfigActive(true);
-              }}
-              style={styles.btnConfig}
-            >
-              <View style={styles.insideBtnTextView}>
-                <Text
-                  style={{
-                    fontFamily: "MuktaMalar",
-                    fontSize: 18,
-                    color: "white",
-                  }}
-                >
-                  Configuración
-                </Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                setRulesModalActive(true);
-                setRulesActive(true);
-              }}
-              style={styles.btnRules}
-            >
-              <View style={styles.insideBtnTextView}>
-                <Text
-                  style={{
-                    fontFamily: "MuktaMalar",
-                    fontSize: 18,
-                    color: "white",
-                  }}
-                >
-                  Reglas
-                </Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                setStartModalActive(true);
-                setStartActive(true);
-                cardsDB.sort(() => 0.5 - Math.random());
-                setTime(timeGame);
-              }}
-              style={styles.btnStart}
-            >
-              <View style={styles.insideBtnTextView}>
-                <Text
-                  style={{
-                    fontFamily: "MuktaMalar",
-                    fontSize: 18,
-                    color: "white",
-                  }}
-                >
-                  Comenzar
-                </Text>
-              </View>
-            </TouchableOpacity>
-            <View style={styles.view1holder}>
-              <View style={styles.view1up}>
-                <Text adjustsFontSizeToFit style={styles.view1txt}>
-                  Rondas
-                </Text>
-              </View>
-              <View style={styles.view1}>
-                <Text
-                  style={{
-                    fontFamily: "MuktaMalarLight",
-                    color: "#fafafa",
-                    fontSize: 40,
-                  }}
-                >
-                  {roundsGame}
-                </Text>
-              </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setRulesModalActive(true);
+              setRulesActive(true);
+            }}
+            style={styles.btnRules}
+          >
+            <View style={styles.insideBtnTextView}>
+              <Text
+                style={{
+                  fontFamily: "MuktaMalar",
+                  fontSize: 18,
+                  color: "white",
+                }}
+              >
+                Reglas
+              </Text>
             </View>
-            <View style={styles.view2holder}>
-              <View style={styles.view2up}>
-                <Text adjustsFontSizeToFit style={styles.view2txt}>
-                  Tiempo
-                </Text>
-              </View>
-              <View style={styles.view2}>
-                <Text
-                  style={{
-                    fontFamily: "MuktaMalarLight",
-                    color: "#fafafa",
-                    fontSize: 40,
-                  }}
-                >
-                  {timeGame}''
-                </Text>
-              </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setStartModalActive(true);
+              setStartActive(true);
+              cardsDB.sort(() => 0.5 - Math.random());
+              setTime(timeGame);
+            }}
+            style={styles.btnStart}
+          >
+            <View style={styles.insideBtnTextView}>
+              <Text
+                style={{
+                  fontFamily: "MuktaMalar",
+                  fontSize: 18,
+                  color: "white",
+                }}
+              >
+                Comenzar
+              </Text>
             </View>
-            <View style={styles.view3holder}>
-              <View style={styles.view3up}>
-                <Text style={styles.view3txt}>Extra #1</Text>
-              </View>
-              <View style={styles.view3}>
-                <Text
-                  style={{
-                    fontFamily: "MuktaMalar",
-                    color: "#fafafa",
-                    fontSize: 10,
-                    paddingLeft: 2,
-                    paddingRight: 2,
-                  }}
-                >
-                  {muletillaFunction()}
-                </Text>
-              </View>
+          </TouchableOpacity>
+          <View style={styles.view1holder}>
+            <View style={styles.view1up}>
+              <Text adjustsFontSizeToFit style={styles.view1txt}>
+                Rondas
+              </Text>
             </View>
-            <View style={styles.view4holder}>
-              <View style={styles.view4up}>
-                <Text style={styles.view4txt}>Extra #2</Text>
-              </View>
-              <View style={styles.view4}>
-                <Text
-                  style={{
-                    fontFamily: "MuktaMalar",
-                    color: "#fafafa",
-                    fontSize: 10,
-                    paddingLeft: 2,
-                    paddingRight: 2,
-                  }}
-                >
-                  {insultosFunction()}
-                </Text>
-              </View>
+            <View style={styles.view1}>
+              <Text
+                style={{
+                  fontFamily: "MuktaMalarLight",
+                  color: "#fafafa",
+                  fontSize: 40,
+                }}
+              >
+                {roundsGame}
+              </Text>
             </View>
           </View>
-          {configModalActive && <ConfigModal />}
-          {rulesModalActive && <RulesModal />}
-          {startModalActive && <StartModal />}
-          {quitInGameModalActive && <QuitInGame />}
+          <View style={styles.view2holder}>
+            <View style={styles.view2up}>
+              <Text adjustsFontSizeToFit style={styles.view2txt}>
+                Tiempo
+              </Text>
+            </View>
+            <View style={styles.view2}>
+              <Text
+                style={{
+                  fontFamily: "MuktaMalarLight",
+                  color: "#fafafa",
+                  fontSize: 40,
+                }}
+              >
+                {timeGame}''
+              </Text>
+            </View>
+          </View>
+          <View style={styles.view3holder}>
+            <View style={styles.view3up}>
+              <Text style={styles.view3txt}>Extra #1</Text>
+            </View>
+            <View style={styles.view3}>
+              <Text
+                style={{
+                  fontFamily: "MuktaMalar",
+                  color: "#fafafa",
+                  fontSize: 10,
+                  paddingLeft: 2,
+                  paddingRight: 2,
+                }}
+              >
+                {muletillaFunction()}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.view4holder}>
+            <View style={styles.view4up}>
+              <Text style={styles.view4txt}>Extra #2</Text>
+            </View>
+            <View style={styles.view4}>
+              <Text
+                style={{
+                  fontFamily: "MuktaMalar",
+                  color: "#fafafa",
+                  fontSize: 10,
+                  paddingLeft: 2,
+                  paddingRight: 2,
+                }}
+              >
+                {insultosFunction()}
+              </Text>
+            </View>
+          </View>
         </View>
-      );
-    }
+        {configModalActive && <ConfigModal />}
+        {rulesModalActive && <RulesModal />}
+        {startModalActive && <StartModal />}
+        {quitInGameModalActive && <QuitInGame />}
+      </View>
+    );
   };
-
+  /*   };
+   */
   {
     if (gameState == "preGame") {
       return preGameView();
