@@ -184,6 +184,7 @@ export const styles = StyleSheet.create({
     right: 0,
     width: "10%",
     aspectRatio: 1,
+    zIndex: 99999999999999999999999999999,
   },
   closeBtnTxt: {
     color: "white",
