@@ -14,8 +14,15 @@ export default function App() {
   const loadingFonts = () => {
     if (!fontsLoaded) {
       return (
-        <View>
-          <Text>Loading...</Text>
+        <View
+          style={{
+            width: "100%",
+            height: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text style={{ fontSize: 40 }}>Loading...</Text>
         </View>
       );
     } else {
