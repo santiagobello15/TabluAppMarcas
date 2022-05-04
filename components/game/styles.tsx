@@ -184,6 +184,7 @@ export const styles = StyleSheet.create({
     right: 0,
     width: "10%",
     aspectRatio: 1,
+    zIndex: 999999999999999999999999,
   },
   closeBtnTxt: {
     color: "white",
@@ -294,12 +295,26 @@ export const styles = StyleSheet.create({
   clapBtn: {
     width: "40%",
     height: "10%",
-    bottom: "12%",
+    bottom: "15%",
     position: "absolute",
     borderRadius: 15,
     alignItems: "center",
     alignContent: "center",
     justifyContent: "center",
     backgroundColor: "#a9a9ac",
+  },
+  twitterBtn: {
+    position: "absolute",
+    width: "12%",
+    aspectRatio: 1,
+    bottom: "2.5%",
+    right: "5%",
+  },
+  facebookBtn: {
+    position: "absolute",
+    width: "12%",
+    aspectRatio: 1,
+    bottom: "2.5%",
+    right: "20%",
   },
 });

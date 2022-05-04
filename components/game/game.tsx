@@ -5,7 +5,9 @@ import {
   TouchableOpacity,
   ImageBackground,
   Animated,
+  Image,
 } from "react-native";
+import * as WebBrowser from "expo-web-browser";
 import { styles } from "./styles";
 import { useContext, useEffect, useRef, useState } from "react";
 import ConfigModal from "../config/config";
@@ -190,6 +192,10 @@ export default function TabluApp() {
     []
   );
 
+  useEffect(() => {
+    StopOrCount();
+  }, [startCounter]);
+
   const StopOrCount = () => {
     if (startCounter == false) {
       return (
@@ -296,6 +302,16 @@ export default function TabluApp() {
       return false;
     }
   };
+  const _handlePressButtonTwitter = () => {
+    WebBrowser.openBrowserAsync(
+      'https://twitter.com/intent/tweet?text=¡Qué%20divertido%20jugar%20%23TabluGames!%0AProb%C3%A1%20jugando%20con%20amigos.%0Awww.tablugames.com"'
+    );
+  };
+  const _handlePressButtonFacebook = () => {
+    WebBrowser.openBrowserAsync(
+      "https://facebook.com/sharer/sharer.php?u=https://tablugames.com"
+    );
+  };
 
   const afterGameView = () => {
     return (
@@ -318,6 +334,7 @@ export default function TabluApp() {
               TABLU FAMOSOS
             </Text>
           </View>
+
           <View style={[styles.turnToTeam, { top: "40%", width: "90%" }]}>
             <Text
               adjustsFontSizeToFit
@@ -389,6 +406,32 @@ export default function TabluApp() {
           </TouchableOpacity>
           {clapsCelebration()}
           <TouchableOpacity
+            onPress={_handlePressButtonTwitter}
+            style={styles.twitterBtn}
+          >
+            <Image
+              style={{
+                width: "100%",
+                height: "100%",
+                position: "absolute",
+              }}
+              source={require("./media/twitter.png")}
+            ></Image>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={_handlePressButtonFacebook}
+            style={styles.facebookBtn}
+          >
+            <Image
+              style={{
+                width: "100%",
+                height: "100%",
+                position: "absolute",
+              }}
+              source={require("./media/facebook.png")}
+            ></Image>
+          </TouchableOpacity>
+          <TouchableOpacity
             onPress={() => {
               setGameState("preGame");
               stopTimer();
@@ -408,10 +451,6 @@ export default function TabluApp() {
         <StatusBar style="auto" />
       </View>
     );
-  };
-
-  const inGameViewFunctions: any = () => {
-    return [StopOrCount()];
   };
 
   const inGameView = () => {
@@ -550,13 +589,14 @@ export default function TabluApp() {
             <View style={styles.gamingPadRight}>
               <TouchableOpacity
                 onPress={() => {
-                  {
-                    AddPoints();
-                  }
+                  AddPoints();
                 }}
                 style={[
                   styles.pointBtn,
-                  { top: "10%", backgroundColor: "#13e013" },
+                  {
+                    top: "10%",
+                    backgroundColor: "#13e013",
+                  },
                 ]}
               >
                 <Text
@@ -617,16 +657,6 @@ export default function TabluApp() {
               </TouchableOpacity>
             </View>
           </View>
-          <TouchableOpacity
-            onPress={() => {
-              setQuitInGameActive(true);
-              setQuitInGameModalActive(true);
-              stopTimer();
-            }}
-            style={styles.closeBtn}
-          >
-            <Text style={styles.closeBtnTxt}>X</Text>
-          </TouchableOpacity>
           <View style={styles.turnToTeam}>
             <Text
               adjustsFontSizeToFit
@@ -643,7 +673,6 @@ export default function TabluApp() {
               {teamTurn()}
             </Text>
           </View>
-
           <View style={styles.gamingPadFooter}>
             <View
               style={[
@@ -721,7 +750,17 @@ export default function TabluApp() {
               </Text>
             </View>
           </View>
-          {inGameViewFunctions()}
+          {StopOrCount()}
+          <TouchableOpacity
+            onPress={() => {
+              setQuitInGameActive(true);
+              setQuitInGameModalActive(true);
+              stopTimer();
+            }}
+            style={styles.closeBtn}
+          >
+            <Text style={styles.closeBtnTxt}>X</Text>
+          </TouchableOpacity>
         </View>
 
         <StatusBar style="auto" />
