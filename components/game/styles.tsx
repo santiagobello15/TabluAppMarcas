@@ -184,7 +184,6 @@ export const styles = StyleSheet.create({
     right: 0,
     width: "10%",
     aspectRatio: 1,
-    zIndex: 999999999999999999999999,
   },
   closeBtnTxt: {
     color: "white",
@@ -234,6 +233,7 @@ export const styles = StyleSheet.create({
     position: "absolute",
     justifyContent: "center",
     alignItems: "center",
+    zIndex: 9999999999999999999,
   },
   cardView: {
     width: "90%",

@@ -79,7 +79,8 @@ export default function TabluApp() {
 
   FetchDatafromDB();
 
-  const pivot4dev = () => {
+  useEffect(() => {
+    // changed from function to useeffect. is not possible to setstate insite setstate function ?
     if (cardsDB !== undefined) {
       if (
         indexOnShuffled ==
@@ -91,8 +92,7 @@ export default function TabluApp() {
         setIndexOnShuffled(0);
       }
     }
-  };
-  pivot4dev();
+  }, [indexOnShuffled]);
 
   const muletillaFunction = () => {
     if (isCheckedMuletillas == false) {
@@ -200,7 +200,12 @@ export default function TabluApp() {
     if (startCounter == false) {
       return (
         <View
-          style={{ width: "100%", height: "100%", alignItems: "center" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            alignItems: "center",
+            zIndex: 9,
+          }}
           key={time}
         >
           <TouchableOpacity
@@ -461,6 +466,7 @@ export default function TabluApp() {
           style={styles.image}
         />
         <View style={styles.mainContainer}>
+          {StopOrCount()}
           <View style={[styles.titleContainer, { top: "8%" }]}>
             <Text
               adjustsFontSizeToFit
@@ -702,7 +708,7 @@ export default function TabluApp() {
                   fontSize: 25,
                   color: "white",
                   position: "absolute",
-                  top: "50%",
+                  bottom: "2%",
                   textShadowColor: "black",
                   textShadowOffset: { width: 1, height: 1 },
                   textShadowRadius: 1,
@@ -740,7 +746,7 @@ export default function TabluApp() {
                   fontSize: 25,
                   color: "white",
                   position: "absolute",
-                  top: "50%",
+                  bottom: "2%",
                   textShadowColor: "black",
                   textShadowOffset: { width: 1, height: 1 },
                   textShadowRadius: 1,
@@ -750,7 +756,7 @@ export default function TabluApp() {
               </Text>
             </View>
           </View>
-          {StopOrCount()}
+
           <TouchableOpacity
             onPress={() => {
               setQuitInGameActive(true);
