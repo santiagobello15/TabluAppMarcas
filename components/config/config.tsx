@@ -65,7 +65,8 @@ function ConfigModal() {
               backgroundColor: "#7b2cbf",
             }}
           >
-            CONFIGURACIÓN
+            {" "}
+            CONFIGURACIÓN{" "}
           </Text>
         </View>
 
@@ -81,6 +82,8 @@ function ConfigModal() {
               Cantidad de rondas
             </Text>
           </View>
+          {/*
+ // @ts-ignore */}
           <Slider
             style={[{ width: 200, height: 40 }, styles.sliderViewRound]}
             minimumValue={1}
@@ -114,6 +117,8 @@ function ConfigModal() {
               Tiempo por ronda
             </Text>
           </View>
+          {/*
+ // @ts-ignore */}
           <Slider
             style={[{ width: 200, height: 40 }, styles.sliderViewTime]}
             minimumValue={5}

@@ -51,7 +51,8 @@ function RulesModal() {
               backgroundColor: "#7b2cbf",
             }}
           >
-            REGLAS
+            {" "}
+            REGLAS{" "}
           </Text>
         </View>
         <View style={styles.subContainer}>

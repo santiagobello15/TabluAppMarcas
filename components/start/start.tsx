@@ -70,7 +70,8 @@ function StartModal() {
               backgroundColor: "#7b2cbf",
             }}
           >
-            COMENZAR
+            {" "}
+            COMENZAR{" "}
           </Text>
         </View>
         <View style={styles.subContainer}>

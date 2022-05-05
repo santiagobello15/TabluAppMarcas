@@ -97,7 +97,8 @@ function QuitInGame() {
                 backgroundColor: "#b97af0",
               }}
             >
-              SE PERDERÁN LOS PROGRESOS
+              {" "}
+              SE PERDERÁN LOS PROGRESOS{" "}
             </Text>
           </View>
         </View>

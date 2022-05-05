@@ -318,7 +318,8 @@ export default function TabluApp() {
                 backgroundColor: "#7b2cbf",
               }}
             >
-              TABLU FAMOSOS
+              {" "}
+              TABLÚ FAMOSOS{" "}
             </Text>
           </View>
 
@@ -510,7 +511,7 @@ export default function TabluApp() {
                 backgroundColor: "#7b2cbf",
               }}
             >
-              TABLU FAMOSOS
+              TABLÚ FAMOSOS
             </Text>
           </View>
           <View style={styles.gamingPad}>
@@ -819,7 +820,12 @@ export default function TabluApp() {
             alignItems: "center",
             backgroundColor: "#0d1117",
           }}
-        ></View>
+        >
+          <Image
+            style={{ resizeMode: "contain", width: "100%", height: "100%" }}
+            source={require("../../assets/splashhh.png")}
+          ></Image>
+        </View>
       );
     } else {
       return (
@@ -840,7 +846,7 @@ export default function TabluApp() {
                 }}
               >
                 {" "}
-                TABLU FAMOSOS{" "}
+                TABLÚ FAMOSOS{" "}
               </Text>
             </View>
             <StatusBar style="auto" />
