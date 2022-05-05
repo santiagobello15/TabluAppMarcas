@@ -20,10 +20,9 @@ export default function App() {
             height: "100%",
             justifyContent: "center",
             alignItems: "center",
+            backgroundColor: "#0d1117",
           }}
-        >
-          <Text style={{ fontSize: 40 }}>Loading...</Text>
-        </View>
+        ></View>
       );
     } else {
       return (

@@ -813,22 +813,13 @@ export default function TabluApp() {
       return (
         <View
           style={{
-            alignItems: "center",
-            justifyContent: "center",
+            width: "100%",
             height: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#0d1117",
           }}
-        >
-          <Text
-            style={{
-              fontSize: 40,
-              fontFamily: "LuckiestGuy",
-
-              color: "black",
-            }}
-          >
-            Cargando
-          </Text>
-        </View>
+        ></View>
       );
     } else {
       return (

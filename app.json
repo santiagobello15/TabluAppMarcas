@@ -2,13 +2,13 @@
   "expo": {
     "name": "Tablu Famosos",
     "slug": "TabluFamosos",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splashyy.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0d1117"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
