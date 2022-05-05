@@ -846,7 +846,7 @@ export default function TabluApp() {
               }}
             >
               {" "}
-              TABLÚ FAMOSOX{" "}
+              TABLÚ FAMOSOS{" "}
             </Text>
           </View>
           <StatusBar style="auto" />
