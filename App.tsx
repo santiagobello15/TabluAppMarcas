@@ -1,7 +1,7 @@
 import GameContext from "./context/AppContext";
 import TabluApp from "./components/game/game";
 import { useFonts } from "expo-font";
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -22,7 +22,12 @@ export default function App() {
             alignItems: "center",
             backgroundColor: "#0d1117",
           }}
-        ></View>
+        >
+          <Image
+            style={{ resizeMode: "contain", width: "100%", height: "100%" }}
+            source={require("./assets/splashhh.png")}
+          ></Image>
+        </View>
       );
     } else {
       return (
