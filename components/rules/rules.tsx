@@ -105,7 +105,8 @@ function RulesModal() {
                 color: "black",
               }}
             >
-              4) Prohibido gritar
+              4) No se permiten mímicas, ni usar otro idioma para decir una
+              palabra restringida
             </Text>
           </View>
         </View>
