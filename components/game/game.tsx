@@ -839,7 +839,8 @@ export default function TabluApp() {
                   backgroundColor: "#7b2cbf",
                 }}
               >
-                TABLU FAMOSOS
+                {" "}
+                TABLU FAMOSOS{" "}
               </Text>
             </View>
             <StatusBar style="auto" />
