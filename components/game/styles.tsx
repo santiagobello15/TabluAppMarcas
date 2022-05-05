@@ -21,14 +21,14 @@ export const styles = StyleSheet.create({
   },
   mainContainer: {
     alignItems: "center",
+    alignSelf: "center",
     backgroundColor: "#fafafa",
     position: "absolute",
     zIndex: 9999,
     top: "5%",
     width: "90%",
     height: "77%",
-    left: "5%",
-    maxWidth: 500,
+    maxWidth: 400,
   },
   titleContainer: {
     alignItems: "center",
