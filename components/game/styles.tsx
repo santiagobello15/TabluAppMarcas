@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
     width: "40%",
     aspectRatio: 2.5,
     position: "absolute",
-    top: "35%",
+    top: "30%",
     elevation: 10,
   },
   btnRules: {
@@ -50,7 +50,7 @@ export const styles = StyleSheet.create({
     width: "40%",
     aspectRatio: 2.5,
     position: "absolute",
-    top: "50%",
+    top: "45%",
     elevation: 10,
   },
   btnStart: {
@@ -59,7 +59,7 @@ export const styles = StyleSheet.create({
     width: "40%",
     aspectRatio: 2.5,
     position: "absolute",
-    top: "65%",
+    top: "60%",
     elevation: 10,
   },
   insideBtnTextView: {
