@@ -18,9 +18,9 @@ export const styles = StyleSheet.create({
     position: "absolute",
     top: "25%",
     width: "80%",
-    height: "50%",
+    aspectRatio: 0.75,
     maxWidth: 400,
-    maxHeight: 703,
+    maxHeight: 500,
   },
   image: {
     flex: 1,

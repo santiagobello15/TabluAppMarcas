@@ -27,9 +27,9 @@ export const styles = StyleSheet.create({
     zIndex: 9999,
     top: "5%",
     width: "90%",
-    height: "77%",
+    aspectRatio: 0.55,
     maxWidth: 450,
-    maxHeight: 792,
+    maxHeight: 700,
   },
   titleContainer: {
     alignItems: "center",
