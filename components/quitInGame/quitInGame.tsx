@@ -86,6 +86,8 @@ function QuitInGame() {
               position: "absolute",
               height: "50%",
               top: "49%",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <Text
