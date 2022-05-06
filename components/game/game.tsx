@@ -4,8 +4,8 @@ import {
   View,
   TouchableOpacity,
   ImageBackground,
-  Animated,
   Image,
+  Dimensions,
 } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import { styles } from "./styles";
@@ -62,6 +62,9 @@ export default function TabluApp() {
     setStartActive,
     setQuitInGameActive,
   } = useContext(Context);
+
+  let deviceWidth = Dimensions.get("window").width;
+  let deviceHeight = Dimensions.get("window").height;
 
   const FetchDatafromDB = async () => {
     if (cardsDB == undefined) {
@@ -208,7 +211,7 @@ export default function TabluApp() {
               adjustsFontSizeToFit
               style={{
                 fontFamily: "MuktaMalarBold",
-                fontSize: 18,
+                fontSize: 16,
                 color: "white",
               }}
             >
@@ -227,7 +230,7 @@ export default function TabluApp() {
               adjustsFontSizeToFit
               style={{
                 fontFamily: "MuktaMalarBold",
-                fontSize: 18,
+                fontSize: 16,
                 color: "white",
               }}
             >
@@ -252,7 +255,7 @@ export default function TabluApp() {
               adjustsFontSizeToFit
               style={{
                 fontFamily: "MuktaMalarBold",
-                fontSize: 18,
+                fontSize: 16,
                 color: "white",
               }}
             >
@@ -511,7 +514,8 @@ export default function TabluApp() {
                 backgroundColor: "#7b2cbf",
               }}
             >
-              TABLÚ FAMOSOS
+              {" "}
+              TABLÚ FAMOSOS{" "}
             </Text>
           </View>
           <View style={styles.gamingPad}>
@@ -688,7 +692,7 @@ export default function TabluApp() {
                   adjustsFontSizeToFit
                   style={{
                     fontFamily: "LuckiestGuy",
-                    fontSize: 18,
+                    fontSize: 15,
                     color: "white",
                   }}
                 >
@@ -810,7 +814,7 @@ export default function TabluApp() {
   };
 
   const preGameView = () => {
-    /* if (cardsDB == undefined) {
+    if (cardsDB == undefined) {
       return (
         <View
           style={{
@@ -827,168 +831,228 @@ export default function TabluApp() {
           ></Image>
         </View>
       );
-    } else { */
-    return (
-      <View style={styles.container}>
-        <ImageBackground
-          source={require("./media/patternpad.png")}
-          style={styles.image}
-        />
-        <View style={styles.mainContainer}>
-          <View style={styles.titleContainer}>
-            <Text
-              adjustsFontSizeToFit
-              style={{
-                fontFamily: "LuckiestGuy",
-                fontSize: 42,
-                color: "white",
-                backgroundColor: "#7b2cbf",
+    } else {
+      return (
+        <View style={styles.container}>
+          <ImageBackground
+            source={require("./media/patternpad.png")}
+            style={styles.image}
+          />
+          <View
+            style={[
+              styles.mainContainer,
+              deviceWidth > 600 ? styles.mainContainerBig : null,
+            ]}
+          >
+            <View style={styles.titleContainer}>
+              <Text
+                adjustsFontSizeToFit
+                style={[
+                  {
+                    fontFamily: "LuckiestGuy",
+                    fontSize: 36,
+                    color: "white",
+                    backgroundColor: "#7b2cbf",
+                  },
+                  deviceWidth > 600 ? { fontSize: 60 } : null,
+                ]}
+              >
+                {" "}
+                TABLÚ FAMOSOS{" "}
+              </Text>
+            </View>
+            <StatusBar style="auto" />
+            <TouchableOpacity
+              onPress={() => {
+                setConfigModalActive(true);
+                setConfigActive(true);
               }}
+              style={styles.btnConfig}
             >
-              {" "}
-              TABLÚ FAMOSOS{" "}
-            </Text>
+              <View style={styles.insideBtnTextView}>
+                <Text
+                  adjustsFontSizeToFit
+                  style={[
+                    {
+                      fontFamily: "MuktaMalar",
+                      fontSize: 18,
+                      color: "white",
+                    },
+                    deviceWidth > 600 ? { fontSize: 26 } : null,
+                  ]}
+                >
+                  Configuración
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setRulesModalActive(true);
+                setRulesActive(true);
+              }}
+              style={styles.btnRules}
+            >
+              <View style={styles.insideBtnTextView}>
+                <Text
+                  adjustsFontSizeToFit
+                  style={[
+                    {
+                      fontFamily: "MuktaMalar",
+                      fontSize: 18,
+                      color: "white",
+                    },
+                    deviceWidth > 600 ? { fontSize: 26 } : null,
+                  ]}
+                >
+                  Reglas
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setStartModalActive(true);
+                setStartActive(true);
+                cardsDB.sort(() => 0.5 - Math.random());
+                setTime(timeGame);
+              }}
+              style={styles.btnStart}
+            >
+              <View style={styles.insideBtnTextView}>
+                <Text
+                  adjustsFontSizeToFit
+                  style={[
+                    {
+                      fontFamily: "MuktaMalar",
+                      fontSize: 18,
+                      color: "white",
+                    },
+                    deviceWidth > 600 ? { fontSize: 26 } : null,
+                  ]}
+                >
+                  Comenzar
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <View style={styles.view1holder}>
+              <View style={styles.view1up}>
+                <Text
+                  adjustsFontSizeToFit
+                  style={[
+                    styles.view1txt,
+                    deviceWidth > 600 ? { fontSize: 20 } : null,
+                  ]}
+                >
+                  Rondas
+                </Text>
+              </View>
+              <View style={styles.view1}>
+                <Text
+                  adjustsFontSizeToFit
+                  style={[
+                    {
+                      fontFamily: "MuktaMalarLight",
+                      color: "#fafafa",
+                      fontSize: 40,
+                    },
+                    deviceWidth > 600 ? { fontSize: 60 } : null,
+                  ]}
+                >
+                  {roundsGame}
+                </Text>
+              </View>
+            </View>
+            <View style={styles.view2holder}>
+              <View style={styles.view2up}>
+                <Text
+                  adjustsFontSizeToFit
+                  style={[
+                    styles.view2txt,
+                    deviceWidth > 600 ? { fontSize: 20 } : null,
+                  ]}
+                >
+                  Tiempo
+                </Text>
+              </View>
+              <View style={styles.view2}>
+                <Text
+                  adjustsFontSizeToFit
+                  style={[
+                    {
+                      fontFamily: "MuktaMalarLight",
+                      color: "#fafafa",
+                      fontSize: 40,
+                    },
+                    deviceWidth > 600 ? { fontSize: 60 } : null,
+                  ]}
+                >
+                  {timeGame}''
+                </Text>
+              </View>
+            </View>
+            <View style={styles.view3holder}>
+              <View style={styles.view3up}>
+                <Text
+                  style={[
+                    styles.view3txt,
+                    deviceWidth > 600 ? { fontSize: 20 } : null,
+                  ]}
+                >
+                  Extra #1
+                </Text>
+              </View>
+              <View style={styles.view3}>
+                <Text
+                  style={[
+                    {
+                      fontFamily: "MuktaMalar",
+                      color: "#fafafa",
+                      fontSize: 10,
+                      paddingLeft: 2,
+                      paddingRight: 2,
+                    },
+                    deviceWidth > 600 ? { fontSize: 15 } : null,
+                  ]}
+                >
+                  {muletillaFunction()}
+                </Text>
+              </View>
+            </View>
+            <View style={styles.view4holder}>
+              <View style={styles.view4up}>
+                <Text
+                  style={[
+                    styles.view4txt,
+                    deviceWidth > 600 ? { fontSize: 20 } : null,
+                  ]}
+                >
+                  Extra #2
+                </Text>
+              </View>
+              <View style={styles.view4}>
+                <Text
+                  style={[
+                    {
+                      fontFamily: "MuktaMalar",
+                      color: "#fafafa",
+                      fontSize: 10,
+                      paddingLeft: 2,
+                      paddingRight: 2,
+                    },
+                    deviceWidth > 600 ? { fontSize: 15 } : null,
+                  ]}
+                >
+                  {insultosFunction()}
+                </Text>
+              </View>
+            </View>
           </View>
-          <StatusBar style="auto" />
-          <TouchableOpacity
-            onPress={() => {
-              setConfigModalActive(true);
-              setConfigActive(true);
-            }}
-            style={styles.btnConfig}
-          >
-            <View style={styles.insideBtnTextView}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalar",
-                  fontSize: 18,
-                  color: "white",
-                }}
-              >
-                Configuración
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              setRulesModalActive(true);
-              setRulesActive(true);
-            }}
-            style={styles.btnRules}
-          >
-            <View style={styles.insideBtnTextView}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalar",
-                  fontSize: 18,
-                  color: "white",
-                }}
-              >
-                Reglas
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              setStartModalActive(true);
-              setStartActive(true);
-              cardsDB.sort(() => 0.5 - Math.random());
-              setTime(timeGame);
-            }}
-            style={styles.btnStart}
-          >
-            <View style={styles.insideBtnTextView}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalar",
-                  fontSize: 18,
-                  color: "white",
-                }}
-              >
-                Comenzar
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <View style={styles.view1holder}>
-            <View style={styles.view1up}>
-              <Text adjustsFontSizeToFit style={styles.view1txt}>
-                Rondas
-              </Text>
-            </View>
-            <View style={styles.view1}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalarLight",
-                  color: "#fafafa",
-                  fontSize: 40,
-                }}
-              >
-                {roundsGame}
-              </Text>
-            </View>
-          </View>
-          <View style={styles.view2holder}>
-            <View style={styles.view2up}>
-              <Text adjustsFontSizeToFit style={styles.view2txt}>
-                Tiempo
-              </Text>
-            </View>
-            <View style={styles.view2}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalarLight",
-                  color: "#fafafa",
-                  fontSize: 40,
-                }}
-              >
-                {timeGame}''
-              </Text>
-            </View>
-          </View>
-          <View style={styles.view3holder}>
-            <View style={styles.view3up}>
-              <Text style={styles.view3txt}>Extra #1</Text>
-            </View>
-            <View style={styles.view3}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalar",
-                  color: "#fafafa",
-                  fontSize: 10,
-                  paddingLeft: 2,
-                  paddingRight: 2,
-                }}
-              >
-                {muletillaFunction()}
-              </Text>
-            </View>
-          </View>
-          <View style={styles.view4holder}>
-            <View style={styles.view4up}>
-              <Text style={styles.view4txt}>Extra #2</Text>
-            </View>
-            <View style={styles.view4}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalar",
-                  color: "#fafafa",
-                  fontSize: 10,
-                  paddingLeft: 2,
-                  paddingRight: 2,
-                }}
-              >
-                {insultosFunction()}
-              </Text>
-            </View>
-          </View>
+          {configModalActive && <ConfigModal />}
+          {rulesModalActive && <RulesModal />}
+          {startModalActive && <StartModal />}
+          {quitInGameModalActive && <QuitInGame />}
         </View>
-        {configModalActive && <ConfigModal />}
-        {rulesModalActive && <RulesModal />}
-        {startModalActive && <StartModal />}
-        {quitInGameModalActive && <QuitInGame />}
-      </View>
-    );
-    /*  } */
+      );
+    }
   };
 
   {
