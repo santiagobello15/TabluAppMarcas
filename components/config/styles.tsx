@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     width: "80%",
     aspectRatio: 0.75,
     maxWidth: 400,
-    maxHeight: 500,
+    maxHeight: 450,
   },
   image: {
     flex: 1,

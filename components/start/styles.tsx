@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     top: "25%",
     width: "80%",
     maxWidth: 400,
-    maxHeight: 500,
+    maxHeight: 450,
     aspectRatio: 0.75,
   },
   image: {
