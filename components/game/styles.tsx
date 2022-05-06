@@ -25,7 +25,6 @@ export const styles = StyleSheet.create({
     backgroundColor: "#fafafa",
     position: "absolute",
     zIndex: 9999,
-    top: "5%",
     width: "90%",
     aspectRatio: 0.55,
     maxWidth: 450,
