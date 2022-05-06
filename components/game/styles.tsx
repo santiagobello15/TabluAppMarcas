@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
     width: "90%",
     height: "77%",
     maxWidth: 450,
-    maxHeight: 925,
+    maxHeight: 792,
   },
   titleContainer: {
     alignItems: "center",

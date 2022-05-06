@@ -810,7 +810,7 @@ export default function TabluApp() {
   };
 
   const preGameView = () => {
-    /*     if (cardsDB == undefined) {
+    if (cardsDB == undefined) {
       return (
         <View
           style={{
@@ -827,168 +827,168 @@ export default function TabluApp() {
           ></Image>
         </View>
       );
-    } else { */
-    return (
-      <View style={styles.container}>
-        <ImageBackground
-          source={require("./media/patternpad.png")}
-          style={styles.image}
-        />
-        <View style={styles.mainContainer}>
-          <View style={styles.titleContainer}>
-            <Text
-              adjustsFontSizeToFit
-              style={{
-                fontFamily: "LuckiestGuy",
-                fontSize: 42,
-                color: "white",
-                backgroundColor: "#7b2cbf",
+    } else {
+      return (
+        <View style={styles.container}>
+          <ImageBackground
+            source={require("./media/patternpad.png")}
+            style={styles.image}
+          />
+          <View style={styles.mainContainer}>
+            <View style={styles.titleContainer}>
+              <Text
+                adjustsFontSizeToFit
+                style={{
+                  fontFamily: "LuckiestGuy",
+                  fontSize: 42,
+                  color: "white",
+                  backgroundColor: "#7b2cbf",
+                }}
+              >
+                {" "}
+                TABLÚ FAMOSOS{" "}
+              </Text>
+            </View>
+            <StatusBar style="auto" />
+            <TouchableOpacity
+              onPress={() => {
+                setConfigModalActive(true);
+                setConfigActive(true);
               }}
+              style={styles.btnConfig}
             >
-              {" "}
-              TABLÚ FAMOSOS{" "}
-            </Text>
-          </View>
-          <StatusBar style="auto" />
-          <TouchableOpacity
-            onPress={() => {
-              setConfigModalActive(true);
-              setConfigActive(true);
-            }}
-            style={styles.btnConfig}
-          >
-            <View style={styles.insideBtnTextView}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalar",
-                  fontSize: 18,
-                  color: "white",
-                }}
-              >
-                Configuración
-              </Text>
+              <View style={styles.insideBtnTextView}>
+                <Text
+                  style={{
+                    fontFamily: "MuktaMalar",
+                    fontSize: 18,
+                    color: "white",
+                  }}
+                >
+                  Configuración
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setRulesModalActive(true);
+                setRulesActive(true);
+              }}
+              style={styles.btnRules}
+            >
+              <View style={styles.insideBtnTextView}>
+                <Text
+                  style={{
+                    fontFamily: "MuktaMalar",
+                    fontSize: 18,
+                    color: "white",
+                  }}
+                >
+                  Reglas
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setStartModalActive(true);
+                setStartActive(true);
+                cardsDB.sort(() => 0.5 - Math.random());
+                setTime(timeGame);
+              }}
+              style={styles.btnStart}
+            >
+              <View style={styles.insideBtnTextView}>
+                <Text
+                  style={{
+                    fontFamily: "MuktaMalar",
+                    fontSize: 18,
+                    color: "white",
+                  }}
+                >
+                  Comenzar
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <View style={styles.view1holder}>
+              <View style={styles.view1up}>
+                <Text adjustsFontSizeToFit style={styles.view1txt}>
+                  Rondas
+                </Text>
+              </View>
+              <View style={styles.view1}>
+                <Text
+                  style={{
+                    fontFamily: "MuktaMalarLight",
+                    color: "#fafafa",
+                    fontSize: 40,
+                  }}
+                >
+                  {roundsGame}
+                </Text>
+              </View>
             </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              setRulesModalActive(true);
-              setRulesActive(true);
-            }}
-            style={styles.btnRules}
-          >
-            <View style={styles.insideBtnTextView}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalar",
-                  fontSize: 18,
-                  color: "white",
-                }}
-              >
-                Reglas
-              </Text>
+            <View style={styles.view2holder}>
+              <View style={styles.view2up}>
+                <Text adjustsFontSizeToFit style={styles.view2txt}>
+                  Tiempo
+                </Text>
+              </View>
+              <View style={styles.view2}>
+                <Text
+                  style={{
+                    fontFamily: "MuktaMalarLight",
+                    color: "#fafafa",
+                    fontSize: 40,
+                  }}
+                >
+                  {timeGame}''
+                </Text>
+              </View>
             </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              setStartModalActive(true);
-              setStartActive(true);
-              cardsDB.sort(() => 0.5 - Math.random());
-              setTime(timeGame);
-            }}
-            style={styles.btnStart}
-          >
-            <View style={styles.insideBtnTextView}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalar",
-                  fontSize: 18,
-                  color: "white",
-                }}
-              >
-                Comenzar
-              </Text>
+            <View style={styles.view3holder}>
+              <View style={styles.view3up}>
+                <Text style={styles.view3txt}>Extra #1</Text>
+              </View>
+              <View style={styles.view3}>
+                <Text
+                  style={{
+                    fontFamily: "MuktaMalar",
+                    color: "#fafafa",
+                    fontSize: 10,
+                    paddingLeft: 2,
+                    paddingRight: 2,
+                  }}
+                >
+                  {muletillaFunction()}
+                </Text>
+              </View>
             </View>
-          </TouchableOpacity>
-          <View style={styles.view1holder}>
-            <View style={styles.view1up}>
-              <Text adjustsFontSizeToFit style={styles.view1txt}>
-                Rondas
-              </Text>
-            </View>
-            <View style={styles.view1}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalarLight",
-                  color: "#fafafa",
-                  fontSize: 40,
-                }}
-              >
-                {roundsGame}
-              </Text>
-            </View>
-          </View>
-          <View style={styles.view2holder}>
-            <View style={styles.view2up}>
-              <Text adjustsFontSizeToFit style={styles.view2txt}>
-                Tiempo
-              </Text>
-            </View>
-            <View style={styles.view2}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalarLight",
-                  color: "#fafafa",
-                  fontSize: 40,
-                }}
-              >
-                {timeGame}''
-              </Text>
-            </View>
-          </View>
-          <View style={styles.view3holder}>
-            <View style={styles.view3up}>
-              <Text style={styles.view3txt}>Extra #1</Text>
-            </View>
-            <View style={styles.view3}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalar",
-                  color: "#fafafa",
-                  fontSize: 10,
-                  paddingLeft: 2,
-                  paddingRight: 2,
-                }}
-              >
-                {muletillaFunction()}
-              </Text>
-            </View>
-          </View>
-          <View style={styles.view4holder}>
-            <View style={styles.view4up}>
-              <Text style={styles.view4txt}>Extra #2</Text>
-            </View>
-            <View style={styles.view4}>
-              <Text
-                style={{
-                  fontFamily: "MuktaMalar",
-                  color: "#fafafa",
-                  fontSize: 10,
-                  paddingLeft: 2,
-                  paddingRight: 2,
-                }}
-              >
-                {insultosFunction()}
-              </Text>
+            <View style={styles.view4holder}>
+              <View style={styles.view4up}>
+                <Text style={styles.view4txt}>Extra #2</Text>
+              </View>
+              <View style={styles.view4}>
+                <Text
+                  style={{
+                    fontFamily: "MuktaMalar",
+                    color: "#fafafa",
+                    fontSize: 10,
+                    paddingLeft: 2,
+                    paddingRight: 2,
+                  }}
+                >
+                  {insultosFunction()}
+                </Text>
+              </View>
             </View>
           </View>
+          {configModalActive && <ConfigModal />}
+          {rulesModalActive && <RulesModal />}
+          {startModalActive && <StartModal />}
+          {quitInGameModalActive && <QuitInGame />}
         </View>
-        {configModalActive && <ConfigModal />}
-        {rulesModalActive && <RulesModal />}
-        {startModalActive && <StartModal />}
-        {quitInGameModalActive && <QuitInGame />}
-      </View>
-    );
-    /*   } */
+      );
+    }
   };
 
   {
