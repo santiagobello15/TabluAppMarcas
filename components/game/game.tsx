@@ -5,11 +5,10 @@ import {
   TouchableOpacity,
   ImageBackground,
   Image,
-  Dimensions,
 } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import { styles } from "./styles";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ConfigModal from "../config/config";
 import RulesModal from "../rules/rules";
 import QuitInGame from "../quitInGame/quitInGame";
@@ -61,10 +60,9 @@ export default function TabluApp() {
     startActive,
     setStartActive,
     setQuitInGameActive,
+    limitWidth,
+    deviceWidth,
   } = useContext(Context);
-
-  let deviceWidth = Dimensions.get("window").width;
-  let deviceHeight = Dimensions.get("window").height;
 
   const FetchDatafromDB = async () => {
     if (cardsDB == undefined) {
@@ -841,7 +839,7 @@ export default function TabluApp() {
           <View
             style={[
               styles.mainContainer,
-              deviceWidth > 600 ? styles.mainContainerBig : null,
+              deviceWidth > limitWidth ? styles.mainContainerBig : null,
             ]}
           >
             <View style={styles.titleContainer}>
@@ -854,7 +852,7 @@ export default function TabluApp() {
                     color: "white",
                     backgroundColor: "#7b2cbf",
                   },
-                  deviceWidth > 600 ? { fontSize: 60 } : null,
+                  deviceWidth > limitWidth ? { fontSize: 60 } : null,
                 ]}
               >
                 {" "}
@@ -878,7 +876,7 @@ export default function TabluApp() {
                       fontSize: 18,
                       color: "white",
                     },
-                    deviceWidth > 600 ? { fontSize: 26 } : null,
+                    deviceWidth > limitWidth ? { fontSize: 26 } : null,
                   ]}
                 >
                   Configuración
@@ -901,7 +899,7 @@ export default function TabluApp() {
                       fontSize: 18,
                       color: "white",
                     },
-                    deviceWidth > 600 ? { fontSize: 26 } : null,
+                    deviceWidth > limitWidth ? { fontSize: 26 } : null,
                   ]}
                 >
                   Reglas
@@ -926,7 +924,7 @@ export default function TabluApp() {
                       fontSize: 18,
                       color: "white",
                     },
-                    deviceWidth > 600 ? { fontSize: 26 } : null,
+                    deviceWidth > limitWidth ? { fontSize: 26 } : null,
                   ]}
                 >
                   Comenzar
@@ -939,7 +937,7 @@ export default function TabluApp() {
                   adjustsFontSizeToFit
                   style={[
                     styles.view1txt,
-                    deviceWidth > 600 ? { fontSize: 20 } : null,
+                    deviceWidth > limitWidth ? { fontSize: 20 } : null,
                   ]}
                 >
                   Rondas
@@ -954,7 +952,7 @@ export default function TabluApp() {
                       color: "#fafafa",
                       fontSize: 40,
                     },
-                    deviceWidth > 600 ? { fontSize: 60 } : null,
+                    deviceWidth > limitWidth ? { fontSize: 60 } : null,
                   ]}
                 >
                   {roundsGame}
@@ -967,7 +965,7 @@ export default function TabluApp() {
                   adjustsFontSizeToFit
                   style={[
                     styles.view2txt,
-                    deviceWidth > 600 ? { fontSize: 20 } : null,
+                    deviceWidth > limitWidth ? { fontSize: 20 } : null,
                   ]}
                 >
                   Tiempo
@@ -982,7 +980,7 @@ export default function TabluApp() {
                       color: "#fafafa",
                       fontSize: 40,
                     },
-                    deviceWidth > 600 ? { fontSize: 60 } : null,
+                    deviceWidth > limitWidth ? { fontSize: 60 } : null,
                   ]}
                 >
                   {timeGame}''
@@ -994,7 +992,7 @@ export default function TabluApp() {
                 <Text
                   style={[
                     styles.view3txt,
-                    deviceWidth > 600 ? { fontSize: 20 } : null,
+                    deviceWidth > limitWidth ? { fontSize: 20 } : null,
                   ]}
                 >
                   Extra #1
@@ -1010,7 +1008,7 @@ export default function TabluApp() {
                       paddingLeft: 2,
                       paddingRight: 2,
                     },
-                    deviceWidth > 600 ? { fontSize: 15 } : null,
+                    deviceWidth > limitWidth ? { fontSize: 15 } : null,
                   ]}
                 >
                   {muletillaFunction()}
@@ -1022,7 +1020,7 @@ export default function TabluApp() {
                 <Text
                   style={[
                     styles.view4txt,
-                    deviceWidth > 600 ? { fontSize: 20 } : null,
+                    deviceWidth > limitWidth ? { fontSize: 20 } : null,
                   ]}
                 >
                   Extra #2
@@ -1038,7 +1036,7 @@ export default function TabluApp() {
                       paddingLeft: 2,
                       paddingRight: 2,
                     },
-                    deviceWidth > 600 ? { fontSize: 15 } : null,
+                    deviceWidth > limitWidth ? { fontSize: 15 } : null,
                   ]}
                 >
                   {insultosFunction()}
@@ -1046,6 +1044,7 @@ export default function TabluApp() {
               </View>
             </View>
           </View>
+
           {configModalActive && <ConfigModal />}
           {rulesModalActive && <RulesModal />}
           {startModalActive && <StartModal />}

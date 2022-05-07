@@ -25,6 +25,8 @@ function ConfigModal() {
     setCheckedInsultos,
     configActive,
     setConfigActive,
+    limitWidth,
+    deviceWidth,
   } = useContext<any>(Context);
 
   const modalValue = useRef(new Animated.Value(0)).current;
@@ -51,19 +53,28 @@ function ConfigModal() {
 
   return (
     <View style={styles.overlayModal}>
-      <Animated.View style={[styles.mainModal, { opacity: modalValue }]}>
+      <Animated.View
+        style={[
+          styles.mainModal,
+          { opacity: modalValue },
+          deviceWidth > limitWidth ? styles.mainModalBig : null,
+        ]}
+      >
         <ImageBackground
           source={require("./media/patternpad.png")}
           style={styles.image}
         />
         <View style={styles.titleContainer}>
           <Text
-            style={{
-              fontFamily: "LuckiestGuy",
-              fontSize: 28,
-              color: "white",
-              backgroundColor: "#7b2cbf",
-            }}
+            style={[
+              {
+                fontFamily: "LuckiestGuy",
+                fontSize: 28,
+                color: "white",
+                backgroundColor: "#7b2cbf",
+              },
+              deviceWidth > limitWidth ? { fontSize: 40 } : null,
+            ]}
           >
             {" "}
             CONFIGURACIÓN{" "}
@@ -73,11 +84,14 @@ function ConfigModal() {
         <View style={styles.subContainer}>
           <View style={styles.roundsTitle}>
             <Text
-              style={{
-                fontFamily: "MuktaMalar",
-                fontSize: 15,
-                color: "black",
-              }}
+              style={[
+                {
+                  fontFamily: "MuktaMalar",
+                  fontSize: 15,
+                  color: "black",
+                },
+                deviceWidth > limitWidth ? { fontSize: 22 } : null,
+              ]}
             >
               Cantidad de rondas
             </Text>
@@ -97,22 +111,28 @@ function ConfigModal() {
           />
           <View style={styles.roundsCounter}>
             <Text
-              style={{
-                fontFamily: "MuktaMalar",
-                fontSize: 20,
-                color: "black",
-              }}
+              style={[
+                {
+                  fontFamily: "MuktaMalar",
+                  fontSize: 20,
+                  color: "black",
+                },
+                deviceWidth > limitWidth ? { fontSize: 25 } : null,
+              ]}
             >
               {roundsGame}
             </Text>
           </View>
           <View style={styles.timeTitle}>
             <Text
-              style={{
-                fontFamily: "MuktaMalar",
-                fontSize: 15,
-                color: "black",
-              }}
+              style={[
+                {
+                  fontFamily: "MuktaMalar",
+                  fontSize: 15,
+                  color: "black",
+                },
+                deviceWidth > limitWidth ? { fontSize: 22 } : null,
+              ]}
             >
               Tiempo por ronda
             </Text>
@@ -132,11 +152,14 @@ function ConfigModal() {
           />
           <View style={styles.timeCounter}>
             <Text
-              style={{
-                fontFamily: "MuktaMalar",
-                fontSize: 20,
-                color: "black",
-              }}
+              style={[
+                {
+                  fontFamily: "MuktaMalar",
+                  fontSize: 20,
+                  color: "black",
+                },
+                deviceWidth > limitWidth ? { fontSize: 25 } : null,
+              ]}
             >
               {timeGame}
             </Text>
@@ -148,7 +171,12 @@ function ConfigModal() {
               onValueChange={setCheckedMuletillas}
               color={isCheckedMuletillas ? "#8b6ad8" : undefined}
             />
-            <Text style={styles.checkboxContainerMuletillasTxt}>
+            <Text
+              style={[
+                styles.checkboxContainerMuletillasTxt,
+                deviceWidth > limitWidth ? { fontSize: 20 } : null,
+              ]}
+            >
               Sin Muletillas
             </Text>
           </View>
@@ -159,7 +187,12 @@ function ConfigModal() {
               onValueChange={setCheckedInsultos}
               color={isCheckedInsultos ? "#8b6ad8" : undefined}
             />
-            <Text style={styles.checkboxContainerInsultosTxt}>
+            <Text
+              style={[
+                styles.checkboxContainerInsultosTxt,
+                deviceWidth > limitWidth ? { fontSize: 20 } : null,
+              ]}
+            >
               Sin Insultos
             </Text>
           </View>

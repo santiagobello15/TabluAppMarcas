@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 export const Context = createContext({} as ContextState);
+import { Dimensions } from "react-native";
 
 interface ContextState {
   configModalActive: boolean | null;
@@ -58,6 +59,8 @@ interface ContextState {
   setStartActive: any | null;
   quitInGameActive: boolean | null;
   setQuitInGameActive: any | null;
+  deviceWidth: number | null;
+  limitWidth: number | null;
 }
 const GameContext = ({ children }: any) => {
   const [configModalActive, setConfigModalActive] = useState(false);
@@ -88,6 +91,9 @@ const GameContext = ({ children }: any) => {
   const [configActive, setConfigActive] = useState(false);
   const [startActive, setStartActive] = useState(false);
   const [quitInGameActive, setQuitInGameActive] = useState(false);
+
+  let deviceWidth = Dimensions.get("window").height;
+  const limitWidth = 600;
 
   return (
     <Context.Provider
@@ -148,6 +154,8 @@ const GameContext = ({ children }: any) => {
         setStartActive,
         quitInGameActive,
         setQuitInGameActive,
+        limitWidth,
+        deviceWidth,
       }}
     >
       {children}

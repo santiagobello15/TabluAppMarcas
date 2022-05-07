@@ -22,8 +22,17 @@ export const styles = StyleSheet.create({
     maxWidth: 400,
     maxHeight: 450,
   },
+  mainModalBig: {
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    top: "25%",
+    width: "80%",
+    aspectRatio: 0.75,
+    maxWidth: 500,
+    maxHeight: 562,
+  },
   image: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     width: "100%",

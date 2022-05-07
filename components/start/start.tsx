@@ -23,6 +23,8 @@ function StartModal() {
     setGameState,
     startActive,
     setStartActive,
+    limitWidth,
+    deviceWidth,
   } = useContext<any>(Context);
 
   const CardColorRed = "rgb(191, 39, 211)";
@@ -56,19 +58,28 @@ function StartModal() {
     <View
       style={[styles.overlayModal, { minHeight: Math.round(windowHeight) }]}
     >
-      <Animated.View style={[styles.mainModal, { opacity: modalValue }]}>
+      <Animated.View
+        style={[
+          styles.mainModal,
+          { opacity: modalValue },
+          deviceWidth > limitWidth ? styles.mainModalBig : null,
+        ]}
+      >
         <ImageBackground
           source={require("./media/patternpad.png")}
           style={styles.image}
         />
         <View style={styles.titleContainer}>
           <Text
-            style={{
-              fontFamily: "LuckiestGuy",
-              fontSize: 28,
-              color: "white",
-              backgroundColor: "#7b2cbf",
-            }}
+            style={[
+              {
+                fontFamily: "LuckiestGuy",
+                fontSize: 28,
+                color: "white",
+                backgroundColor: "#7b2cbf",
+              },
+              deviceWidth > limitWidth ? { fontSize: 40 } : null,
+            ]}
           >
             {" "}
             COMENZAR{" "}
@@ -80,7 +91,10 @@ function StartModal() {
               textAlign={"center"}
               maxLength={15}
               placeholderTextColor="#eeeeeede"
-              style={styles.input}
+              style={[
+                styles.input,
+                deviceWidth > limitWidth ? { fontSize: 22 } : null,
+              ]}
               onChangeText={setTeamOneName}
               placeholder="Team 1..."
             />
@@ -116,7 +130,10 @@ function StartModal() {
               maxLength={15}
               textAlign={"center"}
               placeholderTextColor="#eeeeeede"
-              style={styles.input}
+              style={[
+                styles.input,
+                deviceWidth > limitWidth ? { fontSize: 22 } : null,
+              ]}
               onChangeText={setTeamTwoName}
               placeholder="Team 2..."
             />
@@ -156,16 +173,19 @@ function StartModal() {
             }}
           >
             <Text
-              style={{
-                fontFamily: "LuckiestGuy",
-                fontSize: 20,
-                color: "white",
-                textShadowColor: "black",
-                textShadowRadius: 1,
-                textShadowOffset: { width: 1.2, height: 1 },
-                paddingLeft: 5,
-                paddingRight: 5,
-              }}
+              style={[
+                {
+                  fontFamily: "LuckiestGuy",
+                  fontSize: 20,
+                  color: "white",
+                  textShadowColor: "black",
+                  textShadowRadius: 1,
+                  textShadowOffset: { width: 1.2, height: 1 },
+                  paddingLeft: 5,
+                  paddingRight: 5,
+                },
+                deviceWidth > limitWidth ? { fontSize: 30 } : null,
+              ]}
             >
               JUGAR
             </Text>
