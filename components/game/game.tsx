@@ -207,11 +207,14 @@ export default function TabluApp() {
           >
             <Text
               adjustsFontSizeToFit
-              style={{
-                fontFamily: "MuktaMalarBold",
-                fontSize: 16,
-                color: "white",
-              }}
+              style={[
+                {
+                  fontFamily: "MuktaMalarBold",
+                  fontSize: 16,
+                  color: "white",
+                },
+                deviceWidth > limitWidth ? { fontSize: 25 } : null,
+              ]}
             >
               Iniciar
             </Text>
@@ -226,11 +229,14 @@ export default function TabluApp() {
           >
             <Text
               adjustsFontSizeToFit
-              style={{
-                fontFamily: "MuktaMalarBold",
-                fontSize: 16,
-                color: "white",
-              }}
+              style={[
+                {
+                  fontFamily: "MuktaMalarBold",
+                  fontSize: 16,
+                  color: "white",
+                },
+                deviceWidth > limitWidth ? { fontSize: 25 } : null,
+              ]}
             >
               Reiniciar
             </Text>
@@ -251,11 +257,14 @@ export default function TabluApp() {
           >
             <Text
               adjustsFontSizeToFit
-              style={{
-                fontFamily: "MuktaMalarBold",
-                fontSize: 16,
-                color: "white",
-              }}
+              style={[
+                {
+                  fontFamily: "MuktaMalarBold",
+                  fontSize: 16,
+                  color: "white",
+                },
+                deviceWidth > limitWidth ? { fontSize: 25 } : null,
+              ]}
             >
               Pausar
             </Text>
@@ -308,16 +317,24 @@ export default function TabluApp() {
           source={require("./media/patternpad.png")}
           style={styles.image}
         />
-        <View style={styles.mainContainer}>
+        <View
+          style={[
+            styles.mainContainer,
+            deviceWidth > limitWidth ? styles.mainContainerBig : null,
+          ]}
+        >
           <View style={[styles.titleContainer, { top: "8%" }]}>
             <Text
               adjustsFontSizeToFit
-              style={{
-                fontFamily: "LuckiestGuy",
-                fontSize: 30,
-                color: "white",
-                backgroundColor: "#7b2cbf",
-              }}
+              style={[
+                {
+                  fontFamily: "LuckiestGuy",
+                  fontSize: 30,
+                  color: "white",
+                  backgroundColor: "#7b2cbf",
+                },
+                deviceWidth > limitWidth ? { fontSize: 40 } : null,
+              ]}
             >
               {" "}
               TABLÚ FAMOSOS{" "}
@@ -327,15 +344,18 @@ export default function TabluApp() {
           <View style={[styles.turnToTeam, { top: "40%", width: "90%" }]}>
             <Text
               adjustsFontSizeToFit
-              style={{
-                fontFamily: "LuckiestGuy",
-                fontSize: 22,
-                color: "white",
-                backgroundColor: "#7b2cbf",
-                textShadowColor: "black",
-                textShadowOffset: { width: 1, height: 1 },
-                textShadowRadius: 1,
-              }}
+              style={[
+                {
+                  fontFamily: "LuckiestGuy",
+                  fontSize: 22,
+                  color: "white",
+                  backgroundColor: "#7b2cbf",
+                  textShadowColor: "black",
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 1,
+                },
+                deviceWidth > limitWidth ? { fontSize: 35 } : null,
+              ]}
             >
               <View>
                 <Text>{"  "}</Text>
@@ -349,15 +369,18 @@ export default function TabluApp() {
           <View style={[styles.turnToTeam, { top: "50%", width: "90%" }]}>
             <Text
               adjustsFontSizeToFit
-              style={{
-                fontFamily: "LuckiestGuy",
-                fontSize: 20,
-                backgroundColor: "#7b2cbf",
-                color: "white",
-                textShadowColor: "black",
-                textShadowOffset: { width: 1, height: 1 },
-                textShadowRadius: 1,
-              }}
+              style={[
+                {
+                  fontFamily: "LuckiestGuy",
+                  fontSize: 20,
+                  backgroundColor: "#7b2cbf",
+                  color: "white",
+                  textShadowColor: "black",
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 1,
+                },
+                deviceWidth > limitWidth ? { fontSize: 30 } : null,
+              ]}
             >
               <View>
                 <Text>{"  "}</Text>
@@ -407,7 +430,14 @@ export default function TabluApp() {
             }}
             style={styles.closeBtn}
           >
-            <Text style={styles.closeBtnTxt}>X</Text>
+            <Text
+              style={[
+                styles.closeBtnTxt,
+                deviceWidth > limitWidth ? { fontSize: 25 } : null,
+              ]}
+            >
+              X
+            </Text>
           </TouchableOpacity>
           <View style={[styles.gamingPadFooter, { bottom: "18%" }]}>
             <View
@@ -418,31 +448,37 @@ export default function TabluApp() {
             >
               <Text
                 adjustsFontSizeToFit
-                style={{
-                  fontFamily: "MuktaMalarBold",
-                  fontSize: 18,
-                  color: "white",
-                  position: "absolute",
-                  top: "17%",
-                  textShadowColor: "black",
-                  textShadowOffset: { width: 1, height: 1 },
-                  textShadowRadius: 1,
-                }}
+                style={[
+                  {
+                    fontFamily: "MuktaMalarBold",
+                    fontSize: 18,
+                    color: "white",
+                    position: "absolute",
+                    top: "17%",
+                    textShadowColor: "black",
+                    textShadowOffset: { width: 1, height: 1 },
+                    textShadowRadius: 1,
+                  },
+                  deviceWidth > limitWidth ? { fontSize: 25 } : null,
+                ]}
               >
                 {teamOneName}
               </Text>
               <Text
                 adjustsFontSizeToFit
-                style={{
-                  fontFamily: "MuktaMalarBold",
-                  fontSize: 25,
-                  color: "white",
-                  position: "absolute",
-                  bottom: "2%",
-                  textShadowColor: "black",
-                  textShadowOffset: { width: 1, height: 1 },
-                  textShadowRadius: 1,
-                }}
+                style={[
+                  {
+                    fontFamily: "MuktaMalarBold",
+                    fontSize: 25,
+                    color: "white",
+                    position: "absolute",
+                    bottom: "2%",
+                    textShadowColor: "black",
+                    textShadowOffset: { width: 1, height: 1 },
+                    textShadowRadius: 1,
+                  },
+                  deviceWidth > limitWidth ? { fontSize: 35 } : null,
+                ]}
               >
                 {pointsTeamOne}
               </Text>
@@ -456,31 +492,37 @@ export default function TabluApp() {
             >
               <Text
                 adjustsFontSizeToFit
-                style={{
-                  fontFamily: "MuktaMalarBold",
-                  fontSize: 18,
-                  color: "white",
-                  position: "absolute",
-                  top: "17%",
-                  textShadowColor: "black",
-                  textShadowOffset: { width: 1, height: 1 },
-                  textShadowRadius: 1,
-                }}
+                style={[
+                  {
+                    fontFamily: "MuktaMalarBold",
+                    fontSize: 18,
+                    color: "white",
+                    position: "absolute",
+                    top: "17%",
+                    textShadowColor: "black",
+                    textShadowOffset: { width: 1, height: 1 },
+                    textShadowRadius: 1,
+                  },
+                  deviceWidth > limitWidth ? { fontSize: 25 } : null,
+                ]}
               >
                 {teamTwoName}
               </Text>
               <Text
                 adjustsFontSizeToFit
-                style={{
-                  fontFamily: "MuktaMalarBold",
-                  fontSize: 25,
-                  color: "white",
-                  position: "absolute",
-                  bottom: "2%",
-                  textShadowColor: "black",
-                  textShadowOffset: { width: 1, height: 1 },
-                  textShadowRadius: 1,
-                }}
+                style={[
+                  {
+                    fontFamily: "MuktaMalarBold",
+                    fontSize: 25,
+                    color: "white",
+                    position: "absolute",
+                    bottom: "2%",
+                    textShadowColor: "black",
+                    textShadowOffset: { width: 1, height: 1 },
+                    textShadowRadius: 1,
+                  },
+                  deviceWidth > limitWidth ? { fontSize: 35 } : null,
+                ]}
               >
                 {pointsTeamTwo}
               </Text>
@@ -500,17 +542,25 @@ export default function TabluApp() {
           source={require("./media/patternpad.png")}
           style={styles.image}
         />
-        <View style={styles.mainContainer}>
+        <View
+          style={[
+            styles.mainContainer,
+            deviceWidth > limitWidth ? styles.mainContainerBig : null,
+          ]}
+        >
           {StopOrCount()}
           <View style={[styles.titleContainer, { top: "8%" }]}>
             <Text
               adjustsFontSizeToFit
-              style={{
-                fontFamily: "LuckiestGuy",
-                fontSize: 30,
-                color: "white",
-                backgroundColor: "#7b2cbf",
-              }}
+              style={[
+                {
+                  fontFamily: "LuckiestGuy",
+                  fontSize: 30,
+                  color: "white",
+                  backgroundColor: "#7b2cbf",
+                },
+                deviceWidth > limitWidth ? { fontSize: 40 } : null,
+              ]}
             >
               {" "}
               TABLÚ FAMOSOS{" "}
@@ -520,36 +570,45 @@ export default function TabluApp() {
             <View style={styles.gamingPadLeft}>
               <Text
                 adjustsFontSizeToFit
-                style={{
-                  fontFamily: "LuckiestGuy",
-                  fontSize: 17,
-                  color: "black",
-                  position: "absolute",
-                  top: "22%",
-                }}
+                style={[
+                  {
+                    fontFamily: "LuckiestGuy",
+                    fontSize: 17,
+                    color: "black",
+                    position: "absolute",
+                    top: "22%",
+                  },
+                  deviceWidth > limitWidth ? { fontSize: 27 } : null,
+                ]}
               >
                 Ronda:
               </Text>
               <Text
                 adjustsFontSizeToFit
-                style={{
-                  fontFamily: "LuckiestGuy",
-                  fontSize: 18,
-                  color: "black",
-                  position: "absolute",
-                  top: "30%",
-                }}
+                style={[
+                  {
+                    fontFamily: "LuckiestGuy",
+                    fontSize: 18,
+                    color: "black",
+                    position: "absolute",
+                    top: "30%",
+                  },
+                  deviceWidth > limitWidth ? { fontSize: 28 } : null,
+                ]}
               >
                 {currentRound}/{roundsGame}
               </Text>
               <View style={styles.gamingCounter}>
                 <Text
                   adjustsFontSizeToFit
-                  style={{
-                    fontFamily: "LuckiestGuy",
-                    fontSize: 32,
-                    color: "white",
-                  }}
+                  style={[
+                    {
+                      fontFamily: "LuckiestGuy",
+                      fontSize: 32,
+                      color: "white",
+                    },
+                    deviceWidth > limitWidth ? { fontSize: 45 } : null,
+                  ]}
                 >
                   {time}
                 </Text>
@@ -559,7 +618,11 @@ export default function TabluApp() {
               <View style={styles.cardView}>
                 <Text
                   adjustsFontSizeToFit
-                  style={[styles.cardName, { top: "5%", position: "absolute" }]}
+                  style={[
+                    styles.cardName,
+                    { top: "5%", position: "absolute" },
+                    deviceWidth > limitWidth ? { fontSize: 28 } : null,
+                  ]}
                 >
                   {cardsDB[indexOnShuffled].firstname}
                 </Text>
@@ -568,6 +631,7 @@ export default function TabluApp() {
                   style={[
                     styles.cardName,
                     { top: "17%", position: "absolute" },
+                    deviceWidth > limitWidth ? { fontSize: 28 } : null,
                   ]}
                 >
                   {cardsDB[indexOnShuffled].lastname}
@@ -577,6 +641,7 @@ export default function TabluApp() {
                   style={[
                     styles.cardWord,
                     { top: "33%", position: "absolute" },
+                    deviceWidth > limitWidth ? { fontSize: 20 } : null,
                   ]}
                 >
                   {cardsDB[indexOnShuffled].word1}
@@ -586,6 +651,7 @@ export default function TabluApp() {
                   style={[
                     styles.cardWord,
                     { top: "43%", position: "absolute" },
+                    deviceWidth > limitWidth ? { fontSize: 20 } : null,
                   ]}
                 >
                   {cardsDB[indexOnShuffled].word2}
@@ -595,6 +661,7 @@ export default function TabluApp() {
                   style={[
                     styles.cardWord,
                     { top: "53%", position: "absolute" },
+                    deviceWidth > limitWidth ? { fontSize: 20 } : null,
                   ]}
                 >
                   {cardsDB[indexOnShuffled].word3}
@@ -604,6 +671,7 @@ export default function TabluApp() {
                   style={[
                     styles.cardWord,
                     { top: "63%", position: "absolute" },
+                    deviceWidth > limitWidth ? { fontSize: 20 } : null,
                   ]}
                 >
                   {cardsDB[indexOnShuffled].word4}
@@ -613,6 +681,7 @@ export default function TabluApp() {
                   style={[
                     styles.cardWord,
                     { top: "73%", position: "absolute" },
+                    deviceWidth > limitWidth ? { fontSize: 20 } : null,
                   ]}
                 >
                   {cardsDB[indexOnShuffled].word5}
@@ -622,6 +691,7 @@ export default function TabluApp() {
                   style={[
                     styles.cardWord,
                     { top: "83%", position: "absolute" },
+                    deviceWidth > limitWidth ? { fontSize: 20 } : null,
                   ]}
                 >
                   {cardsDB[indexOnShuffled].word6}
@@ -643,11 +713,14 @@ export default function TabluApp() {
               >
                 <Text
                   adjustsFontSizeToFit
-                  style={{
-                    fontFamily: "LuckiestGuy",
-                    fontSize: 25,
-                    color: "white",
-                  }}
+                  style={[
+                    {
+                      fontFamily: "LuckiestGuy",
+                      fontSize: 25,
+                      color: "white",
+                    },
+                    deviceWidth > limitWidth ? { fontSize: 36 } : null,
+                  ]}
                 >
                   +1
                 </Text>
@@ -665,11 +738,14 @@ export default function TabluApp() {
               >
                 <Text
                   adjustsFontSizeToFit
-                  style={{
-                    fontFamily: "LuckiestGuy",
-                    fontSize: 25,
-                    color: "white",
-                  }}
+                  style={[
+                    {
+                      fontFamily: "LuckiestGuy",
+                      fontSize: 25,
+                      color: "white",
+                    },
+                    deviceWidth > limitWidth ? { fontSize: 36 } : null,
+                  ]}
                 >
                   -1
                 </Text>
@@ -688,11 +764,14 @@ export default function TabluApp() {
               >
                 <Text
                   adjustsFontSizeToFit
-                  style={{
-                    fontFamily: "LuckiestGuy",
-                    fontSize: 15,
-                    color: "white",
-                  }}
+                  style={[
+                    {
+                      fontFamily: "LuckiestGuy",
+                      fontSize: 15,
+                      color: "white",
+                    },
+                    deviceWidth > limitWidth ? { fontSize: 26 } : null,
+                  ]}
                 >
                   Pasar
                 </Text>
@@ -702,14 +781,17 @@ export default function TabluApp() {
           <View style={styles.turnToTeam}>
             <Text
               adjustsFontSizeToFit
-              style={{
-                fontFamily: "LuckiestGuy",
-                fontSize: 18,
-                color: "#7b2cbf",
-                textShadowColor: "black",
-                textShadowOffset: { width: 1, height: 1 },
-                textShadowRadius: 1,
-              }}
+              style={[
+                {
+                  fontFamily: "LuckiestGuy",
+                  fontSize: 18,
+                  color: "#7b2cbf",
+                  textShadowColor: "black",
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 1,
+                },
+                deviceWidth > limitWidth ? { fontSize: 25 } : null,
+              ]}
             >
               Turno del equipo:
               {teamTurn()}
@@ -724,31 +806,37 @@ export default function TabluApp() {
             >
               <Text
                 adjustsFontSizeToFit
-                style={{
-                  fontFamily: "MuktaMalarBold",
-                  fontSize: 18,
-                  color: "white",
-                  position: "absolute",
-                  top: "17%",
-                  textShadowColor: "black",
-                  textShadowOffset: { width: 1, height: 1 },
-                  textShadowRadius: 1,
-                }}
+                style={[
+                  {
+                    fontFamily: "MuktaMalarBold",
+                    fontSize: 18,
+                    color: "white",
+                    position: "absolute",
+                    top: "17%",
+                    textShadowColor: "black",
+                    textShadowOffset: { width: 1, height: 1 },
+                    textShadowRadius: 1,
+                  },
+                  deviceWidth > limitWidth ? { fontSize: 25 } : null,
+                ]}
               >
                 {teamOneName}
               </Text>
               <Text
                 adjustsFontSizeToFit
-                style={{
-                  fontFamily: "MuktaMalarBold",
-                  fontSize: 25,
-                  color: "white",
-                  position: "absolute",
-                  bottom: "2%",
-                  textShadowColor: "black",
-                  textShadowOffset: { width: 1, height: 1 },
-                  textShadowRadius: 1,
-                }}
+                style={[
+                  {
+                    fontFamily: "MuktaMalarBold",
+                    fontSize: 25,
+                    color: "white",
+                    position: "absolute",
+                    bottom: "2%",
+                    textShadowColor: "black",
+                    textShadowOffset: { width: 1, height: 1 },
+                    textShadowRadius: 1,
+                  },
+                  deviceWidth > limitWidth ? { fontSize: 35 } : null,
+                ]}
               >
                 {pointsTeamOne}
               </Text>
@@ -762,31 +850,37 @@ export default function TabluApp() {
             >
               <Text
                 adjustsFontSizeToFit
-                style={{
-                  fontFamily: "MuktaMalarBold",
-                  fontSize: 18,
-                  color: "white",
-                  position: "absolute",
-                  top: "17%",
-                  textShadowColor: "black",
-                  textShadowOffset: { width: 1, height: 1 },
-                  textShadowRadius: 1,
-                }}
+                style={[
+                  {
+                    fontFamily: "MuktaMalarBold",
+                    fontSize: 18,
+                    color: "white",
+                    position: "absolute",
+                    top: "17%",
+                    textShadowColor: "black",
+                    textShadowOffset: { width: 1, height: 1 },
+                    textShadowRadius: 1,
+                  },
+                  deviceWidth > limitWidth ? { fontSize: 25 } : null,
+                ]}
               >
                 {teamTwoName}
               </Text>
               <Text
                 adjustsFontSizeToFit
-                style={{
-                  fontFamily: "MuktaMalarBold",
-                  fontSize: 25,
-                  color: "white",
-                  position: "absolute",
-                  bottom: "2%",
-                  textShadowColor: "black",
-                  textShadowOffset: { width: 1, height: 1 },
-                  textShadowRadius: 1,
-                }}
+                style={[
+                  {
+                    fontFamily: "MuktaMalarBold",
+                    fontSize: 25,
+                    color: "white",
+                    position: "absolute",
+                    bottom: "2%",
+                    textShadowColor: "black",
+                    textShadowOffset: { width: 1, height: 1 },
+                    textShadowRadius: 1,
+                  },
+                  deviceWidth > limitWidth ? { fontSize: 35 } : null,
+                ]}
               >
                 {pointsTeamTwo}
               </Text>
@@ -801,7 +895,14 @@ export default function TabluApp() {
             }}
             style={styles.closeBtn}
           >
-            <Text style={styles.closeBtnTxt}>X</Text>
+            <Text
+              style={[
+                styles.closeBtnTxt,
+                deviceWidth > limitWidth ? { fontSize: 25 } : null,
+              ]}
+            >
+              X
+            </Text>
           </TouchableOpacity>
         </View>
 

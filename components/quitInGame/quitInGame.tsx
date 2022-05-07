@@ -27,6 +27,8 @@ function QuitInGame() {
     setTeamOneColor,
     quitInGameActive,
     setQuitInGameActive,
+    limitWidth,
+    deviceWidth,
   } = useContext<any>(Context);
 
   const modalValue = useRef(new Animated.Value(0)).current;
@@ -53,7 +55,13 @@ function QuitInGame() {
 
   return (
     <View style={styles.overlayModal}>
-      <Animated.View style={[styles.mainModal, { opacity: modalValue }]}>
+      <Animated.View
+        style={[
+          styles.mainModal,
+          { opacity: modalValue },
+          deviceWidth > limitWidth ? styles.mainModalBig : null,
+        ]}
+      >
         <ImageBackground
           source={require("./media/patternpad.png")}
           style={styles.image}
@@ -71,11 +79,14 @@ function QuitInGame() {
           >
             <Text
               adjustsFontSizeToFit
-              style={{
-                fontFamily: "LuckiestGuy",
-                fontSize: 20,
-                color: "white",
-              }}
+              style={[
+                {
+                  fontFamily: "LuckiestGuy",
+                  fontSize: 20,
+                  color: "white",
+                },
+                deviceWidth > limitWidth ? { fontSize: 30 } : null,
+              ]}
             >
               ¿SEGURO DESEAS SALIR?
             </Text>
@@ -92,12 +103,15 @@ function QuitInGame() {
           >
             <Text
               adjustsFontSizeToFit
-              style={{
-                fontFamily: "LuckiestGuy",
-                fontSize: 20,
-                color: "white",
-                backgroundColor: "#b97af0",
-              }}
+              style={[
+                {
+                  fontFamily: "LuckiestGuy",
+                  fontSize: 20,
+                  color: "white",
+                  backgroundColor: "#b97af0",
+                },
+                deviceWidth > limitWidth ? { fontSize: 30 } : null,
+              ]}
             >
               {" "}
               SE PERDERÁN LOS PROGRESOS{" "}
@@ -128,15 +142,18 @@ function QuitInGame() {
         >
           <Text
             adjustsFontSizeToFit
-            style={{
-              fontFamily: "LuckiestGuy",
-              fontSize: 40,
-              color: "white",
-              backgroundColor: "#bf2c2c",
-              paddingLeft: 5,
-              paddingRight: 5,
-              borderRadius: 5,
-            }}
+            style={[
+              {
+                fontFamily: "LuckiestGuy",
+                fontSize: 40,
+                color: "white",
+                backgroundColor: "#bf2c2c",
+                paddingLeft: 5,
+                paddingRight: 5,
+                borderRadius: 5,
+              },
+              deviceWidth > limitWidth ? { fontSize: 55 } : null,
+            ]}
           >
             SÍ, SALIR
           </Text>
@@ -149,7 +166,14 @@ function QuitInGame() {
           }}
           style={styles.closeBtn}
         >
-          <Text style={styles.closeBtnTxt}>X</Text>
+          <Text
+            style={[
+              styles.closeBtnTxt,
+              deviceWidth > limitWidth ? { fontSize: 25 } : null,
+            ]}
+          >
+            X
+          </Text>
         </TouchableOpacity>
       </Animated.View>
     </View>

@@ -99,7 +99,14 @@ function ConfigModal() {
           {/*
  // @ts-ignore */}
           <Slider
-            style={[{ width: 200, height: 40 }, styles.sliderViewRound]}
+            style={[
+              { width: 200, height: 40 },
+              styles.sliderViewRound,
+              deviceWidth > limitWidth ? { width: 230 } : null,
+              deviceWidth > limitWidth
+                ? { transform: [{ scaleX: 1.3 }, { scaleY: 1.3 }] }
+                : null,
+            ]}
             minimumValue={1}
             maximumValue={25}
             minimumTrackTintColor="#8b6ad8"
@@ -140,7 +147,14 @@ function ConfigModal() {
           {/*
  // @ts-ignore */}
           <Slider
-            style={[{ width: 200, height: 40 }, styles.sliderViewTime]}
+            style={[
+              { width: 200, height: 40 },
+              styles.sliderViewTime,
+              deviceWidth > limitWidth ? { width: 230 } : null,
+              deviceWidth > limitWidth
+                ? { transform: [{ scaleX: 1.3 }, { scaleY: 1.3 }] }
+                : null,
+            ]}
             minimumValue={5}
             maximumValue={90}
             minimumTrackTintColor="#8b6ad8"
@@ -204,7 +218,14 @@ function ConfigModal() {
           }}
           style={styles.closeBtn}
         >
-          <Text style={styles.closeBtnTxt}>X</Text>
+          <Text
+            style={[
+              styles.closeBtnTxt,
+              deviceWidth > limitWidth ? { fontSize: 25 } : null,
+            ]}
+          >
+            X
+          </Text>
         </TouchableOpacity>
       </Animated.View>
     </View>

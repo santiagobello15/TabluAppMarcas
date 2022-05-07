@@ -198,7 +198,14 @@ function StartModal() {
           }}
           style={styles.closeBtn}
         >
-          <Text style={styles.closeBtnTxt}>X</Text>
+          <Text
+            style={[
+              styles.closeBtnTxt,
+              deviceWidth > limitWidth ? { fontSize: 25 } : null,
+            ]}
+          >
+            X
+          </Text>
         </TouchableOpacity>
       </Animated.View>
     </View>
