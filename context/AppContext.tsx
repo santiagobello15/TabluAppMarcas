@@ -93,7 +93,7 @@ const GameContext = ({ children }: any) => {
   const [quitInGameActive, setQuitInGameActive] = useState(false);
 
   let deviceWidth = Dimensions.get("window").height;
-  const limitWidth = 600;
+  const limitWidth = 900;
 
   return (
     <Context.Provider

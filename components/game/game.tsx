@@ -357,13 +357,9 @@ export default function TabluApp() {
                 deviceWidth > limitWidth ? { fontSize: 35 } : null,
               ]}
             >
-              <View>
-                <Text>{"  "}</Text>
-              </View>
+              {"  "}
               Ganador de la partida:
-              <View>
-                <Text>{"  "}</Text>
-              </View>
+              {"  "}
             </Text>
           </View>
           <View style={[styles.turnToTeam, { top: "50%", width: "90%" }]}>
@@ -382,13 +378,9 @@ export default function TabluApp() {
                 deviceWidth > limitWidth ? { fontSize: 30 } : null,
               ]}
             >
-              <View>
-                <Text>{"  "}</Text>
-              </View>
+              {"  "}
               {renderGameResult()}
-              <View>
-                <Text>{"  "}</Text>
-              </View>
+              {"  "}
             </Text>
           </View>
           <TouchableOpacity
@@ -570,6 +562,7 @@ export default function TabluApp() {
             <View style={styles.gamingPadLeft}>
               <Text
                 adjustsFontSizeToFit
+                numberOfLines={1}
                 style={[
                   {
                     fontFamily: "LuckiestGuy",
