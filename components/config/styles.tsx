@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-const mainColor = "#7b2cbf";
+const mainColor = "#ff6d00";
 
 export const styles = StyleSheet.create({
   overlayModal: {
