@@ -66,7 +66,7 @@ export default function TabluApp() {
 
   const FetchDatafromDB = async () => {
     if (cardsDB == undefined) {
-      await fetch("https://tablugames.com/api/cardsFamosos")
+      await fetch("https://tablugames.com/api/cardsMarcas")
         .then((response) => response.json())
         .then((data) => {
           setcardsDB(data.CardsArray);
@@ -617,7 +617,7 @@ export default function TabluApp() {
                     deviceWidth > limitWidth ? { fontSize: 28 } : null,
                   ]}
                 >
-                  {cardsDB[indexOnShuffled].firstname}
+                  {cardsDB[indexOnShuffled].marca1}
                 </Text>
                 <Text
                   adjustsFontSizeToFit
@@ -627,7 +627,7 @@ export default function TabluApp() {
                     deviceWidth > limitWidth ? { fontSize: 28 } : null,
                   ]}
                 >
-                  {cardsDB[indexOnShuffled].lastname}
+                  {cardsDB[indexOnShuffled].marca2}
                 </Text>
                 <Text
                   adjustsFontSizeToFit

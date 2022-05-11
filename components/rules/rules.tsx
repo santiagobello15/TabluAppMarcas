@@ -84,7 +84,7 @@ function RulesModal() {
               ]}
             >
               1) Un miembro del equipo {'"A"'} lee una carta, y tratará que sólo
-              su equipo adivine el nombre de la persona sin decir las palabras
+              su equipo adivine el nombre de la marca sin decir las palabras
               prohibidas
             </Text>
           </View>
