@@ -51,7 +51,7 @@ function RulesModal() {
         ]}
       >
         <ImageBackground
-          source={require("./media/patternpad.png")}
+          source={require("../../assets/images/patternpad.png")}
           style={styles.image}
         />
         <View style={styles.titleContainer}>
@@ -61,7 +61,7 @@ function RulesModal() {
                 fontFamily: "LuckiestGuy",
                 fontSize: 28,
                 color: "white",
-                backgroundColor: "#7b2cbf",
+                backgroundColor: "#ff6d00",
               },
               deviceWidth > limitWidth ? { fontSize: 40 } : null,
             ]}

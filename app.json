@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Tablú Famosos",
-    "slug": "TabluFamosos",
+    "name": "Tablú Marcas",
+    "slug": "TabluMarcas",
     "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/iconn.png",
@@ -18,7 +18,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "tablugames.famosos",
+      "package": "tablugames.marcas",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/iconn.png",

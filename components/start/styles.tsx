@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-const mainColor = "#7b2cbf";
+const mainColor = "#ff6d00";
 
 const CardColorRedTransp = "rgba(191, 39, 211, 0.5)";
 const CardColorGreenTransp = "rgba(33, 196, 93, 0.5)";

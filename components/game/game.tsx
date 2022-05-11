@@ -314,7 +314,7 @@ export default function TabluApp() {
     return (
       <View style={styles.container}>
         <ImageBackground
-          source={require("./media/patternpad.png")}
+          source={require("../../assets/images/patternpad.png")}
           style={styles.image}
         />
         <View
@@ -331,7 +331,7 @@ export default function TabluApp() {
                   fontFamily: "LuckiestGuy",
                   fontSize: 30,
                   color: "white",
-                  backgroundColor: "#7b2cbf",
+                  backgroundColor: "#ff6d00",
                 },
                 deviceWidth > limitWidth ? { fontSize: 40 } : null,
               ]}
@@ -349,7 +349,7 @@ export default function TabluApp() {
                   fontFamily: "LuckiestGuy",
                   fontSize: 22,
                   color: "white",
-                  backgroundColor: "#7b2cbf",
+                  backgroundColor: "#ff6d00",
                   textShadowColor: "black",
                   textShadowOffset: { width: 1, height: 1 },
                   textShadowRadius: 1,
@@ -369,7 +369,7 @@ export default function TabluApp() {
                 {
                   fontFamily: "LuckiestGuy",
                   fontSize: 20,
-                  backgroundColor: "#7b2cbf",
+                  backgroundColor: "#ff6d00",
                   color: "white",
                   textShadowColor: "black",
                   textShadowOffset: { width: 1, height: 1 },
@@ -393,7 +393,7 @@ export default function TabluApp() {
                 height: "100%",
                 position: "absolute",
               }}
-              source={require("./media/twitter.png")}
+              source={require("../../assets/images/twitter.png")}
             ></Image>
           </TouchableOpacity>
           <TouchableOpacity
@@ -406,7 +406,7 @@ export default function TabluApp() {
                 height: "100%",
                 position: "absolute",
               }}
-              source={require("./media/facebook.png")}
+              source={require("../../assets/images/facebook.png")}
             ></Image>
           </TouchableOpacity>
           <TouchableOpacity
@@ -531,7 +531,7 @@ export default function TabluApp() {
     return (
       <View style={styles.container}>
         <ImageBackground
-          source={require("./media/patternpad.png")}
+          source={require("../../assets/images/patternpad.png")}
           style={styles.image}
         />
         <View
@@ -549,7 +549,7 @@ export default function TabluApp() {
                   fontFamily: "LuckiestGuy",
                   fontSize: 30,
                   color: "white",
-                  backgroundColor: "#7b2cbf",
+                  backgroundColor: "#ff6d00",
                 },
                 deviceWidth > limitWidth ? { fontSize: 40 } : null,
               ]}
@@ -778,7 +778,7 @@ export default function TabluApp() {
                 {
                   fontFamily: "LuckiestGuy",
                   fontSize: 18,
-                  color: "#7b2cbf",
+                  color: "#ff6d00",
                   textShadowColor: "black",
                   textShadowOffset: { width: 1, height: 1 },
                   textShadowRadius: 1,
@@ -927,7 +927,7 @@ export default function TabluApp() {
       return (
         <View style={styles.container}>
           <ImageBackground
-            source={require("./media/patternpad.png")}
+            source={require("../../assets/images/patternpad.png")}
             style={styles.image}
           />
           <View
@@ -944,7 +944,7 @@ export default function TabluApp() {
                     fontFamily: "LuckiestGuy",
                     fontSize: 36,
                     color: "white",
-                    backgroundColor: "#7b2cbf",
+                    backgroundColor: "#ff6d00",
                   },
                   deviceWidth > limitWidth ? { fontSize: 60 } : null,
                 ]}

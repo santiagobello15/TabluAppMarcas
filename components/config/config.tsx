@@ -61,7 +61,7 @@ function ConfigModal() {
         ]}
       >
         <ImageBackground
-          source={require("./media/patternpad.png")}
+          source={require("../../assets/images/patternpad.png")}
           style={styles.image}
         />
         <View style={styles.titleContainer}>
@@ -71,7 +71,7 @@ function ConfigModal() {
                 fontFamily: "LuckiestGuy",
                 fontSize: 28,
                 color: "white",
-                backgroundColor: "#7b2cbf",
+                backgroundColor: "#ff6d00",
               },
               deviceWidth > limitWidth ? { fontSize: 40 } : null,
             ]}
@@ -109,7 +109,7 @@ function ConfigModal() {
             ]}
             minimumValue={1}
             maximumValue={25}
-            minimumTrackTintColor="#8b6ad8"
+            minimumTrackTintColor="#ff6d00"
             maximumTrackTintColor="#000000"
             thumbTintColor="gray"
             step={5}
@@ -157,7 +157,7 @@ function ConfigModal() {
             ]}
             minimumValue={5}
             maximumValue={90}
-            minimumTrackTintColor="#8b6ad8"
+            minimumTrackTintColor="#ff6d00"
             maximumTrackTintColor="#000000"
             thumbTintColor="gray"
             step={15}
@@ -183,7 +183,7 @@ function ConfigModal() {
               style={styles.checkboxitself}
               value={isCheckedMuletillas}
               onValueChange={setCheckedMuletillas}
-              color={isCheckedMuletillas ? "#8b6ad8" : undefined}
+              color={isCheckedMuletillas ? "#ff6d00" : undefined}
             />
             <Text
               style={[
@@ -199,7 +199,7 @@ function ConfigModal() {
               style={styles.checkboxitself}
               value={isCheckedInsultos}
               onValueChange={setCheckedInsultos}
-              color={isCheckedInsultos ? "#8b6ad8" : undefined}
+              color={isCheckedInsultos ? "#ff6d00" : undefined}
             />
             <Text
               style={[

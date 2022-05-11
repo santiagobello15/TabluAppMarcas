@@ -74,7 +74,7 @@ function QuitInGame() {
               position: "absolute",
               top: "0%",
               alignItems: "center",
-              backgroundColor: "#7b2cbf",
+              backgroundColor: "#ff6d00",
             }}
           >
             <Text
@@ -108,7 +108,7 @@ function QuitInGame() {
                   fontFamily: "LuckiestGuy",
                   fontSize: 20,
                   color: "white",
-                  backgroundColor: "#b97af0",
+                  backgroundColor: "#ff8500",
                 },
                 deviceWidth > limitWidth ? { fontSize: 30 } : null,
               ]}
