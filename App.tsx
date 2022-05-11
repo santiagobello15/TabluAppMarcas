@@ -25,7 +25,7 @@ export default function App() {
         >
           <Image
             style={{ resizeMode: "contain", width: "100%", height: "100%" }}
-            source={require("./assets/splashhh.png")}
+            source={require("./assets/splash.png")}
           ></Image>
         </View>
       );

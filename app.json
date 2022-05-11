@@ -4,9 +4,9 @@
     "slug": "TabluMarcas",
     "version": "1.0.2",
     "orientation": "portrait",
-    "icon": "./assets/iconn.png",
+    "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splashhh.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#0d1117"
     },
@@ -21,12 +21,12 @@
       "package": "tablugames.marcas",
       "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/iconn.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/iconn.png"
+      "favicon": "./assets/icon.png"
     }
   }
 }
