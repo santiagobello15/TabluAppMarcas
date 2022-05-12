@@ -2,7 +2,7 @@
   "expo": {
     "name": "Tablú Marcas",
     "slug": "TabluMarcas",
-    "version": "1.0.2",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -19,7 +19,7 @@
     },
     "android": {
       "package": "tablugames.marcas",
-      "versionCode": 1,
+      "versionCode": 1.01,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
