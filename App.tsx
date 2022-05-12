@@ -1,7 +1,9 @@
 import GameContext from "./context/AppContext";
 import TabluApp from "./components/game/game";
+import NetStatus from "./components/netStatus/netStatus";
 import { useFonts } from "expo-font";
 import { Text, View, Image } from "react-native";
+import { useNetInfo } from "@react-native-community/netinfo";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -10,7 +12,7 @@ export default function App() {
     MuktaMalarLight: require("./assets/fonts/MuktaMalar-Light.ttf"),
     MuktaMalarBold: require("./assets/fonts/MuktaMalar-Bold.ttf"),
   });
-
+  const NetInfo = useNetInfo();
   const loadingFonts = () => {
     if (!fontsLoaded) {
       return (
@@ -33,6 +35,7 @@ export default function App() {
       return (
         <GameContext>
           <TabluApp />
+          {!NetInfo.isConnected && <NetStatus />}
         </GameContext>
       );
     }
