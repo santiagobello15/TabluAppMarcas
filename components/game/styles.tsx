@@ -255,8 +255,17 @@ export const styles = StyleSheet.create({
     top: "10%",
     height: "85%",
   },
-  cardName: { fontFamily: "MuktaMalarBold", fontSize: 20, color: "white" },
-  cardWord: { fontFamily: "MuktaMalarBold", fontSize: 14, color: "white" },
+  cardName: {
+    fontFamily: "MuktaMalarBold",
+    fontSize: 20,
+    color: "white",
+    fontWeight: "700",
+  },
+  cardWord: {
+    fontFamily: "MuktaMalarLight",
+    fontSize: 14,
+    color: "white",
+  },
   gamingPadFooter: {
     width: "100%",
     height: "20%",
