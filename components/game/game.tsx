@@ -309,6 +309,14 @@ export default function TabluApp() {
       "https://facebook.com/sharer/sharer.php?u=https://tablugames.com"
     );
   };
+  const _handlePressButtonWhoIs = () => {
+    WebBrowser.openBrowserAsync(
+      "http://google.com/search?q=" +
+        cardsDB[indexOnShuffled].marca1 +
+        " " +
+        cardsDB[indexOnShuffled].marca2
+    );
+  };
 
   const afterGameView = () => {
     return (
@@ -608,6 +616,16 @@ export default function TabluApp() {
               </View>
             </View>
             <View style={styles.gamingPadCenter}>
+              <TouchableOpacity
+                style={styles.whoIs}
+                onPress={() => {
+                  _handlePressButtonWhoIs();
+                }}
+              >
+                <Text adjustsFontSizeToFit style={{ color: "white" }}>
+                  ?
+                </Text>
+              </TouchableOpacity>
               <View style={styles.cardView}>
                 <Text
                   adjustsFontSizeToFit
