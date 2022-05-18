@@ -68,6 +68,9 @@ export default function TabluApp() {
   const [plusPoint, setPlusPoint] = useState(false);
   const [minusPoint, setMinusPoint] = useState(false);
   const [passPoint, setPassPoint] = useState(false);
+  const [blockPass, setBlockPass] = useState(false);
+  const [blockAdd, setBlockAdd] = useState(false);
+  const [blockSubstract, setBlockSubstract] = useState(false);
 
   const FetchDatafromDB = async () => {
     if (cardsDB == undefined) {
@@ -85,17 +88,16 @@ export default function TabluApp() {
 
   const blurryFieldFunction = () => {
     if (plusPoint == true) {
-      Animated.timing(blurryField, {
-        toValue: 0.5,
-        useNativeDriver: true,
-        duration: 1500,
-      }).start(() => {
+      setTimeout(() => {
         Animated.timing(blurryField, {
-          toValue: 15,
+          toValue: 0,
           useNativeDriver: true,
-          duration: 1500,
-        }).start();
-      });
+          duration: 500,
+        }).start(() => {
+          blurryField.setValue(1);
+          setPlusPoint(false);
+        });
+      }, 700);
     }
   };
   blurryFieldFunction();
@@ -300,7 +302,6 @@ export default function TabluApp() {
 
   const AddPoints = () => {
     setPlusPoint(true);
-    setTimeout(() => setPlusPoint(false), 1500);
     setIndexOnShuffled(indexOnShuffled + 1);
     setCurrentCard(indexOnShuffled);
     if (assignedTeamOne == true) {
@@ -792,8 +793,11 @@ export default function TabluApp() {
             </View>
             <View style={styles.gamingPadRight}>
               <TouchableOpacity
+                disabled={blockAdd == true ? true : false}
                 onPress={() => {
                   AddPoints();
+                  setBlockAdd(true);
+                  setTimeout(() => setBlockAdd(false), 1500);
                 }}
                 style={[
                   styles.pointBtn,
