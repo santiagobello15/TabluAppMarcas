@@ -5,10 +5,11 @@ import {
   TouchableOpacity,
   ImageBackground,
   Image,
+  Animated,
 } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import { styles } from "./styles";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import ConfigModal from "../config/config";
 import RulesModal from "../rules/rules";
 import QuitInGame from "../quitInGame/quitInGame";
@@ -64,6 +65,10 @@ export default function TabluApp() {
     deviceWidth,
   } = useContext(Context);
 
+  const [plusPoint, setPlusPoint] = useState(false);
+  const [minusPoint, setMinusPoint] = useState(false);
+  const [passPoint, setPassPoint] = useState(false);
+
   const FetchDatafromDB = async () => {
     if (cardsDB == undefined) {
       await fetch("https://tablugames.com/api/cardsMarcas")
@@ -75,6 +80,25 @@ export default function TabluApp() {
   };
 
   FetchDatafromDB();
+
+  const blurryField = useRef(new Animated.Value(0)).current;
+
+  const blurryFieldFunction = () => {
+    if (plusPoint == true) {
+      Animated.timing(blurryField, {
+        toValue: 0.5,
+        useNativeDriver: true,
+        duration: 1500,
+      }).start(() => {
+        Animated.timing(blurryField, {
+          toValue: 15,
+          useNativeDriver: true,
+          duration: 1500,
+        }).start();
+      });
+    }
+  };
+  blurryFieldFunction();
 
   useEffect(() => {
     // changed from function to useeffect. is not possible to setstate insite setstate function ?
@@ -275,6 +299,8 @@ export default function TabluApp() {
   };
 
   const AddPoints = () => {
+    setPlusPoint(true);
+    setTimeout(() => setPlusPoint(false), 1500);
     setIndexOnShuffled(indexOnShuffled + 1);
     setCurrentCard(indexOnShuffled);
     if (assignedTeamOne == true) {
@@ -285,6 +311,8 @@ export default function TabluApp() {
   };
 
   const DeductPoints = () => {
+    setMinusPoint(true);
+    setTimeout(() => setMinusPoint(false), 1000);
     setIndexOnShuffled(indexOnShuffled + 1);
     setCurrentCard(indexOnShuffled);
     if (assignedTeamOne == true) {
@@ -295,6 +323,8 @@ export default function TabluApp() {
   };
 
   const Pasar = () => {
+    setPassPoint(true);
+    setTimeout(() => setPassPoint(false), 1000);
     setIndexOnShuffled(indexOnShuffled + 1);
     setCurrentCard(indexOnShuffled);
   };
@@ -535,6 +565,56 @@ export default function TabluApp() {
     );
   };
 
+  const BlurAndText = () => {
+    if (plusPoint == true) {
+      return (
+        <Animated.View
+          style={[styles.gameCardBlur, { transform: [{ scale: blurryField }] }]}
+        >
+          <Text
+            style={{
+              fontFamily: "MuktaMalarBold",
+              fontSize: 25,
+              color: "white",
+            }}
+          >
+            +1
+          </Text>
+        </Animated.View>
+      );
+    }
+    if (minusPoint == true) {
+      return (
+        <View style={styles.gameCardBlur}>
+          <Text
+            style={{
+              fontFamily: "MuktaMalarBold",
+              fontSize: 25,
+              color: "white",
+            }}
+          >
+            -1
+          </Text>
+        </View>
+      );
+    }
+    if (passPoint == true) {
+      return (
+        <View style={styles.gameCardBlur}>
+          <Text
+            style={{
+              fontFamily: "MuktaMalarBold",
+              fontSize: 25,
+              color: "white",
+            }}
+          >
+            Pasar
+          </Text>
+        </View>
+      );
+    }
+  };
+
   const inGameView = () => {
     return (
       <View style={styles.container}>
@@ -627,6 +707,7 @@ export default function TabluApp() {
                 </Text>
               </TouchableOpacity>
               <View style={styles.cardView}>
+                {BlurAndText()}
                 <Text
                   adjustsFontSizeToFit
                   style={[

@@ -267,6 +267,17 @@ export const styles = StyleSheet.create({
     backgroundColor: "#585858",
     top: "10%",
     height: "85%",
+    overflow: "hidden",
+  },
+  gameCardBlur: {
+    top: "-25%",
+    height: "150%",
+    borderRadius: 99999999,
+    aspectRatio: 1,
+    backgroundColor: "#000000cb",
+    zIndex: 99999999999,
+    alignItems: "center",
+    justifyContent: "center",
   },
   cardName: {
     fontFamily: "MuktaMalarBold",
