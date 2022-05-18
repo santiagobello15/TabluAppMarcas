@@ -65,9 +65,9 @@ export default function TabluApp() {
     deviceWidth,
   } = useContext(Context);
 
-  const [plusPoint, setPlusPoint] = useState(false);
-  const [minusPoint, setMinusPoint] = useState(false);
-  const [passPoint, setPassPoint] = useState(false);
+  const [plusPoint, setPlusPoint] = useState(true);
+  const [minusPoint, setMinusPoint] = useState(true);
+  const [passPoint, setPassPoint] = useState(true);
   const [blockPass, setBlockPass] = useState(false);
   const [blockAdd, setBlockAdd] = useState(false);
   const [blockSubstract, setBlockSubstract] = useState(false);
@@ -78,6 +78,11 @@ export default function TabluApp() {
         .then((response) => response.json())
         .then((data) => {
           setcardsDB(data.CardsArray);
+        })
+        .catch((error) => {
+          // retrying to fetch
+          console.log(error);
+          FetchDatafromDB();
         });
     }
   };
@@ -86,8 +91,8 @@ export default function TabluApp() {
 
   const blurryField = useRef(new Animated.Value(0)).current;
 
-  const blurryFieldFunction = () => {
-    if (plusPoint == true) {
+  useEffect(() => {
+    if (plusPoint == true || minusPoint == true || passPoint == true) {
       setTimeout(() => {
         Animated.timing(blurryField, {
           toValue: 0,
@@ -96,11 +101,12 @@ export default function TabluApp() {
         }).start(() => {
           blurryField.setValue(1);
           setPlusPoint(false);
+          setMinusPoint(false);
+          setPassPoint(false);
         });
       }, 700);
     }
-  };
-  blurryFieldFunction();
+  }, [plusPoint, minusPoint, passPoint]);
 
   useEffect(() => {
     // changed from function to useeffect. is not possible to setstate insite setstate function ?
@@ -313,7 +319,6 @@ export default function TabluApp() {
 
   const DeductPoints = () => {
     setMinusPoint(true);
-    setTimeout(() => setMinusPoint(false), 1000);
     setIndexOnShuffled(indexOnShuffled + 1);
     setCurrentCard(indexOnShuffled);
     if (assignedTeamOne == true) {
@@ -325,7 +330,6 @@ export default function TabluApp() {
 
   const Pasar = () => {
     setPassPoint(true);
-    setTimeout(() => setPassPoint(false), 1000);
     setIndexOnShuffled(indexOnShuffled + 1);
     setCurrentCard(indexOnShuffled);
   };
@@ -586,7 +590,9 @@ export default function TabluApp() {
     }
     if (minusPoint == true) {
       return (
-        <View style={styles.gameCardBlur}>
+        <Animated.View
+          style={[styles.gameCardBlur, { transform: [{ scale: blurryField }] }]}
+        >
           <Text
             style={{
               fontFamily: "MuktaMalarBold",
@@ -596,12 +602,14 @@ export default function TabluApp() {
           >
             -1
           </Text>
-        </View>
+        </Animated.View>
       );
     }
     if (passPoint == true) {
       return (
-        <View style={styles.gameCardBlur}>
+        <Animated.View
+          style={[styles.gameCardBlur, { transform: [{ scale: blurryField }] }]}
+        >
           <Text
             style={{
               fontFamily: "MuktaMalarBold",
@@ -611,7 +619,7 @@ export default function TabluApp() {
           >
             Pasar
           </Text>
-        </View>
+        </Animated.View>
       );
     }
   };
@@ -796,8 +804,12 @@ export default function TabluApp() {
                 disabled={blockAdd == true ? true : false}
                 onPress={() => {
                   AddPoints();
+                  setBlockSubstract(true);
                   setBlockAdd(true);
+                  setBlockPass(true);
+                  setTimeout(() => setBlockPass(false), 1500);
                   setTimeout(() => setBlockAdd(false), 1500);
+                  setTimeout(() => setBlockSubstract(false), 1500);
                 }}
                 style={[
                   styles.pointBtn,
@@ -822,9 +834,16 @@ export default function TabluApp() {
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
+                disabled={blockSubstract == true ? true : false}
                 onPress={() => {
                   {
                     DeductPoints();
+                    setBlockSubstract(true);
+                    setBlockAdd(true);
+                    setBlockPass(true);
+                    setTimeout(() => setBlockPass(false), 1500);
+                    setTimeout(() => setBlockAdd(false), 1500);
+                    setTimeout(() => setBlockSubstract(false), 1500);
                   }
                 }}
                 style={[
@@ -847,8 +866,15 @@ export default function TabluApp() {
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
+                disabled={blockPass == true ? true : false}
                 onPress={() => {
                   Pasar();
+                  setBlockSubstract(true);
+                  setBlockAdd(true);
+                  setBlockPass(true);
+                  setTimeout(() => setBlockPass(false), 1500);
+                  setTimeout(() => setBlockAdd(false), 1500);
+                  setTimeout(() => setBlockSubstract(false), 1500);
                 }}
                 style={[
                   styles.pointBtn,
