@@ -19,7 +19,7 @@
     },
     "android": {
       "package": "tablugames.marcas",
-      "versionCode": 4,
+      "versionCode": 6,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"

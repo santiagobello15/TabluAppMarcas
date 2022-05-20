@@ -71,6 +71,7 @@ export default function TabluApp() {
   const [blockPass, setBlockPass] = useState(false);
   const [blockAdd, setBlockAdd] = useState(false);
   const [blockSubstract, setBlockSubstract] = useState(false);
+  const [timeUp, setTimeUp] = useState(true);
 
   const FetchDatafromDB = async () => {
     if (cardsDB == undefined) {
@@ -90,6 +91,7 @@ export default function TabluApp() {
   FetchDatafromDB();
 
   const blurryField = useRef(new Animated.Value(0)).current;
+  const blurryFinish = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     if (plusPoint == true || minusPoint == true || passPoint == true) {
@@ -123,6 +125,21 @@ export default function TabluApp() {
     }
   }, [indexOnShuffled]);
 
+  useEffect(() => {
+    if (timeUp == true) {
+      setTimeout(() => {
+        Animated.timing(blurryFinish, {
+          toValue: 0,
+          useNativeDriver: true,
+          duration: 1000,
+        }).start(() => {
+          blurryFinish.setValue(1);
+          setTimeUp(false);
+        });
+      }, 3500);
+    }
+  });
+
   const muletillaFunction = () => {
     if (isCheckedMuletillas == false) {
       return "Sin penalización por muletillas";
@@ -145,12 +162,34 @@ export default function TabluApp() {
       return " " + teamTwoName;
     }
   };
+  const BlurTimeUp = () => {
+    if (timeUp == true) {
+      return (
+        <Animated.View
+          style={[styles.timeUpBlur, { transform: [{ scale: blurryFinish }] }]}
+        >
+          <Text
+            style={{
+              position: "absolute",
+              fontFamily: "LuckiestGuy",
+              fontSize: 30,
+              color: "white",
+              zIndex: 99999999,
+            }}
+          >
+            ¡TIEMPO AGOTADO!
+          </Text>
+        </Animated.View>
+      );
+    }
+  };
 
   useEffect(() => {
     // changed from function to useeffect. is not possible to setstate insite setstate function ?
     if (time == 0.0) {
       setStartCounter(false);
       setTime(timeGame);
+      setTimeUp(true);
       setCurrentRound(currentRound + 1);
       if (assignedTeamOne == true) {
         setAssignedTeamOne(false);
@@ -637,6 +676,7 @@ export default function TabluApp() {
             deviceWidth > limitWidth ? styles.mainContainerBig : null,
           ]}
         >
+          {BlurTimeUp()}
           {StopOrCount()}
           <View style={[styles.titleContainer, { top: "8%" }]}>
             <Text

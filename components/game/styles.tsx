@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
     aspectRatio: 0.65,
     maxWidth: 400,
     maxHeight: 615,
+    overflow: "hidden",
   },
   mainContainerBig: {
     alignItems: "center",
@@ -40,6 +41,7 @@ export const styles = StyleSheet.create({
     aspectRatio: 0.65,
     maxWidth: 600,
     maxHeight: 920,
+    overflow: "hidden",
   },
 
   titleContainer: {
@@ -196,7 +198,7 @@ export const styles = StyleSheet.create({
     right: 0,
     width: "10%",
     aspectRatio: 1,
-    zIndex: 99999999999999999999999999999,
+    zIndex: 99999,
   },
   closeBtnTxt: {
     color: "white",
@@ -246,7 +248,7 @@ export const styles = StyleSheet.create({
     position: "absolute",
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 9999999999999999999,
+    zIndex: 999,
   },
   whoIs: {
     width: "12%",
@@ -259,7 +261,7 @@ export const styles = StyleSheet.create({
     top: "12.5%",
     right: "8%",
     position: "absolute",
-    zIndex: 999999999999999999999999999,
+    zIndex: 999999,
   },
   cardView: {
     width: "90%",
@@ -278,6 +280,17 @@ export const styles = StyleSheet.create({
     zIndex: 99999999999,
     alignItems: "center",
     justifyContent: "center",
+  },
+  timeUpBlur: {
+    aspectRatio: 1,
+    top: "-25%",
+    height: "150%",
+    borderRadius: 999999,
+    position: "absolute",
+    backgroundColor: "#000000d9",
+    zIndex: 99999999,
+    justifyContent: "center",
+    alignItems: "center",
   },
   cardName: {
     fontFamily: "MuktaMalarBold",
