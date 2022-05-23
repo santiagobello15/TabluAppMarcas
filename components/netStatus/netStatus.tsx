@@ -23,6 +23,19 @@ export default function NetStatus() {
             {" "}
             SIN CONEXIÓN{" "}
           </Text>
+          <Text
+            style={[
+              {
+                fontFamily: "LuckiestGuy",
+                fontSize: 20,
+                color: "white",
+                backgroundColor: "#bf2c2c", top: "45%"              },
+              deviceWidth > limitWidth ? { fontSize: 25 } : null,
+            ]}
+          >
+            {" "}
+            Conectá tu WIFI o datos{" "}
+          </Text>
         </View>
       </View>
     </View>
