@@ -4,10 +4,10 @@ import {
   View,
   ImageBackground,
   TouchableOpacity,
-  Animated,
+  Animated, BackHandler
 } from "react-native";
 import { Context } from "../../context/AppContext";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useEffect } from "react";
 
 function RulesModal() {
   const {
@@ -40,6 +40,17 @@ function RulesModal() {
   };
 
   modalAnimation();
+
+  useEffect(()=>{
+    const backBtn: any = () =>{
+      setTimeout(()=>setRulesModalActive(false), 300);
+      setRulesActive(false)
+      return true
+    }
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress", backBtn
+    )
+  })
 
   return (
     <View style={styles.overlayModal}>
