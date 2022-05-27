@@ -6,10 +6,10 @@ import {
   ImageBackground,
   TextInput,
   Animated,
-  useWindowDimensions,
+  useWindowDimensions, BackHandler
 } from "react-native";
 import { Context } from "../../context/AppContext";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useEffect} from "react";
 
 function StartModal() {
   const {
@@ -54,6 +54,16 @@ function StartModal() {
 
   modalAnimation();
   const windowHeight = useWindowDimensions().height;
+  useEffect(()=>{
+    const backBtn: any = () =>{
+      setTimeout(()=>setStartModalActive(false), 300);
+      setStartActive(false)
+      return true
+    }
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress", backBtn
+    )
+  })
   return (
     <View
       style={[styles.overlayModal, { minHeight: Math.round(windowHeight) }]}
