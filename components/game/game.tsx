@@ -666,8 +666,9 @@ export default function TabluApp() {
   useEffect(()=>{
     const backBtnInGame: any = () =>{
       if(gameState == "inGame" && quitInGameModalActive == true){
-      setQuitInGameActive(false);
-      setQuitInGameModalActive(false);
+        setTimeout(() => setQuitInGameModalActive(false), 300);
+            setQuitInGameActive(false);
+            setStartCounter(true);
       return true}
       if(gameState == "inGame" && quitInGameModalActive == false){
         setQuitInGameActive(true);
