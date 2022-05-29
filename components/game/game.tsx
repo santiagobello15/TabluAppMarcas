@@ -1137,7 +1137,7 @@ export default function TabluApp() {
                 ]}
               >
                 {" "}
-                TABLÚ FAMOSOS{" "}
+                TABLÚ MARCAS{" "}
               </Text>
             </View>
             <StatusBar style="auto" />
