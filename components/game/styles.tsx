@@ -376,4 +376,7 @@ export const styles = StyleSheet.create({
     bottom: "2.5%",
     right: "20%",
   },
+  soundBtn: {
+    position: "absolute", width: "5%", aspectRatio: 1, right: "5%", top: "2.5%"
+  },
 });

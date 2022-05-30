@@ -15,6 +15,7 @@ import RulesModal from "../rules/rules";
 import QuitInGame from "../quitInGame/quitInGame";
 import StartModal from "../start/start";
 import { Context } from "../../context/AppContext";
+import { Audio } from 'expo-av';
 
 export default function TabluApp() {
   const {
@@ -72,6 +73,28 @@ export default function TabluApp() {
   const [blockAdd, setBlockAdd] = useState(false);
   const [blockSubstract, setBlockSubstract] = useState(false);
   const [timeUp, setTimeUp] = useState(true);
+  const [sound, setSound] = useState<any>();
+  const [soundOn, setSoundOn] = useState(false);
+
+  
+  async function playSound() {
+    console.log('Loading Sound');
+    const { sound } = await Audio.Sound.createAsync(
+       require('../../assets/sounds/countryboy.mp3')
+    );
+    setSound(sound);
+
+    console.log('Playing Sound');
+    await sound.playAsync(); }
+
+   useEffect(() => {
+      return sound
+        ? () => {
+            console.log('Unloading Sound');
+            sound.unloadAsync(); }
+        : undefined;
+    }, [sound])  
+
 
   const FetchDatafromDB = async () => {
     if (cardsDB == undefined) {
@@ -1123,6 +1146,19 @@ export default function TabluApp() {
               deviceWidth > limitWidth ? styles.mainContainerBig : null,
             ]}
           >
+                   <TouchableOpacity
+            onPress={playSound}
+            style={styles.soundBtn}
+          >
+            <Image
+              style={{
+                width: "100%",
+                height: "100%",
+                position: "absolute",
+              }}
+              source={require("../../assets/images/soundOn.png")}
+            ></Image>
+          </TouchableOpacity>
             <View style={styles.titleContainer}>
               <Text
                 adjustsFontSizeToFit
@@ -1168,7 +1204,7 @@ export default function TabluApp() {
               onPress={() => {
                 setRulesModalActive(true);
                 setRulesActive(true);
-              }}
+                              }}
               style={styles.btnRules}
             >
               <View style={styles.insideBtnTextView}>
