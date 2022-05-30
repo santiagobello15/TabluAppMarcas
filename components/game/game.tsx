@@ -74,9 +74,16 @@ export default function TabluApp() {
   const [blockSubstract, setBlockSubstract] = useState(false);
   const [timeUp, setTimeUp] = useState(true);
   const [sound, setSound] = useState<any>();
-  const [soundOn, setSoundOn] = useState(false);
 
   
+  const soundSwitch = () =>{
+    if (sound == undefined){
+      playSound()
+    }
+    else {console.log('Unloading Sound');
+    sound.unloadAsync(); setSound(undefined)}
+  }
+
   async function playSound() {
     console.log('Loading Sound');
     const { sound } = await Audio.Sound.createAsync(
@@ -85,17 +92,21 @@ export default function TabluApp() {
     setSound(sound);
 
     console.log('Playing Sound');
-    await sound.playAsync(); }
+    await sound.playAsync();
+/*   if(sound ==! undefined){
+    console.log('Unloading Sound');
+            sound.unloadAsync(); 
+            setSound(undefined)
+  } */}
 
-   useEffect(() => {
+/*    useEffect(() => {
       return sound
         ? () => {
             console.log('Unloading Sound');
             sound.unloadAsync(); }
         : undefined;
     }, [sound])  
-
-
+ */
   const FetchDatafromDB = async () => {
     if (cardsDB == undefined) {
       await fetch("https://tablugames.com/api/cardsMarcas")
@@ -1147,7 +1158,7 @@ export default function TabluApp() {
             ]}
           >
                    <TouchableOpacity
-            onPress={playSound}
+            onPress={soundSwitch}
             style={styles.soundBtn}
           >
             <Image
