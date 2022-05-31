@@ -52,6 +52,7 @@ function RulesModal() {
     )
   })
 
+
   return (
     <View style={styles.overlayModal}>
       <Animated.View

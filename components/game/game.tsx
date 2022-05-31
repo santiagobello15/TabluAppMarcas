@@ -93,20 +93,8 @@ export default function TabluApp() {
 
     console.log('Playing Sound');
     await sound.playAsync();
-/*   if(sound ==! undefined){
-    console.log('Unloading Sound');
-            sound.unloadAsync(); 
-            setSound(undefined)
-  } */}
+}
 
-/*    useEffect(() => {
-      return sound
-        ? () => {
-            console.log('Unloading Sound');
-            sound.unloadAsync(); }
-        : undefined;
-    }, [sound])  
- */
   const FetchDatafromDB = async () => {
     if (cardsDB == undefined) {
       await fetch("https://tablugames.com/api/cardsMarcas")
@@ -426,6 +414,38 @@ export default function TabluApp() {
     );
   };
 
+  const soundIcon = () =>{
+    if(sound == undefined){return(<TouchableOpacity
+      onPress={soundSwitch}
+      style={styles.soundBtn}
+    >
+      <Image
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+        }}
+        source={require("../../assets/images/soundOff.png")}
+      ></Image>
+    </TouchableOpacity>)}
+    else {
+      return(<TouchableOpacity
+        onPress={soundSwitch}
+        style={styles.soundBtn}
+      >
+        <Image
+          style={{
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+          }}
+          source={require("../../assets/images/soundOn.png")}
+        ></Image>
+      </TouchableOpacity>)
+      
+    }
+  }
+
   const afterGameView = () => {
     return (
       <View style={styles.container}>
@@ -438,7 +458,7 @@ export default function TabluApp() {
             styles.mainContainer,
             deviceWidth > limitWidth ? styles.mainContainerBig : null,
           ]}
-        >
+        >{soundIcon()}
           <View style={[styles.titleContainer, { top: "8%" }]}>
             <Text
               adjustsFontSizeToFit
@@ -730,6 +750,7 @@ export default function TabluApp() {
         >
           {BlurTimeUp()}
           {StopOrCount()}
+          {soundIcon()}
           <View style={[styles.titleContainer, { top: "8%" }]}>
             <Text
               adjustsFontSizeToFit
@@ -1157,19 +1178,7 @@ export default function TabluApp() {
               deviceWidth > limitWidth ? styles.mainContainerBig : null,
             ]}
           >
-                   <TouchableOpacity
-            onPress={soundSwitch}
-            style={styles.soundBtn}
-          >
-            <Image
-              style={{
-                width: "100%",
-                height: "100%",
-                position: "absolute",
-              }}
-              source={require("../../assets/images/soundOn.png")}
-            ></Image>
-          </TouchableOpacity>
+             {soundIcon()}
             <View style={styles.titleContainer}>
               <Text
                 adjustsFontSizeToFit
