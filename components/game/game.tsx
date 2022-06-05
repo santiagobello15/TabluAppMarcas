@@ -73,15 +73,15 @@ export default function TabluApp() {
   const [blockAdd, setBlockAdd] = useState(false);
   const [blockSubstract, setBlockSubstract] = useState(false);
   const [timeUp, setTimeUp] = useState(true);
-  const [sound, setSound] = useState<any>();
+  const [song, setSong] = useState<any>();
 
   
   const soundSwitch = () =>{
-    if (sound == undefined){
+    if (song == undefined){
       playSound()
     }
     else {console.log('Unloading Sound');
-    sound.unloadAsync(); setSound(undefined)}
+    song.unloadAsync(); setSong(undefined)}
   }
 
   async function playSound() {
@@ -89,11 +89,54 @@ export default function TabluApp() {
     const { sound } = await Audio.Sound.createAsync(
        require('../../assets/sounds/countryboy.mp3')
     );
-    setSound(sound);
+    setSong(sound);
 
     console.log('Playing Sound');
     await sound.playAsync();
+    await sound.setVolumeAsync(0.2)
+    
 }
+
+  async function correctSound() {
+    if(song != undefined){
+    const { sound } = await Audio.Sound.createAsync(
+      require('../../assets/sounds/correct.mp3')
+   );
+   await sound.playAsync();
+   setTimeout(()=>{sound.unloadAsync(); }, 1200)
+  }}
+  async function incorrectSound() {
+    if(song != undefined){
+    const { sound } = await Audio.Sound.createAsync(
+      require('../../assets/sounds/incorrect.mp3')
+   );
+  await sound.playAsync();
+   setTimeout(()=>{sound.unloadAsync()} , 1200)
+  }}
+  async function passSound() {
+    if(song != undefined){
+    const { sound } = await Audio.Sound.createAsync(
+      require('../../assets/sounds/pass.mp3')
+   );
+   await sound.playAsync();
+   setTimeout(()=>{sound.unloadAsync()}, 1200)
+  }}
+  async function roundOver() {
+    if(song != undefined){
+    const { sound } = await Audio.Sound.createAsync(
+      require('../../assets/sounds/roundover.mp3')
+   );
+   await sound.playAsync();
+   setTimeout(()=>{sound.unloadAsync()}, 2500)
+  }}
+  async function gameOver() {
+    if(song != undefined){
+    const { sound } = await Audio.Sound.createAsync(
+      require('../../assets/sounds/gameover.mp3')
+   );
+   await sound.playAsync();
+   setTimeout(()=>{sound.unloadAsync()}, 4500)
+  }}
 
   const FetchDatafromDB = async () => {
     if (cardsDB == undefined) {
@@ -415,7 +458,7 @@ export default function TabluApp() {
   };
 
   const soundIcon = () =>{
-    if(sound == undefined){return(<TouchableOpacity
+    if(song == undefined){return(<TouchableOpacity
       onPress={soundSwitch}
       style={styles.soundBtn}
     >
