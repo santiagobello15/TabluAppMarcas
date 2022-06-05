@@ -255,6 +255,7 @@ export default function TabluApp() {
       setStartCounter(false);
       setTime(timeGame);
       setTimeUp(true);
+      if(currentRound != roundsGame){roundOver()}
       setCurrentRound(currentRound + 1);
       if (assignedTeamOne == true) {
         setAssignedTeamOne(false);
@@ -268,6 +269,7 @@ export default function TabluApp() {
     // changed from function to useeffect. is not possible to setstate insite setstate function ?
     if (time == 0.0 && currentRound == roundsGame) {
       setGameState("afterGame");
+      gameOver()
     }
   }, [time, currentRound, roundsGame]);
 
@@ -966,6 +968,7 @@ export default function TabluApp() {
                   setTimeout(() => setBlockPass(false), 1500);
                   setTimeout(() => setBlockAdd(false), 1500);
                   setTimeout(() => setBlockSubstract(false), 1500);
+                  correctSound()
                 }}
                 style={[
                   styles.pointBtn,
@@ -1000,6 +1003,7 @@ export default function TabluApp() {
                     setTimeout(() => setBlockPass(false), 1500);
                     setTimeout(() => setBlockAdd(false), 1500);
                     setTimeout(() => setBlockSubstract(false), 1500);
+                    incorrectSound()
                   }
                 }}
                 style={[
@@ -1031,6 +1035,7 @@ export default function TabluApp() {
                   setTimeout(() => setBlockPass(false), 1500);
                   setTimeout(() => setBlockAdd(false), 1500);
                   setTimeout(() => setBlockSubstract(false), 1500);
+                  passSound()
                 }}
                 style={[
                   styles.pointBtn,
