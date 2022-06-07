@@ -73,16 +73,30 @@ export default function TabluApp() {
   const [blockAdd, setBlockAdd] = useState(false);
   const [blockSubstract, setBlockSubstract] = useState(false);
   const [timeUp, setTimeUp] = useState(true);
+  const [musicOn, setMusicOn] = useState(false);
   const [song, setSong] = useState<any>();
+
 
   
   const soundSwitch = () =>{
-    if (song == undefined){
-      playSound()
+    if (musicOn == true){
+      setMusicOn(false)
     }
-    else {console.log('Unloading Sound');
-    song.unloadAsync(); setSong(undefined)}
+    else {setMusicOn(true)}
   }
+
+  useEffect( ()  => {
+    if (musicOn == true){
+      playSound()
+/*       song.replayAsync() */
+    }
+    if(musicOn == false && song != undefined){
+      console.log('Unloading Sound');
+      song.unloadAsync()
+      setSong(undefined)
+    }
+  
+  }, [musicOn]);
 
   async function playSound() {
     console.log('Loading Sound');
@@ -90,11 +104,10 @@ export default function TabluApp() {
        require('../../assets/sounds/countryboy.mp3')
     );
     setSong(sound);
-
     console.log('Playing Sound');
     await sound.playAsync();
     await sound.setVolumeAsync(0.2)
-    
+    await sound.setIsLoopingAsync(true)
 }
 
   async function correctSound() {
@@ -460,7 +473,7 @@ export default function TabluApp() {
   };
 
   const soundIcon = () =>{
-    if(song == undefined){return(<TouchableOpacity
+    if(musicOn == false){return(<TouchableOpacity
       onPress={soundSwitch}
       style={styles.soundBtn}
     >
